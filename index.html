@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Link Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Link JQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Link CSS, Javascript -->
+        <link rel='stylesheet' href='./assets/css/style.css' type='text/css'>
+        <script type='text/javascript' src='./assets/js/app.js'> </script>
+    </head>
+    <body>
+        <div class="banner_intro">
+            <h1 class="jumbotron"><b>Do you know what you want to eat?</b></h1>
+            <div class="search_intro">
+                <form>
+                    <div class="search-area-label form-row">
+                        <div class="food-choice col-sm-6">
+                            <label for="chosenCategory">What do you want?</label>
+                        </div>
+                        <div class="price-choice col-sm-3">
+                            <label for="price">Price</label>
+                        </div>
+                        <div class="delivery-choice col-sm-2">
+                            <label for="price">Delivery</label>
+                        </div>
+                    </div>
+                    <div class="search-area form-row">
+                        <div class="food-choice col-sm-6">
+                            <input type="text" class="form-control" id="chosenCategory" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
+                        </div>
+                        <div class="price-choice col-sm-3">
+                            <select class="custom-select" id="price">
+                                <option value="0">~$8</option>
+                                <option value="1" selected>~$10</option>
+                                <option value="2">~$12</option>
+                                <option value="3">~$15</option>
+                                <option value="4">$15~</option>
+                            </select>
+                        </div>
+                        <div class="delivery-choice col-sm-2">
+                            <select class="custom-select" id="delivery">
+                                <option  value="1" selected>Yes</option>
+                                <option value="4">No</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary" id="test">GO</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- food dating: modal btn -->
+                <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">No! Help me to find what I want to eat!</button>
+            </div>
+        </div>
+
+        <!-- food dating: carousal in modal -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class=" modal-content">
+
+                    <div id="food-item-control" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <div class="food-item carousel-item active" id="enjoyYourFoodDating"></div>
+
+                            <a class="carousel-control-next" href="#food-item-control" role="button" data-slide="prev">
+                                <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
+                                <!-- above link should show the two glyphicons below / but not working -->
+                                <!-- <span class="glyphicons glyphicons-thumbs-up" id="like" aria-hidden="true"></span> -->
+                                <!-- <span class="glyphicons glyphicons-thumbs-down" id="dislike" aria-hidden="true"></span> -->
+                                <button type="submit" class="btn btn-primary temp-btn" id="like">Like</button>
+                                <button type="submit" class="btn btn-primary temp-btn" id="dislike">Dislike</button>
+                            </a>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="result"></div>
+
+    </body>
+</html>
