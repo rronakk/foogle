@@ -16,8 +16,10 @@
     <body>
         <div class="banner_intro">
             <h1 class="jumbotron"><b>Do you know what you want to eat?</b></h1>
+
+
             <div class="search_intro">
-                <form>
+                <!-- <form>
                     <div class="search-area-label form-row">
                         <div class="food-choice col-sm-6">
                             <label for="chosenCategory">What do you want?</label>
@@ -52,29 +54,68 @@
                             <button type="submit" class="btn btn-primary" id="test">GO</button>
                         </div>
                     </div>
-                </form>
-                <!-- food dating: modal btn -->
-                <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">No! Help me to find what I want to eat!</button>
+                </form> -->
+                <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".search-modal">Yes! I do!</button>
+                <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button>
             </div>
         </div>
-
-        <!-- food dating: carousal in modal -->
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <!-- SEARCH MODAL -->
+        <div class="modal fade search-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
-                <div class=" modal-content">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Search Your Food</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="search-area modal-body">
+                        <form>
+                            <div class="food-choice">
+                                <label for="chosenCategory">What do you want?</label>
+                                <input type="text" class="form-control" id="chosenCategory" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
+                            </div><br>
+                            <div class="price-choice">
+                                <label for="price">Price</label>
+                                <select class="custom-select" id="price">
+                                    <option value="0">~$8</option>
+                                    <option value="1" selected>~$10</option>
+                                    <option value="2">~$12</option>
+                                    <option value="3">~$15</option>
+                                    <option value="4">$15~</option>
+                                </select>
+                            </div><br>
+                            <div class="delivery-choice">
+                                <label for="price">Delivery</label>
+                                <select class="custom-select" id="delivery">
+                                    <option  value="1" selected>Yes</option>
+                                    <option value="4">No</option>
+                                </select>
+                            </div><br>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Show My Result</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FOOD DATING MODAL -->
+        <div class="modal fade choose-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="carousel slide" id="food-item-control" data-ride="carousel" data-interval="false">
+                        <div class="carousel-inner" id="food-item-slide">
 
-                    <div id="food-item-control" class="carousel slide" data-ride="carousel" data-interval="false">
-                        <div class="food-item carousel-item active" id="enjoyYourFoodDating"></div>
-
-                            <a class="carousel-control-next" href="#food-item-control" role="button" data-slide="prev">
-                                <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
-                                <!-- above link should show the two glyphicons below / but not working -->
-                                <!-- <span class="glyphicons glyphicons-thumbs-up" id="like" aria-hidden="true"></span> -->
-                                <!-- <span class="glyphicons glyphicons-thumbs-down" id="dislike" aria-hidden="true"></span> -->
-                                <button type="submit" class="btn btn-primary temp-btn" id="like">Like</button>
-                                <button type="submit" class="btn btn-primary temp-btn" id="dislike">Dislike</button>
-                            </a>
-                        <!-- </div> -->
+                            <div class="food-item carousel-item active" id="enjoyYourFoodDating"></div>
+                            
+                        </div>
+                        <a class="carousel-control-next" href="#food-item-control" role="button" data-slide="next">
+                            <button type="submit" class="btn btn-primary temp-btn" aria-hidden="true" id="like">Like</button>
+                            <button type="submit" class="btn btn-primary temp-btn" aria-hidden="true" id="dislike">Dislike</button>
+                            <!-- <span class="carousel-control-next-icon temp-btn" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
                     </div>
                 </div>
             </div>
@@ -85,3 +126,15 @@
 
     </body>
 </html>
+
+
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
+<!-- above link should show the two glyphicons below / but not working -->
+<!-- <span class="glyphicons glyphicons-thumbs-up" id="like" aria-hidden="true"></span> -->
+<!-- <span class="glyphicons glyphicons-thumbs-down" id="dislike" aria-hidden="true"></span> -->
+
+<!-- <div class="carousel-item">
+    <img class="food-item" alt="Second slide">
+</div> -->
+
+

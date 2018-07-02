@@ -28,7 +28,7 @@ var giphy = {
         this.$gifContainer.append(this.$gif);    
 
         // carousel closing btn note
-        var $FoodResultNote = $('<btn id="resultNote" data-dismiss="modal"><h1>Did you find what to eat? Click it!!</h1></btn>');
+        var $FoodResultNote = $('<btn id="resultNote" data-dismiss="modal"><h1>Click to Show My Result</h1></btn>');
         this.$gifContainer.prepend($FoodResultNote);
     }
 }
@@ -66,7 +66,7 @@ $(document).on("click", '.temp-btn', function (event) {
         method: "GET"
     }).then( function(response) {
         giphy.updateGifContainer(response)
-        $('#food-item-control').prepend(giphy.$gifContainer);
+        $('#food-item-slide').append(giphy.$gifContainer);
     });
 });
 /////
