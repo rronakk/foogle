@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Link Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Link JQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Link CSS, Javascript -->
+        <link rel='stylesheet' href='./assets/css/style.css' type='text/css'>
+        <script type='text/javascript' src='assets/js/app.js'> </script>
+    </head>
+
+      
+    <body>
+        <div class="banner_intro">
+            <h1 class="jumbotron"><b>Do you know what you want to eat?</b></h1>
+
+            <div class="search_intro">
+                <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".search-modal">Yes! I do!</button>
+                <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button>
+            </div>
+        </div>
+        <!-- SEARCH MODAL -->
+        <div class="modal fade search-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Search Your Food</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="search-area modal-body">
+                        <form>
+                            <div class="food-choice">
+                                <label for="chosenCategory">What do you want?</label>
+                                <input type="text" class="form-control" id="chosenCategory" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
+                            </div><br>
+                            <div class="price-choice">
+                                <label for="price">Price</label>
+                                <select class="custom-select" id="price">
+                                    <option value="0">~$8</option>
+                                    <option value="1" selected>~$10</option>
+                                    <option value="2">~$12</option>
+                                    <option value="3">~$15</option>
+                                    <option value="4">$15~</option>
+                                </select>
+                            </div><br>
+                            <div class="delivery-choice">
+                                <label for="price">Delivery</label>
+                                <select class="custom-select" id="delivery">
+                                    <option  value="1" selected>Yes</option>
+                                    <option value="4">No</option>
+                                </select>
+                            </div><br>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Show My Result</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FOOD DATING MODAL -->
+        <div class="modal fade choose-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="carousel slide" id="food-item-control" data-ride="carousel" data-interval="false">
+                        <div class="carousel-inner" id="food-item-slide">
+
+                            <div class="food-item carousel-item active" id="enjoyYourFoodDating"></div>
+                            
+                        </div>
+                        <a class="carousel-control-next" href="#food-item-control" role="button" data-slide="next">
+                            <button type="submit" class="btn btn-primary temp-btn" aria-hidden="true" id="like">Like</button>
+                            <button type="submit" class="btn btn-primary temp-btn" aria-hidden="true" id="dislike">Dislike</button>
+                            <!-- <span class="carousel-control-next-icon temp-btn" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="result">
+  
+            <div class='container'>
+                <h4 id='result-header'> Result Header : The Food I searched </h4>
+                <div class='more-btn-area'>
+                    <button class='btn btn-success' id='more-result'> More Result </button>
+                    <!-- <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button> -->
+
+                    <button class='btn btn-success choose-modal' data-toggle="modal" data-target=".choose-modal"> More Random </button>
+                </div>
+                <div class='result-item'>
+                    <div class='item-info'>
+                        <img class='result-item-pic' src='./assets/images/placeholder2.webp'>
+                        <h5> Turkey Sandwich </h5>
+                        <h5 class='food-price'> $12 </h5> <br>
+                        <h6 class='rating'> Food Rating : * * * * * </h6><br>
+                        <a href="#" class='reviews'> 10 Reviews about this item </a>
+
+                    </div>
+                    <div class='food-info'>
+
+                    </div>
+                    <div class='restaurant-info'>
+                        <h5> Example Restaurant 1 </h5><br>
+                        <h6 class='distance'> 0.6 mi</h6>&nbsp&nbsp
+                        <h6 class='delivery-option'> delivery: X</h6><br>
+                        <h6 class='rating'> Yelp Rating : * * * * </h6><br>
+
+                        <a href="#" class='yelp-reviews'> 10 Reviews from Yelp </a><br>
+                        <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                        <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                    </div>
+                </div>
+                <hr>
+                <div class='result-item'>
+                    <img class='result-item-pic' src='./assets/images/placeholder3.jpg'>
+                    <h4> Example Restaurant 2 </h4>
+                    <h5> Pizza </h5>
+                    <h5 class='food-price'> $8 </h5> 
+                    <div class='secondary-info'>
+                        <h6 class='rating'> Rating : * * * </h6>
+                        <!-- <h6 class='distance'> 0.6 mi </h6> -->
+                        <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                        <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                    </div>
+                    <a href="#" class='reviews'> 3 Reviews </a>
+                </div>
+                <hr>
+                <div class='result-item'>
+                    <img class='result-item-pic' src='./assets/images/placeholder4.webp'>
+                    <h4> Example Restaurant 3 </h4>
+                    <h5> Burger </h5>
+                    <h5 class='food-price'> $10 </h5> 
+                    <div class='secondary-info'>
+                        <h6 class='rating'> Rating : * * * * </h6>
+                        <!-- <h6 class='distance'> 0.6 mi </h6> -->
+                        <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                        <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                    </div>
+                    <a href="#" class='reviews'> 26 Reviews </a>
+                </div>
+                <hr>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
+<!-- above link should show the two glyphicons below / but not working -->
+<!-- <span class="glyphicons glyphicons-thumbs-up" id="like" aria-hidden="true"></span> -->
+<!-- <span class="glyphicons glyphicons-thumbs-down" id="dislike" aria-hidden="true"></span> -->
+
+<!-- <div class="carousel-item">
+    <img class="food-item" alt="Second slide">
+</div> -->
+
+
