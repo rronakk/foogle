@@ -1,3 +1,58 @@
+/* Results Page */
+.container {
+    background-color: #C8C6C6;
+}
+
+.result-item {
+    clear: both;
+    padding: 30px;
+}
+
+#result-header {
+    font-size: 2em;
+    text-align: center;
+}
+
+.result-item-pic {
+    float: left;
+    padding: 20px;
+    width: 175px;
+}
+
+    /* Restaurant Name, Food Name, Price */
+h5 {
+    display: inline;
+}
+
+.food-price {
+    float: right;
+}
+
+    /* Rating/Distance, Delivery, Takeout */
+.secondary-info {
+    margin-top: 20px;
+}
+
+h6 {
+    display: inline;
+}
+
+.delivery {
+    float: right;
+    margin-left: 20px;
+    width: 50px;
+}
+
+.takeout {
+    float: right;
+    width: 50px;
+}
+
+.btn-success {
+    clear: both;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 2px 2px black;
 
 .banner_intro {
     text-align: center;

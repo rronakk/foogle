@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <!-- Link Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -13,7 +14,14 @@
         <link rel='stylesheet' href='./assets/css/style.css' type='text/css'>
         <script type='text/javascript' src='./assets/js/app.js'> </script>
     </head>
-    <body>
+
+      
+
+
+    
+
+
+
         <div class="banner_intro">
             <h1 class="jumbotron"><b>Do you know what you want to eat?</b></h1>
 
@@ -122,7 +130,59 @@
         </div>
 
 
-        <div class="result"></div>
+        <div class="result">
+  
+          <div class='container'>
+            <h4 id='result-header'> Result Header : The Food I searched </h4>
+            <div class='result-item'>
+                <img class='result-item-pic' src='./assets/images/placeholder2.webp'>
+                <h4> Example Restaurant 1 </h4>
+                <h5> Sandwich </h5>
+                <h5 class='food-price'> $12 </h5> 
+                <div class='secondary-info'>
+                    <h6 class='rating'> Rating : * * * * * </h6>
+                    <!-- <h6 class='distance'> 0.6 mi </h6> -->
+                    <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                    <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                </div>
+                <a href="#" class='reviews'> 10 Reviews </a>
+            </div>
+            <hr>
+            <div class='result-item'>
+                <img class='result-item-pic' src='./assets/images/placeholder3.jpg'>
+                <h4> Example Restaurant 2 </h4>
+                <h5> Pizza </h5>
+                <h5 class='food-price'> $8 </h5> 
+                <div class='secondary-info'>
+                    <h6 class='rating'> Rating : * * * </h6>
+                    <!-- <h6 class='distance'> 0.6 mi </h6> -->
+                    <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                    <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                </div>
+                <a href="#" class='reviews'> 3 Reviews </a>
+            </div>
+            <hr>
+            <div class='result-item'>
+                <img class='result-item-pic' src='./assets/images/placeholder4.webp'>
+                <h4> Example Restaurant 3 </h4>
+                <h5> Burger </h5>
+                <h5 class='food-price'> $10 </h5> 
+                <div class='secondary-info'>
+                    <h6 class='rating'> Rating : * * * * </h6>
+                    <!-- <h6 class='distance'> 0.6 mi </h6> -->
+                    <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                    <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                </div>
+                <a href="#" class='reviews'> 26 Reviews </a>
+            </div>
+            <hr>
+            <button class='btn btn-success'> Search Again </button>
+        </div>
+  
+  
+  
+  
+        </div>
 
     </body>
 </html>
