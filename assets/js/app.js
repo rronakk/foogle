@@ -62,32 +62,6 @@ var edamam = {
             newItem.ingredients = Data.hits[i].recipe.ingredients;
             edamam.items.push(newItem);  
         }
-    },
-    displaySearchedResult: function() {
-        var $container = $('.banner_intro');
-        var $itemContainer = $('<div>')
-        var $itemName = $('<h5>');
-        var $itemImg = $('<img>');
-        $itemImg.addClass("img-fluid");
-
-        for (var i = 0; i < this.searchCount; i++) {
-            // (function() {
-                $itemName.text(this.items[i].label);
-                $itemImg.attr('src', this.items[i].image);
-                $itemContainer.append($itemName);
-                $itemContainer.append($itemImg);
-                $container.prepend($itemContainer);
-                console.log($container);
-            // })(i);
-        }
-        // edamam.items.forEach( function(el) {
-        //     $itemName.text(el.label);
-        //     $itemImg.attr('src', el.image);
-        //     $itemContainer.append($itemName);
-        //     $itemContainer.append($itemImg);
-        //     $container.prepend($itemContainer);
-        //     console.log($itemContainer);
-        // });
     }
 };
 
@@ -119,12 +93,30 @@ $(document).on("click", '.search-result-btn', function (event) {
         edamam.collectData(response);
         console.log("----------")
         console.log(edamam.items);
-
-        // call back function to display item in the HTML
-        event.preventDefault();
-
-        edamam.displaySearchedResult();
     });
+
+    // DISPLAY THE SEARCH RESULT IN HTML
+    var $container = $('.result');
+    var $itemContainer = $('<div>')
+    var $itemName = $('<h5>');
+    var $itemImg = $('<img>');
+    $itemImg.addClass("img-fluid");
+
+    for (var i = 0; i < edamam.searchCount; i++) {
+
+        $itemName.text(edamam.items[i].label);
+        $itemImg.attr('src', edamam.items[i].image);
+        $itemContainer.append($itemName);
+        $itemContainer.append($itemImg);
+
+        console.log("**********");
+        console.log($itemName);
+        console.log($container);
+        console.log(edamam.items[i]);
+        console.log(edamam.items[i].label);
+        console.log(edamam.items[i].image);
+    }
+    $container.prepend($itemContainer);
 
 });
 
