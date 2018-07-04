@@ -12,57 +12,15 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Link CSS, Javascript -->
         <link rel='stylesheet' href='./assets/css/style.css' type='text/css'>
-        <script type='text/javascript' src='./assets/js/app.js'> </script>
+        <script type='text/javascript' src='assets/js/app.js'> </script>
     </head>
 
       
-
-
-    
-
-
-
+    <body>
         <div class="banner_intro">
             <h1 class="jumbotron"><b>Do you know what you want to eat?</b></h1>
 
-
             <div class="search_intro">
-                <!-- <form>
-                    <div class="search-area-label form-row">
-                        <div class="food-choice col-sm-6">
-                            <label for="chosenCategory">What do you want?</label>
-                        </div>
-                        <div class="price-choice col-sm-3">
-                            <label for="price">Price</label>
-                        </div>
-                        <div class="delivery-choice col-sm-2">
-                            <label for="price">Delivery</label>
-                        </div>
-                    </div>
-                    <div class="search-area form-row">
-                        <div class="food-choice col-sm-6">
-                            <input type="text" class="form-control" id="chosenCategory" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
-                        </div>
-                        <div class="price-choice col-sm-3">
-                            <select class="custom-select" id="price">
-                                <option value="0">~$8</option>
-                                <option value="1" selected>~$10</option>
-                                <option value="2">~$12</option>
-                                <option value="3">~$15</option>
-                                <option value="4">$15~</option>
-                            </select>
-                        </div>
-                        <div class="delivery-choice col-sm-2">
-                            <select class="custom-select" id="delivery">
-                                <option  value="1" selected>Yes</option>
-                                <option value="4">No</option>
-                            </select>
-                        </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary" id="test">GO</button>
-                        </div>
-                    </div>
-                </form> -->
                 <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".search-modal">Yes! I do!</button>
                 <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button>
             </div>
@@ -132,58 +90,78 @@
 
         <div class="result">
   
-          <div class='container'>
-            <h4 id='result-header'> Result Header : The Food I searched </h4>
-            <div class='result-item'>
-                <img class='result-item-pic' src='./assets/images/placeholder2.webp'>
-                <h4> Example Restaurant 1 </h4>
-                <h5> Sandwich </h5>
-                <h5 class='food-price'> $12 </h5> 
-                <div class='secondary-info'>
-                    <h6 class='rating'> Rating : * * * * * </h6>
-                    <!-- <h6 class='distance'> 0.6 mi </h6> -->
-                    <img class='delivery btn-info' src='./assets/images/delivery.png'>
-                    <img class='takeout btn-info' src='./assets/images/takeout.png'>    
-                </div>
-                <a href="#" class='reviews'> 10 Reviews </a>
-            </div>
-            <hr>
-            <div class='result-item'>
-                <img class='result-item-pic' src='./assets/images/placeholder3.jpg'>
-                <h4> Example Restaurant 2 </h4>
-                <h5> Pizza </h5>
-                <h5 class='food-price'> $8 </h5> 
-                <div class='secondary-info'>
-                    <h6 class='rating'> Rating : * * * </h6>
-                    <!-- <h6 class='distance'> 0.6 mi </h6> -->
-                    <img class='delivery btn-info' src='./assets/images/delivery.png'>
-                    <img class='takeout btn-info' src='./assets/images/takeout.png'>    
-                </div>
-                <a href="#" class='reviews'> 3 Reviews </a>
-            </div>
-            <hr>
-            <div class='result-item'>
-                <img class='result-item-pic' src='./assets/images/placeholder4.webp'>
-                <h4> Example Restaurant 3 </h4>
-                <h5> Burger </h5>
-                <h5 class='food-price'> $10 </h5> 
-                <div class='secondary-info'>
-                    <h6 class='rating'> Rating : * * * * </h6>
-                    <!-- <h6 class='distance'> 0.6 mi </h6> -->
-                    <img class='delivery btn-info' src='./assets/images/delivery.png'>
-                    <img class='takeout btn-info' src='./assets/images/takeout.png'>    
-                </div>
-                <a href="#" class='reviews'> 26 Reviews </a>
-            </div>
-            <hr>
-            <button class='btn btn-success'> Search Again </button>
-        </div>
-  
-  
-  
-  
-        </div>
+            <div class='container'>
+                <h4 id='result-header'> Result Header : The Food I searched </h4>
+                <div class='more-btn-area'>
+                    <button class='btn btn-success' id='more-result'> More Result </button>
+                    <!-- <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button> -->
 
+                    <button class='btn btn-success choose-modal' data-toggle="modal" data-target=".choose-modal"> More Random </button>
+                </div>
+                <div class='result-item'>
+                    <div class='item-info'>
+                        <img class='result-item-pic' src='./assets/images/placeholder2.webp'>
+                        <h5> Turkey Sandwich </h5>
+                        <h5 class='food-price'> $12 </h5> <br>
+                        <h6 class='rating'> Food Rating : * * * * * </h6><br>
+                        <a href="#" class='reviews'> 10 Reviews about this item </a>
+
+                    </div>
+                    <div class='food-info'>
+
+                    </div>
+                    <div class='restaurant-info'>
+                        <h5> Example Restaurant 1 </h5><br>
+                        <h6 class='distance'> 0.6 mi</h6>&nbsp&nbsp
+                        <h6 class='delivery-option'> delivery: X</h6><br>
+                        <h6 class='rating'> Yelp Rating : * * * * </h6><br>
+
+                        <a href="#" class='yelp-reviews'> 10 Reviews from Yelp </a><br>
+                        <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                        <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                    </div>
+                </div>
+                <hr>
+                <div class='result-item'>
+                    <img class='result-item-pic' src='./assets/images/placeholder3.jpg'>
+                    <h4> Example Restaurant 2 </h4>
+                    <h5> Pizza </h5>
+                    <h5 class='food-price'> $8 </h5> 
+                    <div class='secondary-info'>
+                        <h6 class='rating'> Rating : * * * </h6>
+                        <!-- <h6 class='distance'> 0.6 mi </h6> -->
+                        <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                        <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                    </div>
+                    <a href="#" class='reviews'> 3 Reviews </a>
+                </div>
+                <hr>
+                <div class='result-item'>
+                    <img class='result-item-pic' src='./assets/images/placeholder4.webp'>
+                    <h4> Example Restaurant 3 </h4>
+                    <h5> Burger </h5>
+                    <h5 class='food-price'> $10 </h5> 
+                    <div class='secondary-info'>
+                        <h6 class='rating'> Rating : * * * * </h6>
+                        <!-- <h6 class='distance'> 0.6 mi </h6> -->
+                        <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                        <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                    </div>
+                    <a href="#" class='reviews'> 26 Reviews </a>
+                </div>
+                <hr>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </body>
 </html>
 
