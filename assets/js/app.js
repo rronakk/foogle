@@ -1,5 +1,4 @@
 
-
 /////
 // RANDOM GIF IMAGE WITH KEYWORD
 /////
@@ -35,11 +34,67 @@ var giphy = {
 /////
 // RANDOM GIF IMAGE WITH KEYWORD ENDS ----------
 
+/////
+// COLLECT EDAMAM API DATA AND SAVE INTO edamam.items
+/////
+var edamam = {
+    items: [],
+    searchFrom: 0,
+    searchCount: 3,
+    buildQueryURL: function(keyword) {
+        var queryURL = "https://api.edamam.com/search?";
+        var queryParams = {};
+        queryParams.app_id = '3ff2cec1';
+        queryParams.app_key = '5daaa38e313d46e5ddf1d70317e69608';
+        queryParams.q = keyword;
+        queryParams.from = this.searchFrom;
+        queryParams.to = this.searchFrom + this.searchCount;
+        queryURL += $.param(queryParams);
+        return queryURL;
+    },
+    collectData: function(Data) {
+        for (var i = 0; i < this.searchCount; i++) {
+            var newItem = {};
+            newItem.label = Data.hits[i].recipe.label;
+            newItem.image = Data.hits[i].recipe.image;
+            newItem.dietLabels = Data.hits[i].recipe.dietLabels;
+            newItem.calories = Data.hits[i].recipe.calories;
+            newItem.ingredients = Data.hits[i].recipe.ingredients;
+            edamam.items.push(newItem);  
+        }
+    },
+    displaySearchedResult: function() {
+        var $container = $('.banner_intro');
+        var $itemContainer = $('<div>')
+        var $itemName = $('<h5>');
+        var $itemImg = $('<img>');
+        $itemImg.addClass("img-fluid");
 
-/////
-// GIPHY API CALL FOR FOOD DATING
-/////
+        for (var i = 0; i < this.searchCount; i++) {
+            // (function() {
+                $itemName.text(this.items[i].label);
+                $itemImg.attr('src', this.items[i].image);
+                $itemContainer.append($itemName);
+                $itemContainer.append($itemImg);
+                $container.prepend($itemContainer);
+                console.log($container);
+            // })(i);
+        }
+        // edamam.items.forEach( function(el) {
+        //     $itemName.text(el.label);
+        //     $itemImg.attr('src', el.image);
+        //     $itemContainer.append($itemName);
+        //     $itemContainer.append($itemImg);
+        //     $container.prepend($itemContainer);
+        //     console.log($itemContainer);
+        // });
+    }
+};
+
 $(document).ready(function () {
+    /////
+    // GIPHY API CALL FOR FOOD DATING
+    /////
     var giphyURL = giphy.buildQueryURL("delicious");
     $.ajax({
         url: giphyURL,
@@ -51,8 +106,27 @@ $(document).ready(function () {
     var $FoodDatingNote = $('<h1 id="datingNote">Enjoy your<br/>DELICIOUS date.<br>Ready to TASTE it?!<br>"LIKE" it!!<br><br>You will see them on your list!</h1>');
     $('#enjoyYourFoodDating').append($FoodDatingNote);
 });
-/////
-// GIPHY API CALL FOR FOOD DATING ENDS ----------
+
+
+$(document).on("click", '.search-result-btn', function (event) {
+
+    // SEARCH WITH KEYWORD AND SAVE THE DATA INTO edamam.items
+    event.preventDefault();
+    $.ajax({
+        url: edamam.buildQueryURL($("#chosenCategory").val()),
+        method: "GET"
+    }).then( function(response) {
+        edamam.collectData(response);
+        console.log("----------")
+        console.log(edamam.items);
+
+        // call back function to display item in the HTML
+        event.preventDefault();
+
+        edamam.displaySearchedResult();
+    });
+
+});
 
 
 /////
@@ -65,12 +139,11 @@ $(document).on("click", '.temp-btn', function (event) {
         url: giphyURL,
         method: "GET"
     }).then( function(response) {
-        giphy.updateGifContainer(response)
+        giphy.updateGifContainer(response);
         $('#food-item-slide').append(giphy.$gifContainer);
     });
 });
-/////
-// TEMPLATE FOR FOOD PHOTO API CALL ENDS ----------
+
 
 
 

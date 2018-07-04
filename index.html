@@ -10,13 +10,19 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <!-- Link JQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- EDAMAM API -->
+        <script src="https://developer.edamam.com/attribution/badge.js"></script>
+
         <!-- Link CSS, Javascript -->
         <link rel='stylesheet' href='./assets/css/style.css' type='text/css'>
         <script type='text/javascript' src='assets/js/app.js'> </script>
     </head>
 
-      
     <body>
+        <div id="edamam-badge" data-color="white"></div>
+
+
         <div class="banner_intro">
             <h1 class="jumbotron"><b>Do you know what you want to eat?</b></h1>
 
@@ -61,7 +67,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Show My Result</button>
+                        <button type="button" class="btn btn-primary search-result-btn">Show My Result</button>
                     </div>
                 </div>
             </div>
