@@ -20,11 +20,14 @@
     </head>
 
     <body>
-        <div id="edamam-badge" data-color="white"></div>
-
-
-        <div class="banner_intro">
-            <h1 class="jumbotron"><b>Do you know what you want to eat?</b></h1>
+        <!-- PAGE 1 INTRO -->
+        <div class="banner_intro intro_1">
+            <div id="edamam-badge" data-color="white"></div>
+            <h1 class="jumbotron make-ur-life-ezr"><b>Having hard time deciding your lunch?<br><br>Make your life easier.<br>We are the Ultimate Lunch Recommendation System.</b></h1>
+        </div>
+        <div class="banner_intro intro_2">
+            <div id="edamam-badge" data-color="white"></div>
+            <h1 class="jumbotron what-to-eat"><b>Do you know what you want to eat?</b></h1>
 
             <div class="search_intro">
                 <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".search-modal">Yes! I do!</button>
@@ -44,10 +47,10 @@
                     <div class="search-area modal-body">
                         <form>
                             <div class="food-choice">
-                                <label for="chosenCategory">What do you want?</label>
-                                <input type="text" class="form-control" id="chosenCategory" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
+                                <label for="searchItem">What do you want?</label>
+                                <input type="text" class="form-control" id="searchItem" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
                             </div><br>
-                            <div class="price-choice">
+                            <!-- <div class="price-choice">
                                 <label for="price">Price</label>
                                 <select class="custom-select" id="price">
                                     <option value="0">~$8</option>
@@ -63,11 +66,11 @@
                                     <option  value="1" selected>Yes</option>
                                     <option value="4">No</option>
                                 </select>
-                            </div><br>
+                            </div><br> -->
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary search-result-btn">Show My Result</button>
+                        <button type="button" class="btn btn-primary search-result-btn" data-dismiss="modal"><a href=".searched-item-area">Show My Result</a></button>
                     </div>
                 </div>
             </div>
@@ -93,80 +96,153 @@
             </div>
         </div>
 
-
+        <!-- RESULT PAGE -->
         <div class="result">
-  
-            <div class='container'>
-                <h4 id='result-header'> Result Header : The Food I searched </h4>
-                <div class='more-btn-area'>
-                    <button class='btn btn-success' id='more-result'> More Result </button>
-                    <!-- <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button> -->
+            <div class="card">
+                
+                <!-- PAGE 2: SEARCH RESULT PAGE -->
+                <!-- <div class="searched-item-area card-body row"> -->
+                <div class="searched-item-page card-body">
 
-                    <button class='btn btn-success choose-modal' data-toggle="modal" data-target=".choose-modal"> More Random </button>
+                    <!-- <div class="detail-search col-12"> -->
+                    <div class="detail-search">
+                        <h5 id="detail-search-header">DO YOU WANT TO SEARCH MORE IN SPECIFIC? (NOT AVAILABLE YET)</h5>
+                        <form class="detail-search-form">
+                            <div class="input-label row">
+                                <label for="searchItem" class="col-4">I'm Craving For</label>
+                                <label for="diet" class="col-1">Diet</label>
+                                <label for="allergy" class="col-1">Allergy</label>
+                                <label for="calories" class="col-2">Calories</label>
+                                <label for="excluded" class="col-3">Exclude It!</label>
+                            </div>
+                            <div class="user-input row">
+                                <input type="text" class="form-control col-4" id="searchItem" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
+                                <div class="button-group col-1">
+                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Diet Option</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="small" data-value="high-protein" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-protein</li>
+                                        <li class="small" data-value="balanced" tabIndex="-1"> <input type="checkbox"/>&nbsp;balanced</li>
+                                        <li class="small" data-value="high-fiber" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-fiber</li>
+                                        <li class="small" data-value="low-fat" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-fat</li>
+                                        <li class="small" data-value="low-carb" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-carb</li>
+                                        <li class="small" data-value="low-sodium" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-sodium</li>
+                                    </ul>
+                                </div>
+                                <div class="button-group col-1">
+                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Allergy</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="small" data-value="peanut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;peanut-free</li>
+                                        <li class="small" data-value="tree-nut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;tree-nut-free</li>
+                                        <li class="small" data-value="soy-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;soy-free</li>
+                                        <li class="small" data-value="fish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;fish-free</li>
+                                        <li class="small" data-value="shellfish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;shellfish-free</li>
+                                    </ul>
+                                </div>
+                                <input type="text" class="form-control col-2" data-value="calories" id="calories" placeholder="1000-1500">
+                                <input type="text" class="form-control col-3" data-value="excluded" id="excluded" placeholder="vinegal, pretzel">
+                                <button type="button" class="btn btn-primary search-result-btn col-1"><a href=".searched-item-area">SEARCH</a></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="random-date" data-toggle="modal" data-target=".choose-modal"><h5>OR, DO YOU WANT TO GET MATCHED WITH A RANDOM DATE?</h5></div>
+                    <div class="searched-item-area card-body"></div>
+                    <nav class="page-navigation">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <div class='result-item'>
-                    <div class='item-info'>
-                        <img class='result-item-pic' src='./assets/images/placeholder2.webp'>
-                        <h5> Turkey Sandwich </h5>
-                        <h5 class='food-price'> $12 </h5> <br>
-                        <h6 class='rating'> Food Rating : * * * * * </h6><br>
-                        <a href="#" class='reviews'> 10 Reviews about this item </a>
+                <!-- PAGE NAVIGATION -->
+                
 
-                    </div>
-                    <div class='food-info'>
-
-                    </div>
-                    <div class='restaurant-info'>
-                        <h5> Example Restaurant 1 </h5><br>
-                        <h6 class='distance'> 0.6 mi</h6>&nbsp&nbsp
-                        <h6 class='delivery-option'> delivery: X</h6><br>
-                        <h6 class='rating'> Yelp Rating : * * * * </h6><br>
-
-                        <a href="#" class='yelp-reviews'> 10 Reviews from Yelp </a><br>
-                        <img class='delivery btn-info' src='./assets/images/delivery.png'>
-                        <img class='takeout btn-info' src='./assets/images/takeout.png'>    
-                    </div>
+                <!-- PAGE 3: RANDOM RESULT PAGE -->
+                <div class="random-item-page card-body">
+                    <div class="random-item-area card-body"></div>
                 </div>
-                <hr>
-                <div class='result-item'>
-                    <img class='result-item-pic' src='./assets/images/placeholder3.jpg'>
-                    <h4> Example Restaurant 2 </h4>
-                    <h5> Pizza </h5>
-                    <h5 class='food-price'> $8 </h5> 
-                    <div class='secondary-info'>
-                        <h6 class='rating'> Rating : * * * </h6>
-                        <!-- <h6 class='distance'> 0.6 mi </h6> -->
-                        <img class='delivery btn-info' src='./assets/images/delivery.png'>
-                        <img class='takeout btn-info' src='./assets/images/takeout.png'>    
-                    </div>
-                    <a href="#" class='reviews'> 3 Reviews </a>
-                </div>
-                <hr>
-                <div class='result-item'>
-                    <img class='result-item-pic' src='./assets/images/placeholder4.webp'>
-                    <h4> Example Restaurant 3 </h4>
-                    <h5> Burger </h5>
-                    <h5 class='food-price'> $10 </h5> 
-                    <div class='secondary-info'>
-                        <h6 class='rating'> Rating : * * * * </h6>
-                        <!-- <h6 class='distance'> 0.6 mi </h6> -->
-                        <img class='delivery btn-info' src='./assets/images/delivery.png'>
-                        <img class='takeout btn-info' src='./assets/images/takeout.png'>    
-                    </div>
-                    <a href="#" class='reviews'> 26 Reviews </a>
-                </div>
-                <hr>
 
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
+                <!-- PAGE 4: FAVORITES PAGE -->
+                <div class="fav-item-page card">
+                    <h1 class="card-head">Favorites</h1>
+                    <div class="fav-item-area card-body"></div>
+
+                </div>
             </div>
+            <div class="btn-group page-tab" role="group">
+                <button type="button" class="btn btn-success page-tab-btn" id="searched-page">Searched</button>
+                <button type="button" class="btn btn-warning page-tab-btn" id="random-page">Random</button>
+                <button type="button" class="btn btn-danger page-tab-btn" id="fav-page">Favorites</button>
+            </div>
+
+
+        </div>
+
+
+
+        <div class='container michael-eg'>
+            <h4 id='result-header'> Result Header : The Food I searched </h4>
+            <div class='more-btn-area'>
+                <button class='btn btn-success' id='more-result'> More Result </button>
+                <!-- <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button> -->
+
+                <button class='btn btn-success choose-modal' data-toggle="modal" data-target=".choose-modal"> More Random </button>
+            </div>
+            <div class='result-item'>
+                <div class='item-info'>
+                    <img class='result-item-pic' src='./assets/images/placeholder2.webp'>
+                    <h5> Turkey Sandwich </h5>
+                    <h5 class='food-price'> $12 </h5> <br>
+                    <h6 class='rating'> Food Rating : * * * * * </h6><br>
+                    <a href="#" class='reviews'> 10 Reviews about this item </a>
+
+                </div>
+                <div class='food-info'>
+
+                </div>
+                <div class='restaurant-info'>
+                    <h5> Example Restaurant 1 </h5><br>
+                    <h6 class='distance'> 0.6 mi</h6>&nbsp&nbsp
+                    <h6 class='delivery-option'> delivery: X</h6><br>
+                    <h6 class='rating'> Yelp Rating : * * * * </h6><br>
+
+                    <a href="#" class='yelp-reviews'> 10 Reviews from Yelp </a><br>
+                    <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                    <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                </div>
+            </div>
+            <hr>
+            <div class='result-item'>
+                <img class='result-item-pic' src='./assets/images/placeholder3.jpg'>
+                <h4> Example Restaurant 2 </h4>
+                <h5> Pizza </h5>
+                <h5 class='food-price'> $8 </h5> 
+                <div class='secondary-info'>
+                    <h6 class='rating'> Rating : * * * </h6>
+                    <!-- <h6 class='distance'> 0.6 mi </h6> -->
+                    <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                    <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                </div>
+                <a href="#" class='reviews'> 3 Reviews </a>
+            </div>
+            <hr>
+            <div class='result-item'>
+                <img class='result-item-pic' src='./assets/images/placeholder4.webp'>
+                <h4> Example Restaurant 3 </h4>
+                <h5> Burger </h5>
+                <h5 class='food-price'> $10 </h5> 
+                <div class='secondary-info'>
+                    <h6 class='rating'> Rating : * * * * </h6>
+                    <!-- <h6 class='distance'> 0.6 mi </h6> -->
+                    <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                    <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                </div>
+                <a href="#" class='reviews'> 26 Reviews </a>
+            </div>
+            <hr>
+
         </div>
     </body>
 </html>
