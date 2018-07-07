@@ -93,7 +93,11 @@ $(document).on("click", '.food-img', function (event){
         $("#res-name").text(response.businesses[0].name);
         $("#recipie-name").text(foodItem);
         $("#stars").text(response.businesses[0].rating);
-        $(".food-price").text(response.businesses[0].price);
+        $(".food-price").text("Price Range : " + response.businesses[0].price);
+        $(".phone").text(response.businesses[0].display_phone);
+        $(".address").text(response.businesses[0].location.address1 + ", " + response.businesses[0].location.city + ", "
+                           + response.businesses[0].location.state  + "-" +  response.businesses[0].location.zip_code);
+        $(".yelp-link").attr("href", response.businesses[0].url);
 
     });
 })
