@@ -64,6 +64,10 @@
     display: inline;
 } */
 
+#map {
+    height: 100%;
+}
+
 .food-price {
     float: right;
 }

@@ -99,6 +99,21 @@ $(document).on("click", '.food-img', function (event){
                            + response.businesses[0].location.state  + "-" +  response.businesses[0].location.zip_code);
         $(".yelp-link").attr("href", response.businesses[0].url);
 
+        /* Generate map and add it onto the 'Map' id */
+        var myLatlng = new google.maps.LatLng(40.7282, -74.0776);
+        var mapOptions = {
+            zoom: 16,
+            center: myLatlng
+        }
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            title: response.businesses[0].name
+        });
+
+        // To add the marker to the map, call setMap();
+        marker.setMap(map);
     });
 })
 
