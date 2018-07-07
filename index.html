@@ -247,6 +247,36 @@
             <hr>
 
         </div>
+        <!-- model for restaurant information -->
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modelTitleId">You can get this here :</h4>
+                    </div>
+                    <div class="modal-body">
+                            <div id="restaurant-info">
+                                <img class='result-item-pic' src='./assets/images/placeholder3.jpg'>
+                                <h4 id="res-name"></h4>
+                                <h5 id="recipie-name"> </h5>
+                                <div class="address"></div>
+                                <h5 class='food-price'> </h5> 
+                                <div class='secondary-info'>
+                                    <h6 class='rating'> Rating : <span id="stars"></span> </h6>
+                                    <!-- <h6 class='distance'> 0.6 mi </h6> -->
+                                    <img class='delivery btn-info' src='./assets/images/delivery.png'>
+                                    <img class='takeout btn-info' src='./assets/images/takeout.png'>    
+                                </div>
+                                <a href="#" class='reviews'> 3 Reviews </a>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button " class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button submit" class="btn btn-info" id="save-btn">Save</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
 

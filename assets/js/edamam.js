@@ -42,6 +42,8 @@ var Edamam = {
             // food item img
             var $item = $('<img>');
             $item.addClass("food-img card-img-top");
+            $item.attr("data-target", "#modelId");
+            $item.attr("data-toggle", "modal")
             var foodImg = foodInfo.recipe.image;
             if (foodImg) {
                 $item.attr('src', foodImg);
@@ -69,3 +71,32 @@ var Edamam = {
         }
     }
 };
+
+$(document).on("click", '.food-img', function (event){
+    event.preventDefault();
+    console.log(this);
+    console.log($(this).attr("name"));
+    var foodItem = $(this).attr("name");
+    var proxyURL = 'https://shielded-hamlet-43668.herokuapp.com/'
+    var queryURL = "https://api.yelp.com/v3/businesses/search?term=" + foodItem + "&latitude=37.786882&longitude=-122.399972";
+    $.ajax({
+        url: proxyURL + queryURL,
+        method: "GET",
+        "headers": {
+            "authorization": "Bearer aXBYOEZ2urYrK_dgFfaCQyg96ftnMSPopRdFnFxEMu7ndPT-WYFcQ4CFuBjlmpHmLxrPC8cpKlHrVN5mrySh8FnXsTI-VPIBrI9tVD6qN0qGtM0n_K1ZncYU0R89W3Yx",
+        }
+    }).then( function(response) {
+        // $(".result-item-pic").attr("src", response.businesses[0].image_url);
+        console.log(response);
+        console.log(response.businesses[0]);
+        $(".result-item-pic").attr("src", response.businesses[0].image_url);
+        $("#res-name").text(response.businesses[0].name);
+        $("#recipie-name").text(foodItem);
+        $("#stars").text(response.businesses[0].rating);
+        $(".food-price").text(response.businesses[0].price);
+
+    });
+})
+
+
+
