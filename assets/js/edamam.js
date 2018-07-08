@@ -75,6 +75,10 @@ $(document).on("click", '.food-img', function (event){
         // $(".result-item-pic").attr("src", response.businesses[0].image_url);
         console.log(response);
         console.log(response.businesses[0]);
+        
+        var businessLat = response.businesses[0].coordinates.latitude;
+        var businessLong = response.businesses[0].coordinates.longitude;
+
         $(".result-item-pic").attr("src", response.businesses[0].image_url);
         $("#res-name").text(response.businesses[0].name);
         $("#recipie-name").text(foodItem);
@@ -85,9 +89,9 @@ $(document).on("click", '.food-img', function (event){
                            + response.businesses[0].location.state  + "-" +  response.businesses[0].location.zip_code);
         $(".yelp-link").attr("href", response.businesses[0].url);
 
-        console.log("test");
+        console.log(lat + "+" + long);
         /* Generate map and add it onto the 'Map' id */
-        var myLatlng = new google.maps.LatLng(40.7282, -74.0776);
+        var myLatlng = new google.maps.LatLng(businessLat, businessLong);
         var mapOptions = {
             zoom: 16,
             center: myLatlng
@@ -127,15 +131,15 @@ if ("geolocation" in navigator) {
      function success(position) {
        console.log('latitude', position.coords.latitude, 
                    'longitude', position.coords.longitude);
-        long = position.coords.latitude;
-        lat = position.coords.longitude;
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
      }, function error(error_message) {
       // for when getting location results in an error
       console.error('An error has occured while retrieving location', error_message)
       ipLookUp()
    }
-  );
-  } else {
+  );} 
+  else {
     console.log('geolocation is not enabled on this browser')
     ipLookUp()
   }
