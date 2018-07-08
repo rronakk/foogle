@@ -12,9 +12,15 @@
     text-align: center;
     margin-top: 5%;
 }
-/* .to-random {
-    margin-top: 10%;
-} */
+
+
+/* SEARCH MODAL */
+.searched-item {
+    height: 350px;
+}
+.searched-item-info {
+
+}
 
 /* SEARCH RESULT PAGE */
 .page-tab {

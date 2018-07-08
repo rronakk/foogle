@@ -5,23 +5,9 @@
 ///// INTRO PAGE
 $(document).ready(function () {
     
-    $('.result').hide();
-    $('.intro_2').hide();
-    /* setTimeout( function () {
-        $('.intro_1').fadeOut(2000);
-        $('.intro_2').fadeIn(4000);
-    }, 3000); */
-    setTimeout( function () {
-        $('.intro_1').fadeOut(500);
-        $('.intro_2').fadeIn(500);
-    }, 500);
-    $('.searched-result-page').hide();
-    $('.random-result-page').hide();
-    $('.fav-result-page').hide();
-    $('.page-navigation').hide()
-    $('.page-tab').hide();
-    $('.michael-eg').hide();
-
+    //pageAction
+    IntroAction();
+    
     // GIPHY API CALL FOR FOOD DATING FIRST BANNER PAGE
     var giphyURL = Giphy.buildQueryURL("delicious");
     $.ajax({
@@ -35,35 +21,73 @@ $(document).ready(function () {
     $('#enjoyYourFoodDating').append($FoodDatingNote);
 });
 
-// DETAIL SEARCH ON CLICK EVENT
-// $(document).on("click", '.detail-search', function (event) {
-
-// });
-
-// DISPLAY ITEMS ON SEARCHED RESULT PAGE AND SAVE THEM IN edamam.searcheditems
-$(document).on("click", '#run-search', function (event) {
-    $('.banner_intro').fadeOut(1000);
-    $('.result').show();
-    $('.searched-result-page').prepend('<h1 class="col-12">Here is our recommendation on: ' + $('#searchItem').val().trim().toUpperCase() + '</h1>');
-    $('.searched-result-page').prepend($('.search-area'));
-    $('.searched-result-page').fadeIn(2000);
-    $('.page-navigation').fadeIn(2000);
-    $('.page-tab').fadeIn(4000);
-
-    event.preventDefault();
-    var search = $('#searchItem').val().trim();
-    var queryURL = Edamam.buildQueryURLSearch(search);
-    console.log(queryURL);
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then( function(response) {
-        Edamam.updateSearchedFood(response);
-    });
+// DETAIL SEARCH TOGGLE ON/OFF
+$(document).on("click", '#detail-search', function () {
+    $('.detail-search-form').toggle();
 });
 
+///// INTRO PAGE && SEARCH RESULT PAGE
+// DISPLAY ITEMS ON SEARCHED RESULT PAGE AND SAVE THEM IN edamam.searcheditems
+$(document).on("click", '.run-search', function (event) {
+    
+    //pageAction
+    RunSearchAction();
+    
+    event.preventDefault();
+    var search = $('#searchItem').val().trim();
+    console.log(Edamam.buildQueryURLSearch(search));
+    // Edamam.setCallback(displaySearchedItems.bind(displaySearchedItems));     //!!! displaySearchedItems runs before callAjax.  Trying to run callback on Ajax.
+    Edamam.callAjax(search);
+    displaySearchedItems();
+});
 
+var displaySearchedItems = function () {
+
+    // food item img
+    var $itemImg = $('<img>');
+    var itemImg = Edamam.searchedItems[0].image;
+    $itemImg.attr("data-target", "#modelId");
+    $itemImg.attr("data-toggle", "modal");
+    if (itemImg) {
+        $itemImg.attr('src', itemImg);
+    }
+    
+    // food item name
+    var $itemName = $("<h5>");
+    $itemName.addClass('food-name card-body');
+    var itemName = Edamam.searchedItems[0].label;
+    if (itemName) {
+        $itemImg.attr('name', itemName);
+        $itemName.html(itemName.toUpperCase());
+    }
+
+    // ------------------------------------------------------------ UNCOMENT AND TEST FOR ADDING ITEM TO MODAL/ ALSO UNCOMMEND LINE 45 data-target=".search-modal"
+    // var test = "TEST";
+    // // container for food img and name 
+    // var $itemContainer = $('<div>');
+    // $itemContainer.addClass("item-ctnr card");
+    // // append to container
+    // $itemContainer.append($itemImg);
+    // //!!! add btn to the container
+    // // append to modal
+    // $('#searched-item').append($itemContainer);
+    // $('#searched-item-info').append($itemName);
+    // $('#searched-item-info').append(test);
+    // ------------------------------------------------------------ UNCOMENT AND TEST FOR ADDING ITEM TO MODAL/ ALSO UNCOMMEND LINE 45 data-target=".search-modal"
+
+
+
+    // container for food img and name 
+    var $foodCtnr = $('<div>');
+    $foodCtnr.addClass("food-ctnr card");
+    // append to container
+    $foodCtnr.append($itemImg);
+    $foodCtnr.append($itemName);
+    // append to body
+    $('.searched-item-area').append($foodCtnr);
+
+}
+            
 ///// RANDOM MODAL PAGE
 // CLICKING ON "SHOW MY RESULT" ON MODAL WILL RENDER TO FAVORITE RESULT PAGE 
 //!!! temporarily using Giphy.updateGifContainer() to show random images
@@ -128,9 +152,4 @@ $(document).on('click', '.fav-btn', function () {
     }
 });
 
-///// SEARCH RESULT PAGE
-// DETAIL SEARCH TOGGLE ON/OFF
-$(document).on("click", '#detail-search', function () {
-    $('.detail-search-form').toggle();
-    $('.random-date').toggle();
-});
+

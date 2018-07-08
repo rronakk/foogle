@@ -17,9 +17,10 @@
 
         <!-- Link CSS, Javascript -->
         <link rel='stylesheet' href='./assets/css/style.css' type='text/css'>
+        <script defer src="assets/js/pageAction.js"></script>
         <script defer src="assets/js/edamam.js"></script>
         <script defer src="assets/js/giphy.js"></script>
-        <script type='text/javascript' src='assets/js/app.js'> </script>
+        <script type='text/javascript' src='assets/js/script.js'> </script>
 
         <!-- Google Maps API call -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcOgHEqu_cMFWOiYiOHjE3fR7flQniwdQ&callback=initMap" async defer></script>
@@ -41,7 +42,8 @@
                 <form>
                     <div class="simple-search row">
                         <input type="text" class="form-control col" id="searchItem" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
-                        <button type="submit" class="btn btn-default col-1" id="run-search">
+                        <!-- <button type="submit" class="btn btn-default col-1 run-search" data-toggle="modal" data-target=".search-modal"> -->
+                        <button type="submit" class="btn btn-default col-1 run-search">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -87,7 +89,30 @@
             </div>
         </div>
         
-        <!-- FOOD DATING MODAL -->
+        <!-- SEARCH MODAL -->
+        <div class="modal fade search-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" id="searched-item">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="searched-item-info">
+                        <p>Modal body text goes here.</p>
+                        <button type="button" class="btn btn-primary run-search like">Like</button>
+                        <button type="button" class="btn btn-primary run-search dislike">Dislike</button>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RANDOM MODAL -->
         <div class="modal fade choose-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -112,17 +137,6 @@
             <div class="searched-result-page card-body">
                 <!-- <div class="random-date" data-toggle="modal" data-target=".choose-modal"><h5>OR, DO YOU WANT TO GET MATCHED WITH A RANDOM DATE?</h5></div> -->
                 <div class="searched-item-area card-body"></div>
-
-                <!-- PAGE NAVIGATION -->
-                <nav class="page-navigation">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
             </div>
             
 
