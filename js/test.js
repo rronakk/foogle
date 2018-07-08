@@ -35,7 +35,7 @@ $(document).on('click', '#like', () => {
 	AJAX(1);
 });
 /////dislike image
-$(document).on('click', '#dislike', () => {
+$(document).on('click', '.likeDislike', () => {
 	AJAX(2);
 });
 
