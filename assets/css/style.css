@@ -5,6 +5,17 @@
 #edamam-badge {
     text-align: left;
 }
+.search-area {
+    margin: 0 10%;
+}
+.intro_btns {
+    text-align: center;
+    margin-top: 5%;
+}
+/* .to-random {
+    margin-top: 10%;
+} */
+
 /* SEARCH RESULT PAGE */
 .page-tab {
     position: fixed;
@@ -15,9 +26,7 @@
 .detail-search-form {
     display: none;
 }
-.search-result-btn a{
-    color: white;
-}
+
 .food-ctnr {
     background-color: #C8C6C6;
     position: relative;
@@ -109,7 +118,7 @@
 
 /* INTRO PAGE */
 .banner_intro {
-    text-align: center;
+    /* text-align: center; */
     height: 100vh;
 }
 .banner_intro h1 {
@@ -143,9 +152,7 @@
     text-align: center;
 }
 
-.to-random {
-    margin-top: 10%;
-}
+
 .temp-btn {
     text-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 5px darkblue;
 }

@@ -32,56 +32,61 @@
             <div id="edamam-badge" data-color="white"></div>
             <h1 class="jumbotron make-ur-life-ezr"><b>Having hard time deciding your lunch?<br><br>Make your life easier.<br>We are the Ultimate Lunch Recommendation System.</b></h1>
         </div>
+        <!-- PAGE 2 INTRO -->
         <div class="banner_intro intro_2">
             <div id="edamam-badge" data-color="white"></div>
             <h1 class="jumbotron what-to-eat"><b>Do you know what you want to eat?</b></h1>
-
-            <div class="search_intro">
-                <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".search-modal">Yes! I do!</button>
-                <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button>
-            </div>
-        </div>
-        <!-- SEARCH MODAL -->
-        <div class="modal fade search-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Search Your Food</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+            <!-- SEARCH FORM -->
+            <div class="search-area">
+                <form>
+                    <div class="simple-search row">
+                        <input type="text" class="form-control col" id="searchItem" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
+                        <button type="submit" class="btn btn-default col-1" id="run-search">
+                            <i class="fa fa-search"></i>
                         </button>
                     </div>
-                    <div class="search-area modal-body">
-                        <form>
-                            <div class="food-choice">
-                                <label for="searchItem">What do you want?</label>
-                                <input type="text" class="form-control" id="searchItem" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
-                            </div><br>
-                            <!-- <div class="price-choice">
-                                <label for="price">Price</label>
-                                <select class="custom-select" id="price">
-                                    <option value="0">~$8</option>
-                                    <option value="1" selected>~$10</option>
-                                    <option value="2">~$12</option>
-                                    <option value="3">~$15</option>
-                                    <option value="4">$15~</option>
-                                </select>
-                            </div><br>
-                            <div class="delivery-choice">
-                                <label for="price">Delivery</label>
-                                <select class="custom-select" id="delivery">
-                                    <option  value="1" selected>Yes</option>
-                                    <option value="4">No</option>
-                                </select>
-                            </div><br> -->
-                        </form>
+                    <div class="detail-search-form">
+                        <div class="input-label row">
+                            <label for="diet" class="col">Diet</label>
+                            <label for="allergy" class="col">Allergy</label>
+                            <label for="calories" class="col">Calories</label>
+                            <label for="excluded" class="col">Exclude It!</label>
+                        </div>
+                        <div class="detail-input row">
+                            <div class="button-group col">
+                                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Diet Option</button>
+                                <ul class="dropdown-menu">
+                                    <li class="small" data-value="high-protein" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-protein</li>
+                                    <li class="small" data-value="balanced" tabIndex="-1"> <input type="checkbox"/>&nbsp;balanced</li>
+                                    <li class="small" data-value="high-fiber" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-fiber</li>
+                                    <li class="small" data-value="low-fat" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-fat</li>
+                                    <li class="small" data-value="low-carb" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-carb</li>
+                                    <li class="small" data-value="low-sodium" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-sodium</li>
+                                </ul>
+                            </div>
+                            <div class="button-group col">
+                                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Allergy</button>
+                                <ul class="dropdown-menu">
+                                    <li class="small" data-value="peanut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;peanut-free</li>
+                                    <li class="small" data-value="tree-nut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;tree-nut-free</li>
+                                    <li class="small" data-value="soy-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;soy-free</li>
+                                    <li class="small" data-value="fish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;fish-free</li>
+                                    <li class="small" data-value="shellfish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;shellfish-free</li>
+                                </ul>
+                            </div>
+                            <input type="text" class="form-control col" data-value="calories" id="calories" placeholder="1000-1500">
+                            <input type="text" class="form-control col" data-value="excluded" id="excluded" placeholder="vinegal, pretzel">
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary search-result-btn" data-dismiss="modal"><a href=".searched-item-area">Show My Result</a></button>
-                    </div>
-                </div>
+                </form>
+                <div id="detail-search">Detail Search</div>
+            </div>
+            <!-- FOOD DATING MODAL BTN -->
+            <div class="intro_btns">
+                <button type="button" class="to-random btn btn-primary intro-btn" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button>
             </div>
         </div>
+        
         <!-- FOOD DATING MODAL -->
         <div class="modal fade choose-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -95,8 +100,6 @@
                         <a class="carousel-control-next" href="#food-item-control" role="button" data-slide="next">
                             <button type="submit" class="btn btn-primary temp-btn" aria-hidden="true" id="like">Like</button>
                             <button type="submit" class="btn btn-primary temp-btn" aria-hidden="true" id="dislike">Dislike</button>
-                            <!-- <span class="carousel-control-next-icon temp-btn" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span> -->
                         </a>
                     </div>
                 </div>
@@ -104,87 +107,43 @@
         </div>
 
         <!-- RESULT PAGE -->
-        <div class="result">
-            <div class="card">
-                
-                <!-- PAGE 2: SEARCH RESULT PAGE -->
-                <!-- <div class="searched-item-area card-body row"> -->
-                <div class="searched-result-page card-body">
+        <div class="result card">                
+            <!-- MAIN 1: SEARCH RESULT PAGE -->
+            <div class="searched-result-page card-body">
+                <!-- <div class="random-date" data-toggle="modal" data-target=".choose-modal"><h5>OR, DO YOU WANT TO GET MATCHED WITH A RANDOM DATE?</h5></div> -->
+                <div class="searched-item-area card-body"></div>
 
-                    <!-- <div class="detail-search col-12"> -->
-                    <div class="detail-search">
-                        <h5 id="detail-search-header">DO YOU WANT TO SEARCH MORE IN SPECIFIC? (NOT AVAILABLE YET)</h5>
-                        <form class="detail-search-form">
-                            <div class="input-label row">
-                                <label for="searchItem" class="col-4">I'm Craving For</label>
-                                <label for="diet" class="col-1">Diet</label>
-                                <label for="allergy" class="col-1">Allergy</label>
-                                <label for="calories" class="col-2">Calories</label>
-                                <label for="excluded" class="col-3">Exclude It!</label>
-                            </div>
-                            <div class="user-input row">
-                                <input type="text" class="form-control col-4" id="searchItem" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
-                                <div class="button-group col-1">
-                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Diet Option</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="small" data-value="high-protein" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-protein</li>
-                                        <li class="small" data-value="balanced" tabIndex="-1"> <input type="checkbox"/>&nbsp;balanced</li>
-                                        <li class="small" data-value="high-fiber" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-fiber</li>
-                                        <li class="small" data-value="low-fat" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-fat</li>
-                                        <li class="small" data-value="low-carb" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-carb</li>
-                                        <li class="small" data-value="low-sodium" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-sodium</li>
-                                    </ul>
-                                </div>
-                                <div class="button-group col-1">
-                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Allergy</button>
-                                    <ul class="dropdown-menu">
-                                        <li class="small" data-value="peanut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;peanut-free</li>
-                                        <li class="small" data-value="tree-nut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;tree-nut-free</li>
-                                        <li class="small" data-value="soy-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;soy-free</li>
-                                        <li class="small" data-value="fish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;fish-free</li>
-                                        <li class="small" data-value="shellfish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;shellfish-free</li>
-                                    </ul>
-                                </div>
-                                <input type="text" class="form-control col-2" data-value="calories" id="calories" placeholder="1000-1500">
-                                <input type="text" class="form-control col-3" data-value="excluded" id="excluded" placeholder="vinegal, pretzel">
-                                <button type="button" class="btn btn-primary search-result-btn col-1"><a href=".searched-item-area">SEARCH</a></button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="random-date" data-toggle="modal" data-target=".choose-modal"><h5>OR, DO YOU WANT TO GET MATCHED WITH A RANDOM DATE?</h5></div>
-                    <div class="searched-item-area card-body"></div>
-                    <nav class="page-navigation">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
-                </div>
                 <!-- PAGE NAVIGATION -->
-                
-
-                <!-- PAGE 3: RANDOM RESULT PAGE -->
-                <div class="random-result-page card-body">
-                    <div class="random-item-area card-body"></div>
-                </div>
-
-                <!-- PAGE 4: FAVORITES RESULT PAGE -->
-                <div class="fav-result-page card">
-                    <h1 class="card-head">Favorites</h1>
-                    <div class="fav-item-area card-body"></div>
-
-                </div>
+                <nav class="page-navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="btn-group page-tab" role="group">
-                <button type="button" class="btn btn-success page-tab-btn" id="searched-page">Searched</button>
-                <button type="button" class="btn btn-warning page-tab-btn" id="random-page">Random</button>
-                <button type="button" class="btn btn-danger page-tab-btn" id="fav-page">Favorites</button>
+            
+
+            <!-- MAIN 2: RANDOM RESULT PAGE -->
+            <div class="random-result-page card-body">
+                <div class="random-item-area card-body"></div>
             </div>
 
+            <!-- MAIN 3: FAVORITES RESULT PAGE -->
+            <div class="fav-result-page card">
+                <h1 class="card-head">Favorites</h1>
+                <div class="fav-item-area card-body"></div>
+
+            </div>
         </div>
+        <div class="btn-group page-tab" role="group">
+            <button type="button" class="btn btn-success page-tab-btn" id="searched-page">Searched</button>
+            <button type="button" class="btn btn-warning page-tab-btn" id="random-page">Random</button>
+            <button type="button" class="btn btn-danger page-tab-btn" id="fav-page">Favorites</button>
+        </div>
+
 
 
 

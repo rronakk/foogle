@@ -10,10 +10,15 @@ var Edamam = {
     randItems: [],
     $RandCtnr: "",
     $RandomFood: "",
+    // buildQueryURLSearch: function(keyword, diet, health, calories, excluded) {
     buildQueryURLSearch: function(keyword) {
-        var queryURL = this.URL + "app_id=" + this.app_id + "&app_key=" + this.app_key + "&"
+        var queryURL = this.URL + "app_id=" + this.app_id + "&app_key=" + this.app_key + "&";
         var queryParams = {};
         queryParams.q = keyword;
+        // queryParams.diet = diet || "";
+        // queryParams.health = health || "";
+        // queryParams.calories = calories || "";
+        // queryParams.excluded = excluded || "";
         queryParams.from = Math.floor(Math.random() * 100); //!!! temporarily setting it up for 100.  it should be the count - 10.
         queryParams.to = queryParams.from + this.searchNum;
         queryURL += $.param(queryParams);

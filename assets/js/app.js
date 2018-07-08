@@ -35,13 +35,17 @@ $(document).ready(function () {
     $('#enjoyYourFoodDating').append($FoodDatingNote);
 });
 
+// DETAIL SEARCH ON CLICK EVENT
+// $(document).on("click", '.detail-search', function (event) {
 
-///// SEARCH MODAL PAGE
+// });
+
 // DISPLAY ITEMS ON SEARCHED RESULT PAGE AND SAVE THEM IN edamam.searcheditems
-$(document).on("click", '.search-result-btn', function (event) {
+$(document).on("click", '#run-search', function (event) {
     $('.banner_intro').fadeOut(1000);
     $('.result').show();
     $('.searched-result-page').prepend('<h1 class="col-12">Here is our recommendation on: ' + $('#searchItem').val().trim().toUpperCase() + '</h1>');
+    $('.searched-result-page').prepend($('.search-area'));
     $('.searched-result-page').fadeIn(2000);
     $('.page-navigation').fadeIn(2000);
     $('.page-tab').fadeIn(4000);
@@ -126,7 +130,7 @@ $(document).on('click', '.fav-btn', function () {
 
 ///// SEARCH RESULT PAGE
 // DETAIL SEARCH TOGGLE ON/OFF
-$(document).on("click", '#detail-search-header', function () {
+$(document).on("click", '#detail-search', function () {
     $('.detail-search-form').toggle();
     $('.random-date').toggle();
 });
