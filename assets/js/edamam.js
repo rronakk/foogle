@@ -4,6 +4,29 @@
 var long;
 var lat;
 
+// grab user location on page load
+window.onload = function() {
+    if ("geolocation" in navigator) {
+        // check if geolocation is supported/enabled on current browser
+        navigator.geolocation.getCurrentPosition(
+         function success(position) {
+           console.log('latitude', position.coords.latitude, 
+                       'longitude', position.coords.longitude);
+            lat = position.coords.latitude;
+            long = position.coords.longitude;
+         }, function error(error_message) {
+          // for when getting location results in an error
+          console.error('An error has occured while retrieving location', error_message)
+          ipLookUp()
+       }
+      );} 
+      else {
+        console.log('geolocation is not enabled on this browser')
+        ipLookUp()
+      }
+  };
+
+  
 var Edamam = {
     URL: "https://api.edamam.com/search?",
     app_id: '3ff2cec1',
@@ -64,7 +87,7 @@ $(document).on("click", '.food-img', function (event){
     console.log($(this).attr("name"));
     var foodItem = $(this).attr("name");
     var proxyURL = 'https://shielded-hamlet-43668.herokuapp.com/'
-    var queryURL = "https://api.yelp.com/v3/businesses/search?term=" + foodItem + "&latitude=37.786882&longitude=-122.399972";
+    var queryURL = "https://api.yelp.com/v3/businesses/search?term=" + foodItem + "&latitude=" + lat + "&longitude=" + long;
     $.ajax({
         url: proxyURL + queryURL,
         method: "GET",
@@ -75,6 +98,10 @@ $(document).on("click", '.food-img', function (event){
         // $(".result-item-pic").attr("src", response.businesses[0].image_url);
         console.log(response);
         console.log(response.businesses[0]);
+        
+        var businessLat = response.businesses[0].coordinates.latitude;
+        var businessLong = response.businesses[0].coordinates.longitude;
+
         $(".result-item-pic").attr("src", response.businesses[0].image_url);
         $("#res-name").text(response.businesses[0].name);
         $("#recipie-name").text(foodItem);
@@ -85,9 +112,9 @@ $(document).on("click", '.food-img', function (event){
                            + response.businesses[0].location.state  + "-" +  response.businesses[0].location.zip_code);
         $(".yelp-link").attr("href", response.businesses[0].url);
 
-        console.log("test");
+        console.log(lat + "+" + long);
         /* Generate map and add it onto the 'Map' id */
-        var myLatlng = new google.maps.LatLng(40.7282, -74.0776);
+        var myLatlng = new google.maps.LatLng(businessLat, businessLong);
         var mapOptions = {
             zoom: 16,
             center: myLatlng
@@ -121,24 +148,7 @@ function ipLookUp () {
     );
   }
 
-if ("geolocation" in navigator) {
-    // check if geolocation is supported/enabled on current browser
-    navigator.geolocation.getCurrentPosition(
-     function success(position) {
-       console.log('latitude', position.coords.latitude, 
-                   'longitude', position.coords.longitude);
-        long = position.coords.latitude;
-        lat = position.coords.longitude;
-     }, function error(error_message) {
-      // for when getting location results in an error
-      console.error('An error has occured while retrieving location', error_message)
-      ipLookUp()
-   }
-  );
-  } else {
-    console.log('geolocation is not enabled on this browser')
-    ipLookUp()
-  }
+
 
 
 
