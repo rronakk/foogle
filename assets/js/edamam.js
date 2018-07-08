@@ -1,6 +1,9 @@
 /////
 // EDAMAM API SEARCH WITH KEYWORD
 /////
+var long;
+var lat;
+
 var Edamam = {
     URL: "https://api.edamam.com/search?",
     app_id: '3ff2cec1',
@@ -39,7 +42,7 @@ var Edamam = {
             Edamam.getData(response);
             // this.callback();     //!!! displaySearchedItems runs before callAjax.  Trying to run callback on Ajax.
             console.log(Edamam.searchedItems);
-            console.log(Edamam.searchedItems[0]);
+            // console.log(Edamam.searchedItems[0]);
         });
     },
 
@@ -100,6 +103,42 @@ $(document).on("click", '.food-img', function (event){
         marker.setMap(map);
     });
 })
+
+function ipLookUp () {
+    $.ajax('http://ip-api.com/json')
+    .then(
+        function success(response) {
+            long = response.lon;
+            console.log('long: ', long);
+            lat = response.lat;
+            console.log('lat: ', lat);
+            
+  },
+        function fail(data, status) {
+            console.log('Request failed.  Returned status of',
+                        status);
+        }
+    );
+  }
+
+if ("geolocation" in navigator) {
+    // check if geolocation is supported/enabled on current browser
+    navigator.geolocation.getCurrentPosition(
+     function success(position) {
+       console.log('latitude', position.coords.latitude, 
+                   'longitude', position.coords.longitude);
+        long = position.coords.latitude;
+        lat = position.coords.longitude;
+     }, function error(error_message) {
+      // for when getting location results in an error
+      console.error('An error has occured while retrieving location', error_message)
+      ipLookUp()
+   }
+  );
+  } else {
+    console.log('geolocation is not enabled on this browser')
+    ipLookUp()
+  }
 
 
 
