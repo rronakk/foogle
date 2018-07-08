@@ -63,17 +63,17 @@ var displaySearchedItems = function () {
     }
 
     // ------------------------------------------------------------ UNCOMENT AND TEST FOR ADDING ITEM TO MODAL/ ALSO UNCOMMEND LINE 45 data-target=".search-modal"
-    // var test = "TEST";
-    // // container for food img and name 
-    // var $itemContainer = $('<div>');
-    // $itemContainer.addClass("item-ctnr card");
-    // // append to container
-    // $itemContainer.append($itemImg);
-    // //!!! add btn to the container
-    // // append to modal
-    // $('#searched-item').append($itemContainer);
-    // $('#searched-item-info').append($itemName);
-    // $('#searched-item-info').append(test);
+    var test = "TEST";
+    // container for food img and name 
+    var $itemContainer = $('<div>');
+    $itemContainer.addClass("item-ctnr card");
+    // append to container
+    $itemContainer.append($itemImg);
+    //!!! add btn to the container
+    // append to modal
+    $('#searched-item').append($itemContainer);
+    $('#searched-item-info').append($itemName);
+    $('#searched-item-info').append(test);
     // ------------------------------------------------------------ UNCOMENT AND TEST FOR ADDING ITEM TO MODAL/ ALSO UNCOMMEND LINE 45 data-target=".search-modal"
 
 
