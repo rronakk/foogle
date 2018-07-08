@@ -26,20 +26,21 @@ options = [
 const randFunc = n => {
 	return Math.floor(Math.random() * n + 1);
 };
-//first image on modal
+//first image on modal and random images
 $(document).on('click', '#firstImg', () => {
-	AJAX(1);
-});
-/////RANDOM images for modal
-$(document).on('click', '.LikeDisLike', function() {
-	AJAX(1);
-});
-////appending images
-$(document).on('click', '#like', () => {
 	AJAX(2);
 });
+/////like image
+$(document).on('click', '#like', () => {
+	AJAX(1);
+});
+/////dislike image
+$(document).on('click', '#dislike', () => {
+	AJAX(2);
+});
+
 /// generic ajax call
-const AJAX = n => {
+const AJAX = (n) => {
 	let edamamURL = edamam.buildQueryURLSearch(options[randFunc(options.length) - 1]);
 	$.ajax({
 		url: edamamURL,
@@ -50,11 +51,12 @@ const AJAX = n => {
 		let name = $('<h4>').append(imgName);
 		let img = $('<img>').attr('src', response.hits[num].recipe.image);
 		$(img).addClass('img-thumbnail');
-		if (n === 1) {
+		if(n===2) {
 			$('.modalImg').html(img);
 			$('.imgName').html(name);
 		}
-		if (n === 2) $('.addImage').append(img);
+		if(n===1) $('.addImage').append(img);
+
 	});
 };
 ///// edamam info
