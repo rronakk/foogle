@@ -82,6 +82,7 @@ $(document).on("click", '.food-img', function (event){
                            + response.businesses[0].location.state  + "-" +  response.businesses[0].location.zip_code);
         $(".yelp-link").attr("href", response.businesses[0].url);
 
+        console.log("test");
         /* Generate map and add it onto the 'Map' id */
         var myLatlng = new google.maps.LatLng(40.7282, -74.0776);
         var mapOptions = {

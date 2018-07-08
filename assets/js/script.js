@@ -48,6 +48,7 @@ var displaySearchedItems = function () {
     var itemImg = Edamam.searchedItems[0].image;
     $itemImg.attr("data-target", "#modelId");
     $itemImg.attr("data-toggle", "modal");
+    $itemImg.addClass("food-img");
     if (itemImg) {
         $itemImg.attr('src', itemImg);
     }
