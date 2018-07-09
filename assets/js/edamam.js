@@ -86,6 +86,7 @@ $(document).on("click", '.food-img', function (event){
     console.log(this);
     console.log($(this).attr("name"));
     var foodItem = $(this).attr("name");
+    var foodImg = $(this).attr('src');
     var proxyURL = 'https://shielded-hamlet-43668.herokuapp.com/'
     var queryURL = "https://api.yelp.com/v3/businesses/search?term=" + foodItem + "&latitude=" + lat + "&longitude=" + long;
     $.ajax({
@@ -101,16 +102,17 @@ $(document).on("click", '.food-img', function (event){
         
         var businessLat = response.businesses[0].coordinates.latitude;
         var businessLong = response.businesses[0].coordinates.longitude;
-
+        $(".item-img").attr("src", foodImg);
         $(".result-item-pic").attr("src", response.businesses[0].image_url);
-        $("#res-name").text(response.businesses[0].name);
-        $("#recipie-name").text(foodItem);
-        $("#stars").text(response.businesses[0].rating);
+        $("#res-info").text(response.businesses[0].name + " (" + response.businesses[0].price + ")");
+        $(".yelp-link").attr("href", response.businesses[0].url);
+        $("#recipe-name").text(foodItem);
+        $(".res-category").text(response.businesses[0].categories[0].title + " (Yelp rating: " + response.businesses[0].rating + ")");
+        // $("#stars").text(response.businesses[0].rating);
         $(".food-price").text("Price Range : " + response.businesses[0].price);
         $(".phone").text(response.businesses[0].display_phone);
         $(".address").text(response.businesses[0].location.address1 + ", " + response.businesses[0].location.city + ", "
                            + response.businesses[0].location.state  + "-" +  response.businesses[0].location.zip_code);
-        $(".yelp-link").attr("href", response.businesses[0].url);
 
         console.log(lat + "+" + long);
         /* Generate map and add it onto the 'Map' id */
