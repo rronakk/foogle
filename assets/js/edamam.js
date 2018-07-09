@@ -26,7 +26,7 @@ window.onload = function() {
       }
   };
 
-  
+
 var Edamam = {
     URL: "https://api.edamam.com/search?",
     app_id: '3ff2cec1',
@@ -85,9 +85,10 @@ $(document).on("click", '.food-img', function (event){
     event.preventDefault();
     console.log(this);
     console.log($(this).attr("name"));
-    var foodItem = $(this).attr("name");
+    var foodName = $(this).attr("name");
+    var foodImg= $(this).attr("src"); 
     var proxyURL = 'https://shielded-hamlet-43668.herokuapp.com/'
-    var queryURL = "https://api.yelp.com/v3/businesses/search?term=" + foodItem + "&latitude=" + lat + "&longitude=" + long;
+    var queryURL = "https://api.yelp.com/v3/businesses/search?term=" + foodName + "&latitude=" + lat + "&longitude=" + long;
     $.ajax({
         url: proxyURL + queryURL,
         method: "GET",
@@ -101,10 +102,10 @@ $(document).on("click", '.food-img', function (event){
         
         var businessLat = response.businesses[0].coordinates.latitude;
         var businessLong = response.businesses[0].coordinates.longitude;
-
+        $("#food-img").attr("src", foodImg);
         $(".result-item-pic").attr("src", response.businesses[0].image_url);
         $("#res-name").text(response.businesses[0].name);
-        $("#recipie-name").text(foodItem);
+        $("#recipie-name").text(foodName);
         $("#stars").text(response.businesses[0].rating);
         $(".food-price").text("Price Range : " + response.businesses[0].price);
         $(".phone").text(response.businesses[0].display_phone);
@@ -122,7 +123,7 @@ $(document).on("click", '.food-img', function (event){
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
         var marker = new google.maps.Marker({
-            position: myLatlng,
+            position: myLatlng, 
             title: response.businesses[0].name
         });
 
