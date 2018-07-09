@@ -114,7 +114,15 @@ $(document).on("click", '.food-img', function (event){
         $(".address").text(response.businesses[0].location.address1 + ", " + response.businesses[0].location.city + ", "
                            + response.businesses[0].location.state  + "-" +  response.businesses[0].location.zip_code);
 
-        console.log(lat + "+" + long);
+        for (var i = 0; i < response.businesses[0].transactions.length; i++){
+            if (response.businesses[0].transactions[i] == "delivery"){
+                $(".delivery").css("background-color", "#63FC88");
+            }
+            if (response.businesses[0].transactions[i] == "takeout"){
+                $(".takeout").css("background-color", "#63FC88")
+            }
+        }
+            
         /* Generate map and add it onto the 'Map' id */
         var myLatlng = new google.maps.LatLng(businessLat, businessLong);
         var mapOptions = {

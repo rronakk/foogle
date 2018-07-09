@@ -135,12 +135,18 @@
 } */
 
 .delivery {
+    background-color: #F75124;
+    border: 1px solid black;
+    border-radius: 3px;
     float: right;
     margin-left: 20px;
     width: 50px;
 }
 
 .takeout {
+    background-color: #F75124;
+    border: 1px solid black;
+    border-radius: 3px;
     float: right;
     width: 50px;
 }
