@@ -1,7 +1,4 @@
 
-// Commented things with temp setup with //!!!
-
-
 ///// INTRO PAGE
 $(document).ready(function () {
     
@@ -26,7 +23,8 @@ $(document).on("click", '#detail-search', function () {
     $('.detail-search-form').toggle();
 });
 
-///// INTRO PAGE && SEARCH RESULT PAGE
+
+///// INTRO PAGE && 
 // DISPLAY ITEMS ON SEARCHED RESULT PAGE AND SAVE THEM IN edamam.searcheditems
 $(document).on("click", '.run-search', function (event) {
     
@@ -37,9 +35,85 @@ $(document).on("click", '.run-search', function (event) {
     var search = $('#searchItem').val().trim();
     console.log(Edamam.buildQueryURLSearch(search));
     // Edamam.setCallback(displaySearchedItems.bind(displaySearchedItems));     //!!! displaySearchedItems runs before callAjax.  Trying to run callback on Ajax.
-    Edamam.callAjax(search);
-    displaySearchedItems();
+    // Edamam.callAjax(search);
+    // displaySearchedItems();
+
+
+    //!!! temp action for adding item to modal and to page
+    // ADDING TO SEARCH MODAL
+    $.ajax({
+        url: Edamam.buildQueryURLSearch(search),
+        method: "GET"
+    }).then( function(response) {
+        console.log(response);
+
+        if (response.hits[0].recipe.label.toLowerCase().includes("recipe")) {
+            $('.searched-item-name').html(response.hits[0].recipe.label.replace("recipe", ""));
+        } else {
+            $('.searched-item-name').html(response.hits[0].recipe.label);
+        }
+        $('.searched-item-img').attr('src', response.hits[0].recipe.image);
+        if (response.hits[0].recipe.dietLabels !== []) {
+            $('.searched-item-dietLabels').text(response.hits[0].recipe.dietLabels);
+        }
+        if (response.hits[0].recipe.dietLabels !== []) {
+            $('.searched-item-healthLabels').text(response.hits[0].recipe.healthLabels);
+        }
+        addItemToBody();
+    });
+    // LIKING ITEMS //!!! cannot get the key id inside of AJAX... will go non-dry for now   search for "fa-thumbs-up" on html
+    var addItemToBody = function () {
+        if ($(this).bind(this.document).attr('id') === 'like') {
+            $(".searched-item-area").prepend($(".search-item").clone());
+        }
+    }
+    
 });
+
+// ---------------------------------------------------- remove after make it dry with .run-search
+$(document).on("click", '#like', function (event) {
+
+    var $likedName = $('.searched-item-name').clone().removeClass();
+    var $likedImg = $('.searched-item-img').clone().removeClass();
+    $likedImg.attr('name', $likedName.text());
+    $likedImg.addClass('food-img');
+    $likedImg.attr("data-target", "#modelId");
+    $likedImg.attr("data-toggle", "modal");
+    var $likedDiet = $('.searched-item-dietLabels').clone().removeClass();
+    var $likedHealth = $('.searched-item-healthLabels').clone().removeClass();
+
+    var $likedItem = $('<div class="liked-item col-4 card">');
+    $likedItem.append($likedName);
+    $likedItem.append($likedImg);
+    $likedItem.append($likedDiet);
+    $likedItem.append($likedHealth);
+    $(".searched-item-area").prepend($likedItem);
+    event.preventDefault();
+    var search = $('#searchItem').val().trim();
+    console.log(Edamam.buildQueryURLSearch(search));
+
+    $.ajax({
+        url: Edamam.buildQueryURLSearch(search),
+        method: "GET"
+    }).then( function(response) {
+        console.log(response);
+
+        if (response.hits[0].recipe.label.toLowerCase().includes("recipe")) {
+            $('.searched-item-name').html(response.hits[0].recipe.label.replace("recipe", ""));
+        } else {
+            $('.searched-item-name').html(response.hits[0].recipe.label);
+        }
+        $('.searched-item-img').attr('src', response.hits[0].recipe.image);
+        if (response.hits[0].recipe.dietLabels !== "[]") {
+            $('.searched-item-dietLabels').text(response.hits[0].recipe.dietLabels);
+        }
+        if (response.hits[0].recipe.dietLabels !== "[]") {
+            $('.searched-item-healthLabels').text(response.hits[0].recipe.healthLabels);
+        }
+    });
+});
+// ---------------------------------------------------- remove after make it dry with .run-search
+
 
 var displaySearchedItems = function () {
 
@@ -88,7 +162,8 @@ var displaySearchedItems = function () {
     $('.searched-item-area').append($foodCtnr);
 
 }
-            
+
+
 ///// RANDOM MODAL PAGE
 // CLICKING ON "SHOW MY RESULT" ON MODAL WILL RENDER TO FAVORITE RESULT PAGE 
 //!!! temporarily using Giphy.updateGifContainer() to show random images
@@ -116,41 +191,41 @@ $(document).on("click", '.temp-btn', function (event) {
 });
 
 
-///// RESULT PAGE
-// PAGE CHANGE WITH page-tab BTN
-$(document).on('click', '.page-tab-btn', function () {
-    var tab = $(this).attr("id");
-    if (tab === 'searched-page') {
-        $('.searched-result-page').show();
-        $('.random-result-page').hide();
-        $('.fav-result-page').hide();
-    } else if (tab === 'random-page') {
-        $('.searched-result-page').hide();
-        $('.random-result-page').show();
-        $('.fav-result-page').hide();
-    } else if (tab === 'fav-page') {
-        $('.searched-result-page').hide();
-        $('.random-result-page').hide();
-        $('.fav-result-page').show();
-    }
-});
+// ///// RESULT PAGE
+// // PAGE CHANGE WITH page-tab BTN
+// $(document).on('click', '.page-tab-btn', function () {
+//     var tab = $(this).attr("id");
+//     if (tab === 'searched-page') {
+//         $('.searched-result-page').show();
+//         $('.random-result-page').hide();
+//         $('.fav-result-page').hide();
+//     } else if (tab === 'random-page') {
+//         $('.searched-result-page').hide();
+//         $('.random-result-page').show();
+//         $('.fav-result-page').hide();
+//     } else if (tab === 'fav-page') {
+//         $('.searched-result-page').hide();
+//         $('.random-result-page').hide();
+//         $('.fav-result-page').show();
+//     }
+// });
 
-// MOVE ITEM TO FAVORITES PAGE
-$(document).on('click', '.fav-btn', function () {
-    event.preventDefault();
-    var $foodCtnr = $(this).parent();
-    var fav = $(this).attr("fav");
-    if (fav === 'false') {   
-        $(this).css("color", 'rgba(0, 0, 0, 1)');
-        $(this).attr('fav', 'true');
-        $('.fav-item-area').append($foodCtnr);
-    }
-    if (fav === 'true') {
-        $(this).css("color", 'rgba(0, 0, 0, 0.4)');
-        $(this).attr('fav', 'false');
-        $foodCtnr.remove();
-        // $('.searched-item-area').prepend($foodCtnr);
-    }
-});
+// // MOVE ITEM TO FAVORITES PAGE
+// $(document).on('click', '.fav-btn', function () {
+//     event.preventDefault();
+//     var $foodCtnr = $(this).parent();
+//     var fav = $(this).attr("fav");
+//     if (fav === 'false') {   
+//         $(this).css("color", 'rgba(0, 0, 0, 1)');
+//         $(this).attr('fav', 'true');
+//         $('.fav-item-area').append($foodCtnr);
+//     }
+//     if (fav === 'true') {
+//         $(this).css("color", 'rgba(0, 0, 0, 0.4)');
+//         $(this).attr('fav', 'false');
+//         $foodCtnr.remove();
+//         // $('.searched-item-area').prepend($foodCtnr);
+//     }
+// });
 
 

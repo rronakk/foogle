@@ -15,12 +15,35 @@
 
 
 /* SEARCH MODAL */
-.searched-item {
-    height: 350px;
+/* .search-item-area {
+    position: relative;
+} */
+#like {
+    position: absolute;
+    right: 0%;
+    height: 38px;
+    top: 60%;
 }
-.searched-item-info {
+#dislike {
+    position: absolute;
+    left: 5%;
+    height: 38px;
+    top: 60%;
+}
 
+/* DETAIL MODAL */
+.item-name {
+    text-align: center;
+    padding: 0;
 }
+#recipe-name {
+    text-align: center;
+}
+.item-img {
+    width: 100%;
+    height: 100%;
+}
+
 
 /* SEARCH RESULT PAGE */
 .page-tab {
@@ -69,16 +92,27 @@
 }
 
 .result-item-pic {
-    float: left;
+    /* float: left; */
     padding: 20px;
-    width: 175px;
+    width: 100%;
+    /* height: 400px; */
+    text-align: center;
+
 }
+.item-info {
+    text-align: center;
+    padding: 5% 0;
+}
+
+
 
 /* Restaurant Name, Food Name, Price */
 /* h5 {
     display: inline;
 } */
-
+.restaurant-location {
+    height: 200px;
+}
 #map {
     height: 100%;
 }
@@ -88,9 +122,9 @@
 }
 
     /* Rating/Distance, Delivery, Takeout */
-.restaurant-info {
+/* .restaurant-info {
     margin-top: 20px;
-}
+} */
 
 .secondary-info {
     margin-top: 20px;
