@@ -23,7 +23,7 @@ $(document).ready(function () {
 ///// RANDOM MODAL
 // DISPLAY RANDOM ITEMS ON MODAL (RANDOM MODAL)
 $(document).on('click', '.run-random', function () {
-    $('.search-item').addClass('animated rotateOutDownLeft');
+    $('.rand-item').addClass('animated rotateOutDownLeft');
     RunSearchAction();
     event.preventDefault();
 
@@ -31,7 +31,7 @@ $(document).on('click', '.run-random', function () {
         url: Edamam.buildQueryURLRand(),
         method: "GET"
     }).then( function(response) {
-        console.log("response---" + Edamam.buildQueryURLRand());
+        console.log("randomURL: "+Edamam.buildQueryURLRand());
         console.log(response);
         $('.rand-item').removeClass('rotateOutDownLeft');
         
@@ -51,6 +51,7 @@ $(document).on('click', '.run-random', function () {
 });
 // CLICKING ON LIKE BTN (RANDOM MODAL)
 $(document).on("click", '#rand-like', function (event) {
+
     $('.rand-item').addClass('animated zoomOutRight');
     var $likedName = $('.rand-item-name').clone().removeClass();
     var $likedImg = $('.rand-item-img').clone().removeClass();
@@ -66,7 +67,7 @@ $(document).on("click", '#rand-like', function (event) {
     $likedItem.append($likedImg);
     $likedItem.append($likedDiet);
     $likedItem.append($likedHealth);
-    $(".rand-item-area").prepend($likedItem);
+    $(".result-item-area").prepend($likedItem);
     event.preventDefault();
 
     $.ajax({
@@ -74,6 +75,8 @@ $(document).on("click", '#rand-like', function (event) {
         method: "GET"
     }).then( function(response) {
         console.log(response);
+        console.log("randomURL: "+Edamam.buildQueryURLRand());
+
         $('.rand-item').removeClass('zoomOutRight');
         if (response.hits[0].recipe.label.toLowerCase().includes("recipe")) {
             $('.rand-item-name').html(response.hits[0].recipe.label.replace("recipe", ""));
@@ -116,8 +119,9 @@ $(document).on("click", '.run-search', function (event) {
         method: "GET"
     }).then( function(response) {
         console.log(response);
+        console.log("searchedURL: "+Edamam.buildQueryURLSearch(search));
         $('.search-item').removeClass('rotateOutDownLeft');
-        
+
         if (response.hits[0].recipe.label.toLowerCase().includes("recipe")) {
             $('.searched-item-name').html(response.hits[0].recipe.label.replace("recipe", ""));
         } else {
@@ -135,7 +139,7 @@ $(document).on("click", '.run-search', function (event) {
     // LIKING ITEMS //!!! cannot get the key id inside of AJAX... will go non-dry for now   search for "fa-thumbs-up" on html
     var addItemToBody = function () {
         if ($(this).bind(this.document).attr('id') === 'like') {
-            $(".searched-item-area").prepend($(".search-item").clone());
+            $(".result-item-area").prepend($(".search-item").clone());
         }
     }
     
@@ -158,7 +162,7 @@ $(document).on("click", '#like', function (event) {
     $likedItem.append($likedImg);
     $likedItem.append($likedDiet);
     $likedItem.append($likedHealth);
-    $(".searched-item-area").prepend($likedItem);
+    $(".result-item-area").prepend($likedItem);
     event.preventDefault();
     var search = $('#searchItem').val().trim();
     console.log(Edamam.buildQueryURLSearch(search));
@@ -167,6 +171,7 @@ $(document).on("click", '#like', function (event) {
         url: Edamam.buildQueryURLSearch(search),
         method: "GET"
     }).then( function(response) {
+        console.log("searchedURL: "+Edamam.buildQueryURLSearch(search));
         console.log(response);
         $('.search-item').removeClass('zoomOutRight');
         if (response.hits[0].recipe.label.toLowerCase().includes("recipe")) {
@@ -230,7 +235,7 @@ var displaySearchedItems = function () {
     $foodCtnr.append($itemImg);
     $foodCtnr.append($itemName);
     // append to body
-    $('.searched-item-area').append($foodCtnr);
+    $('.result-item-area').append($foodCtnr);
 
 }
 
@@ -238,6 +243,10 @@ var displaySearchedItems = function () {
 $(document).on("click", '#detail-search', function () {
     $('.detail-search-form').toggle();
 });
+
+
+
+
 
 
 ///// RANDOM MODAL PAGE

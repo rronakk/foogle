@@ -53,7 +53,7 @@ var Edamam = {
         var queryParams = {};
         queryParams.q = keyword;
 
-        queryParams.from = Math.floor(Math.random() * 100);
+        queryParams.from = Math.floor(Math.random() * 50);
         queryParams.to = queryParams.from + 1;
         queryURL += $.param(queryParams);
         return queryURL;

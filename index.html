@@ -106,8 +106,8 @@
                         <div class="col-12">Diet Label: <i class="rand-item-dietLabels"></i></div>
                         <div class="col-12">Health Label: <i class="rand-item-healthLabels"></i></div>
                     </div>
-                    <button type="submit" class="btn btn-default rand-btn" id="rand-dislike"><i class="far fa-thumbs-down"></i></button>
-                    <button type="submit" class="btn btn-default" id="rand-like"><i class="far fa-thumbs-up"></i></button>
+                    <button type="submit" class="btn btn-default run-random dislike" id="rand-dislike"><i class="far fa-thumbs-down"></i></button>
+                    <button type="submit" class="btn btn-default like" id="rand-like"><i class="far fa-thumbs-up"></i></button>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
@@ -126,9 +126,9 @@
                         <div class="col-12">Diet Label: <i class="searched-item-dietLabels"></i></div>
                         <div class="col-12">Health Label: <i class="searched-item-healthLabels"></i></div>
                     </div>
-                    <button type="submit" class="btn btn-default run-search" id="dislike"><i class="far fa-thumbs-down"></i></button>
+                    <button type="submit" class="btn btn-default run-search dislike" id="dislike"><i class="far fa-thumbs-down"></i></button>
                     <!-- <button type="submit" class="btn btn-default run-search" id="like"><i class="far fa-thumbs-up"></i></button> -->
-                    <button type="submit" class="btn btn-default" id="like"><i class="far fa-thumbs-up"></i></button>
+                    <button type="submit" class="btn btn-default like" id="like"><i class="far fa-thumbs-up"></i></button>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
@@ -179,25 +179,23 @@
 
         <!-- RESULT PAGE -->
         <div class="result card">                
-            <!-- MAIN 1: SEARCH RESULT PAGE -->
-            <div class="searched-result-page card-body">
+            <div class="card-body">
                 <!-- <div class="random-date" data-toggle="modal" data-target=".choose-modal"><h5>OR, DO YOU WANT TO GET MATCHED WITH A RANDOM DATE?</h5></div> -->
-                <div class="searched-item-area row card-body"></div>
+                <div class="result-item-area row card-body"></div>
             </div>
-            
+        </div>
+   
 
             <!-- MAIN 2: RANDOM RESULT PAGE -->
-            <div class="random-result-page card-body">
+            <!-- <div class="random-result-page card-body">
                 <div class="random-item-area card-body"></div>
-            </div>
-
+            </div> -->
             <!-- MAIN 3: FAVORITES RESULT PAGE -->
-            <div class="fav-result-page card">
+            <!-- <div class="fav-result-page card">
                 <h1 class="card-head">Favorites</h1>
                 <div class="fav-item-area card-body"></div>
 
-            </div>
-        </div>
+            </div> -->
         <!-- <div class="btn-group page-tab" role="group">
             <button type="button" class="btn btn-success page-tab-btn" id="searched-page">Searched</button>
             <button type="button" class="btn btn-warning page-tab-btn" id="random-page">Random</button>
