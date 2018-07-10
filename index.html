@@ -116,6 +116,7 @@
             </div>
         </div>
 
+        
         <!-- SEARCH MODAL -->
         <div class="modal fade search-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -123,12 +124,12 @@
                     <div class="search-item row">
                         <h5 class="col-12 searched-item-name"></h5>
                         <img class="col-12 searched-item-img"/>
-                        <div class="col-12">Diet Label: <i class="searched-item-dietLabels"></i></div>
-                        <div class="col-12">Health Label: <i class="searched-item-healthLabels"></i></div>
+                        <div class="col-12 searched-item-diet-label">Diet Label: <i class="searched-item-dietLabels"></i></div>
+                        <div class="col-12 searched-item-health-label">Health Label: <i class="searched-item-healthLabels"></i></div>
                     </div>
-                    <button type="submit" class="btn btn-default run-search dislike" id="dislike"><i class="far fa-thumbs-down"></i></button>
+                    <button type="submit" class="btn btn-default run-search" id="dislike"><i class="far fa-thumbs-down"></i></button>
                     <!-- <button type="submit" class="btn btn-default run-search" id="like"><i class="far fa-thumbs-up"></i></button> -->
-                    <button type="submit" class="btn btn-default like" id="like"><i class="far fa-thumbs-up"></i></button>
+                    <button type="submit" class="btn btn-default" id="like"><i class="far fa-thumbs-up"></i></button>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
@@ -145,11 +146,12 @@
                         <h4 id="recipe-name"></h4>
                     </div>
                     <div class="modal-body row">
-                        <div class='container item-info col'>
+                        <!-- <div class='container item-info col'>
                             <img class="item-img"/>
-                        </div>
+                        </div> -->
                         <div class='container restaurant-info col'>
-                            <img class='result-item-pic' src='./assets/images/placeholder3.jpg'>
+                            <!-- <img class='result-item-pic' src='./assets/images/placeholder3.jpg'> -->
+                            <img class='item-img' src='#'/>
                             <div class="recipe-calories"></div>
                             <div class="recipe-labels"></div>
                             <a href="#" class='yelp-link' target="_blank"><h4 id="res-info"></h4></a>
@@ -161,12 +163,13 @@
                             <!-- <h6 class='distance'> 0.6 mi </h6> -->
                             <img class='delivery' src='./assets/images/delivery.png'>
                             <img class='takeout' src='./assets/images/takeout.png'>
-                            <a href="#" class='reviews'> 3 Reviews </a>
+                            <!-- <a href="#" class='reviews'> 3 Reviews </a> -->
+                            <h6 class='distance'> </h6>
                             <!-- <a href="#" class='yelp-link' target="_blank"> More Details </a> -->
                         </div>
-                    </div>
-                    <div class="restaurant-location">
-                        <div id='map'></div>
+                        <div class="container restaurant-location col">
+                            <div id='map'></div>
+                        </div>
                     </div>
 
                     <div class="modal-footer">
@@ -267,6 +270,15 @@
             <hr>
 
         </div> -->
+
+    </body>
+</html>
+
+
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
+<!-- above link should show the two glyphicons below / but not working -->
+<!-- <span class="glyphicons glyphicons-thumbs-up" id="like" aria-hidden="true"></span> -->
+<!-- <span class="glyphicons glyphicons-thumbs-down" id="dislike" aria-hidden="true"></span> -->
 
 <!-- <div class="carousel-item">
     <img class="food-item" alt="Second slide">

@@ -92,8 +92,6 @@ var Edamam = {
 
 $(document).on("click", '.food-img', function (event){
     event.preventDefault();
-    console.log(this);
-    console.log($(this).attr("name"));
     var foodItem = $(this).attr("name");
     var foodImg = $(this).attr('src');
     var proxyURL = 'https://shielded-hamlet-43668.herokuapp.com/'
@@ -106,7 +104,6 @@ $(document).on("click", '.food-img', function (event){
         }
     }).then( function(response) {
         // $(".result-item-pic").attr("src", response.businesses[0].image_url);
-        console.log(response);
         console.log(response.businesses[0]);
         
         var businessLat = response.businesses[0].coordinates.latitude;
@@ -122,6 +119,8 @@ $(document).on("click", '.food-img', function (event){
         $(".phone").text(response.businesses[0].display_phone);
         $(".address").text(response.businesses[0].location.address1 + ", " + response.businesses[0].location.city + ", "
                            + response.businesses[0].location.state  + "-" +  response.businesses[0].location.zip_code);
+        var distanceInMi = (response.businesses[0].distance * 0.000621371).toFixed(2);
+        $(".distance").text(distanceInMi + " miles");
 
         for (var i = 0; i < response.businesses[0].transactions.length; i++){
             if (response.businesses[0].transactions[i] == "delivery"){
@@ -142,7 +141,8 @@ $(document).on("click", '.food-img', function (event){
 
         var marker = new google.maps.Marker({
             position: myLatlng,
-            title: response.businesses[0].name
+            title: response.businesses[0].name,
+            animation: google.maps.Animation.DROP,
         });
 
         // To add the marker to the map, call setMap();
@@ -155,12 +155,15 @@ function ipLookUp () {
     .then(
         function success(response) {
             long = response.lon;
-            console.log('long: ', long);
             lat = response.lat;
-            console.log('lat: ', lat);
             
-  },
+    },
         function fail(data, status) {
+            console.log('Request failed.  Returned status of',
+                        status);
+        }
+    );
+}       function fail(data, status) {
             console.log('Request failed.  Returned status of',
                         status);
         }
