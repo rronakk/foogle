@@ -5,27 +5,97 @@ $(document).ready(function () {
     //pageAction
     IntroAction();
     
-    // GIPHY API CALL FOR FOOD DATING FIRST BANNER PAGE
-    var giphyURL = Giphy.buildQueryURL("delicious");
+    // // GIPHY API CALL FOR FOOD DATING FIRST BANNER PAGE
+    // var giphyURL = Giphy.buildQueryURL("delicious");
+    // $.ajax({
+    //     url: giphyURL,
+    //     method: "GET"
+    // }).then( function(response) {
+    //     Giphy.updateGifImg(response)
+    //     $('#enjoyYourFoodDating').append(Giphy.$gif);
+    // });
+    // var $FoodDatingNote = $('<h1 id="datingNote">Enjoy your<br/>DELICIOUS date.<br>Ready to TASTE it?!<br>"LIKE" it!!<br><br>You will see them on your list!</h1>');
+    // $('#enjoyYourFoodDating').append($FoodDatingNote);
+});
+
+
+
+///// RANDOM MODAL
+// DISPLAY RANDOM ITEMS ON MODAL (RANDOM MODAL)
+$(document).on('click', '.run-random', function () {
+    $('.search-item').addClass('animated rotateOutDownLeft');
+    RunSearchAction();
+    event.preventDefault();
+
     $.ajax({
-        url: giphyURL,
+        url: Edamam.buildQueryURLRand(),
         method: "GET"
     }).then( function(response) {
-        Giphy.updateGifImg(response)
-        $('#enjoyYourFoodDating').append(Giphy.$gif);
+        console.log("response---" + Edamam.buildQueryURLRand());
+        console.log(response);
+        $('.rand-item').removeClass('rotateOutDownLeft');
+        
+        if (response.hits[0].recipe.label.toLowerCase().includes("recipe")) {
+            $('.rand-item-name').html(response.hits[0].recipe.label.replace("recipe", ""));
+        } else {
+            $('.rand-item-name').html(response.hits[0].recipe.label);
+        }
+        $('.rand-item-img').attr('src', response.hits[0].recipe.image);
+        if (response.hits[0].recipe.dietLabels !== []) {
+            $('.rand-item-dietLabels').text(response.hits[0].recipe.dietLabels);
+        }
+        if (response.hits[0].recipe.dietLabels !== []) {
+            $('.rand-item-healthLabels').text(response.hits[0].recipe.healthLabels);
+        }
     });
-    var $FoodDatingNote = $('<h1 id="datingNote">Enjoy your<br/>DELICIOUS date.<br>Ready to TASTE it?!<br>"LIKE" it!!<br><br>You will see them on your list!</h1>');
-    $('#enjoyYourFoodDating').append($FoodDatingNote);
+});
+// CLICKING ON LIKE BTN (RANDOM MODAL)
+$(document).on("click", '#rand-like', function (event) {
+    $('.rand-item').addClass('animated zoomOutRight');
+    var $likedName = $('.rand-item-name').clone().removeClass();
+    var $likedImg = $('.rand-item-img').clone().removeClass();
+    $likedImg.attr('name', $likedName.text());
+    $likedImg.addClass('food-img');
+    $likedImg.attr("data-target", "#modelId");
+    $likedImg.attr("data-toggle", "modal");
+    var $likedDiet = $('.rand-item-dietLabels').clone().removeClass();
+    var $likedHealth = $('.rand-item-healthLabels').clone().removeClass();
+
+    var $likedItem = $('<div class="liked-item col-4 card">');
+    $likedItem.append($likedName);
+    $likedItem.append($likedImg);
+    $likedItem.append($likedDiet);
+    $likedItem.append($likedHealth);
+    $(".rand-item-area").prepend($likedItem);
+    event.preventDefault();
+
+    $.ajax({
+        url: Edamam.buildQueryURLRand(),
+        method: "GET"
+    }).then( function(response) {
+        console.log(response);
+        $('.rand-item').removeClass('zoomOutRight');
+        if (response.hits[0].recipe.label.toLowerCase().includes("recipe")) {
+            $('.rand-item-name').html(response.hits[0].recipe.label.replace("recipe", ""));
+        } else {
+            $('.rand-item-name').html(response.hits[0].recipe.label);
+        }
+        $('.rand-item-img').attr('src', response.hits[0].recipe.image);
+        if (response.hits[0].recipe.dietLabels !== "[]") {
+            $('.rand-item-dietLabels').text(response.hits[0].recipe.dietLabels);
+        }
+        if (response.hits[0].recipe.dietLabels !== "[]") {
+            $('.rand-item-healthLabels').text(response.hits[0].recipe.healthLabels);
+        }
+    });
 });
 
-// DETAIL SEARCH TOGGLE ON/OFF
-$(document).on("click", '#detail-search', function () {
-    $('.detail-search-form').toggle();
-});
 
 
-///// INTRO PAGE && 
-// DISPLAY ITEMS ON SEARCHED RESULT PAGE AND SAVE THEM IN edamam.searcheditems
+
+
+
+// DISPLAY SEARCHED ITEMS ON MODAL
 $(document).on("click", '.run-search', function (event) {
     $('.search-item').addClass('animated rotateOutDownLeft');
     //pageAction
@@ -164,32 +234,37 @@ var displaySearchedItems = function () {
 
 }
 
+// DETAIL SEARCH TOGGLE ON/OFF
+$(document).on("click", '#detail-search', function () {
+    $('.detail-search-form').toggle();
+});
+
 
 ///// RANDOM MODAL PAGE
 // CLICKING ON "SHOW MY RESULT" ON MODAL WILL RENDER TO FAVORITE RESULT PAGE 
 //!!! temporarily using Giphy.updateGifContainer() to show random images
-$(document).on('click', '.random-result-btn', function () {
-    $('.banner_intro').fadeOut(1000);
-    $('.result').show();
-    $('.random-result-page').fadeIn(2000);
-    $('.page-tab').fadeIn(4000);
-});
+// $(document).on('click', '.random-result-btn', function () {
+//     $('.banner_intro').fadeOut(1000);
+//     $('.result').show();
+//     $('.random-result-page').fadeIn(2000);
+//     $('.page-tab').fadeIn(4000);
+// });
 
-// TEMPLATE FOR RANDOM FOOD API CALL
-var getGiphyRand = function () {
-    var giphyURL = Giphy.buildQueryURL("delicious");
-    $.ajax({
-        url: giphyURL,
-        method: "GET"
-    }).then( function(response) {
-        Giphy.updateGifContainer(response);
-        $('#food-item-slide').append(Giphy.$gifContainer);
-    });
-}
-$(document).on("click", '.temp-btn', function (event) {
-    event.preventDefault();
-    getGiphyRand();
-});
+// // TEMPLATE FOR RANDOM FOOD API CALL
+// var getGiphyRand = function () {
+//     var giphyURL = Giphy.buildQueryURL("delicious");
+//     $.ajax({
+//         url: giphyURL,
+//         method: "GET"
+//     }).then( function(response) {
+//         Giphy.updateGifContainer(response);
+//         $('#food-item-slide').append(Giphy.$gifContainer);
+//     });
+// }
+// $(document).on("click", '.temp-btn', function (event) {
+//     event.preventDefault();
+//     getGiphyRand();
+// });
 
 
 // ///// RESULT PAGE

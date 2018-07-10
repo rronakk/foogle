@@ -1,6 +1,7 @@
 /////
 // EDAMAM API SEARCH WITH KEYWORD
 /////
+
 var long;
 var lat;
 
@@ -8,53 +9,61 @@ var lat;
 window.onload = function() {
     if ("geolocation" in navigator) {
         // check if geolocation is supported/enabled on current browser
-        navigator.geolocation.getCurrentPosition(
-         function success(position) {
-           console.log('latitude', position.coords.latitude, 
+        navigator.geolocation.getCurrentPosition( function success(position) {
+            console.log('latitude', position.coords.latitude, 
                        'longitude', position.coords.longitude);
             lat = position.coords.latitude;
             long = position.coords.longitude;
-         }, function error(error_message) {
-          // for when getting location results in an error
-          console.error('An error has occured while retrieving location', error_message)
-          ipLookUp()
-       }
-      );} 
-      else {
-        console.log('geolocation is not enabled on this browser')
-        ipLookUp()
-      }
-  };
-
+        }, function error(error_message) {
+            // for when getting location results in an error
+            console.error('An error has occured while retrieving location', error_message)
+            ipLookUp()
+        });
+    } else {
+        console.log('geolocation is not enabled on this browser');
+        ipLookUp();
+    }
+};
   
 var Edamam = {
     URL: "https://api.edamam.com/search?",
-    app_id: '3ff2cec1',
-    app_key: '5daaa38e313d46e5ddf1d70317e69608',
-    searchNum: 1,
-    searchFrom: 0, //!!! temporarily setting it up for 100.  it should be the count - 1.
+    app_id: ['ce21ee88', '520c98f5', '3ff2cec1'],
+    app_key: ['6acf93ffdefda4479aa332299d1492c4','c62e2a4f261a2553730816962b096921','5daaa38e313d46e5ddf1d70317e69608'],
     searchedItems: [],
     randItems: [],
+    options: ['chinese','italian','french','korean','cuban','mexican','japanese','bbq','meat','tofu','vegeterian','oxtail','fish','bacon','bread','egg','goat','vegetables','turkey','duck','geese','gyro'],
     $RandCtnr: "",
     $RandomFood: "",
     callback: null,
     setCallback: function(callback) {
         this.callback = callback;
     },
-    // buildQueryURLSearch: function(keyword, diet, health, calories, excluded) {
+    buildQueryURLRand: function() {
+        var queryURL = this.URL + "app_id=" + this.app_id[2] + "&app_key=" + this.app_key[2] + "&";
+        var queryParams = {};
+        var randPickNum = Math.floor( Math.random() * this.options.length);
+        queryParams.q = this.options[randPickNum];
+        queryParams.from = Math.floor(Math.random() * 5);
+        queryParams.to = queryParams.from + 1;
+        queryURL += $.param(queryParams);
+        return queryURL;
+    },
     buildQueryURLSearch: function(keyword) {
-        var queryURL = this.URL + "app_id=" + this.app_id + "&app_key=" + this.app_key + "&";
+        var queryURL = this.URL + "app_id=" + this.app_id[1] + "&app_key=" + this.app_key[1] + "&";
         var queryParams = {};
         queryParams.q = keyword;
+
+        queryParams.from = Math.floor(Math.random() * 100);
+        queryParams.to = queryParams.from + 1;
+        queryURL += $.param(queryParams);
+        return queryURL;
+
+        // buildQueryURLSearch: function(keyword, diet, health, calories, excluded) {
+        //!!! for detail search
         // queryParams.diet = diet || "";
         // queryParams.health = health || "";
         // queryParams.calories = calories || "";
         // queryParams.excluded = excluded || "";
-        this.searchFrom = Math.floor(Math.random() * 100);
-        queryParams.from = this.searchFrom; 
-        queryParams.to = queryParams.from + this.searchNum;
-        queryURL += $.param(queryParams);
-        return queryURL;
     },
     
     callAjax: function(keyword) {
@@ -157,6 +166,7 @@ function ipLookUp () {
         }
     );
   }
+
 
 
 

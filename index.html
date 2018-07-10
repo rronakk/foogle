@@ -40,6 +40,7 @@
         <div class="banner_intro intro_2">
             <div id="edamam-badge" data-color="white"></div>
             <h1 class="jumbotron what-to-eat animated zoomInUp"><b>Do you know what you want to eat?</b></h1>
+
             <!-- SEARCH FORM -->
             <div class="search-area">
                 <form>
@@ -86,28 +87,91 @@
                 </form>
                 <div id="detail-search">Detail Search</div>
             </div>
+
             <!-- FOOD DATING MODAL BTN -->
             <div class="intro_btns">
-                <button type="button" class="to-random btn btn-primary intro-btn" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button>
+                <button type="button" class="run-random btn btn-primary rand-btn" data-toggle="modal" data-target=".rand-modal">No! Help me to find what I want to eat!</button>
             </div>
         </div>
         
 
 
-        <!-- RANDOM MODAL -->
-        <div class="modal fade choose-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+        <!-- RANDOM MODAL: this is duplicate of search modal -->
+        <div class="modal fade rand-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="carousel slide" id="food-item-control" data-ride="carousel" data-interval="false">
-                        <div class="carousel-inner" id="food-item-slide">
+                    <div class="rand-item row">
+                        <h5 class="col-12 rand-item-name"></h5>
+                        <img class="col-12 rand-item-img"/>
+                        <div class="col-12">Diet Label: <i class="rand-item-dietLabels"></i></div>
+                        <div class="col-12">Health Label: <i class="rand-item-healthLabels"></i></div>
+                    </div>
+                    <button type="submit" class="btn btn-default rand-btn" id="rand-dislike"><i class="far fa-thumbs-down"></i></button>
+                    <button type="submit" class="btn btn-default" id="rand-like"><i class="far fa-thumbs-up"></i></button>
 
-                            <div class="food-item carousel-item active" id="enjoyYourFoodDating"></div>
-                            
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEARCH MODAL -->
+        <div class="modal fade search-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="search-item row">
+                        <h5 class="col-12 searched-item-name"></h5>
+                        <img class="col-12 searched-item-img"/>
+                        <div class="col-12">Diet Label: <i class="searched-item-dietLabels"></i></div>
+                        <div class="col-12">Health Label: <i class="searched-item-healthLabels"></i></div>
+                    </div>
+                    <button type="submit" class="btn btn-default run-search" id="dislike"><i class="far fa-thumbs-down"></i></button>
+                    <!-- <button type="submit" class="btn btn-default run-search" id="like"><i class="far fa-thumbs-up"></i></button> -->
+                    <button type="submit" class="btn btn-default" id="like"><i class="far fa-thumbs-up"></i></button>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- model for restaurant information -->
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header item-name">
+                        <h4 id="recipe-name"></h4>
+                    </div>
+                    <div class="modal-body row">
+                        <div class='container item-info col'>
+                            <img class="item-img"/>
                         </div>
-                        <a class="carousel-control-next" href="#food-item-control" role="button" data-slide="next">
-                            <button type="submit" class="btn btn-primary temp-btn" aria-hidden="true" id="like">Like</button>
-                            <button type="submit" class="btn btn-primary temp-btn" aria-hidden="true" id="dislike">Dislike</button>
-                        </a>
+                        <div class='container restaurant-info col'>
+                            <img class='result-item-pic' src='./assets/images/placeholder3.jpg'>
+                            <div class="recipe-calories"></div>
+                            <div class="recipe-labels"></div>
+                            <a href="#" class='yelp-link' target="_blank"><h4 id="res-info"></h4></a>
+                            <h6 class="res-category"></h6>
+                            <!-- <h6 class='rating'> Yelp Rating : <span id="stars"></span> </h6> -->
+                            <i class="fas fa-phone"><span class="phone"></span></i>
+                            <div class="address"></div>
+                            <!-- <h6 class='food-price'></h6>  -->
+                            <!-- <h6 class='distance'> 0.6 mi </h6> -->
+                            <img class='delivery' src='./assets/images/delivery.png'>
+                            <img class='takeout' src='./assets/images/takeout.png'>
+                            <a href="#" class='reviews'> 3 Reviews </a>
+                            <!-- <a href="#" class='yelp-link' target="_blank"> More Details </a> -->
+                        </div>
+                    </div>
+                    <div class="restaurant-location">
+                        <div id='map'></div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button " class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button submit" class="btn btn-info" id="save-btn">Save</button>
                     </div>
                 </div>
             </div>
@@ -208,68 +272,7 @@
 
 
 
-        <!-- SEARCH MODAL -->
-        <div class="modal fade search-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="search-item row">
-                        <h5 class="col-12 searched-item-name"></h5>
-                        <img class="col-12 searched-item-img"/>
-                        <div class="col-12">Diet Label: <i class="searched-item-dietLabels"></i></div>
-                        <div class="col-12">Health Label: <i class="searched-item-healthLabels"></i></div>
-                    </div>
-                    <button type="submit" class="btn btn-default run-search" id="dislike"><i class="far fa-thumbs-down"></i></button>
-                    <!-- <button type="submit" class="btn btn-default run-search" id="like"><i class="far fa-thumbs-up"></i></button> -->
-                    <button type="submit" class="btn btn-default" id="like"><i class="far fa-thumbs-up"></i></button>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- model for restaurant information -->
-        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header item-name">
-                        <h4 id="recipe-name"></h4>
-                    </div>
-                    <div class="modal-body row">
-                        <div class='container item-info col'>
-                            <img class="item-img"/>
-                        </div>
-                        <div class='container restaurant-info col'>
-                            <img class='result-item-pic' src='./assets/images/placeholder3.jpg'>
-                            <div class="recipe-calories"></div>
-                            <div class="recipe-labels"></div>
-                            <a href="#" class='yelp-link' target="_blank"><h4 id="res-info"></h4></a>
-                            <h6 class="res-category"></h6>
-                            <!-- <h6 class='rating'> Yelp Rating : <span id="stars"></span> </h6> -->
-                            <i class="fas fa-phone"><span class="phone"></span></i>
-                            <div class="address"></div>
-                            <!-- <h6 class='food-price'></h6>  -->
-                            <!-- <h6 class='distance'> 0.6 mi </h6> -->
-                            <img class='delivery' src='./assets/images/delivery.png'>
-                            <img class='takeout' src='./assets/images/takeout.png'>
-                            <a href="#" class='reviews'> 3 Reviews </a>
-                            <!-- <a href="#" class='yelp-link' target="_blank"> More Details </a> -->
-                        </div>
-                    </div>
-                    <div class="restaurant-location">
-                        <div id='map'></div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button " class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button submit" class="btn btn-info" id="save-btn">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
 
 
 <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
@@ -282,3 +285,5 @@
 </div> -->
 
 
+</body>
+</html>
