@@ -27,7 +27,7 @@ $(document).on("click", '#detail-search', function () {
 ///// INTRO PAGE && 
 // DISPLAY ITEMS ON SEARCHED RESULT PAGE AND SAVE THEM IN edamam.searcheditems
 $(document).on("click", '.run-search', function (event) {
-    
+    $('.search-item').addClass('animated rotateOutDownLeft');
     //pageAction
     RunSearchAction();
     
@@ -46,7 +46,8 @@ $(document).on("click", '.run-search', function (event) {
         method: "GET"
     }).then( function(response) {
         console.log(response);
-
+        $('.search-item').removeClass('rotateOutDownLeft');
+        
         if (response.hits[0].recipe.label.toLowerCase().includes("recipe")) {
             $('.searched-item-name').html(response.hits[0].recipe.label.replace("recipe", ""));
         } else {
@@ -72,7 +73,7 @@ $(document).on("click", '.run-search', function (event) {
 
 // ---------------------------------------------------- remove after make it dry with .run-search
 $(document).on("click", '#like', function (event) {
-
+    $('.search-item').addClass('animated zoomOutRight');
     var $likedName = $('.searched-item-name').clone().removeClass();
     var $likedImg = $('.searched-item-img').clone().removeClass();
     $likedImg.attr('name', $likedName.text());
@@ -97,7 +98,7 @@ $(document).on("click", '#like', function (event) {
         method: "GET"
     }).then( function(response) {
         console.log(response);
-
+        $('.search-item').removeClass('zoomOutRight');
         if (response.hits[0].recipe.label.toLowerCase().includes("recipe")) {
             $('.searched-item-name').html(response.hits[0].recipe.label.replace("recipe", ""));
         } else {

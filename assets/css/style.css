@@ -13,11 +13,11 @@
     margin-top: 5%;
 }
 
-
 /* SEARCH MODAL */
-/* .search-item-area {
-    position: relative;
-} */
+.search-item {
+    overflow: hidden;
+}
+
 #like {
     position: absolute;
     right: 0%;
