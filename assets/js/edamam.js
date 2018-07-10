@@ -119,7 +119,7 @@ $(document).on("click", '.food-img', function (event){
                 $(".delivery").css("background-color", "#63FC88");
             }
             if (response.businesses[0].transactions[i] == "takeout"){
-                $(".takeout").css("background-color", "#63FC88")
+                $(".takeout").css("background-color", "#63FC88");
             }
         }
             

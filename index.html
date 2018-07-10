@@ -34,7 +34,7 @@
         <!-- PAGE 1 INTRO -->
         <div class="banner_intro intro_1">
             <div id="edamam-badge" data-color="white"></div>
-            <h1 class="jumbotron make-ur-life-ezr"><b>Having hard time deciding your lunch?<br><br>Make your life easier.<br>We are the Ultimate Lunch Recommendation System.</b></h1>
+            <h1 class="jumbotron make-ur-life-ezr"><b>Having a hard time deciding what to eat for lunch?<br><br>Make your life easier.<br>We are the Ultimate Lunch Recommendation System.</b></h1>
         </div>
         <!-- PAGE 2 INTRO -->
         <div class="banner_intro intro_2">
@@ -44,7 +44,7 @@
             <div class="search-area">
                 <form>
                     <div class="simple-search row">
-                        <input type="text" class="form-control col" id="searchItem" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
+                        <input type="text" class="form-control col" id="searchItem" placeholder="e.g> Chicken, Burgers, Sushi, Italian, etc... ">
                         <button type="submit" class="btn btn-default col-1 run-search" data-toggle="modal" data-target=".search-modal">
                         <!-- <button type="submit" class="btn btn-default col-1 run-search"> -->
                             <i class="fa fa-search"></i>
@@ -80,15 +80,15 @@
                                 </ul>
                             </div>
                             <input type="text" class="form-control col" data-value="calories" id="calories" placeholder="1000-1500">
-                            <input type="text" class="form-control col" data-value="excluded" id="excluded" placeholder="vinegal, pretzel">
+                            <input type="text" class="form-control col" data-value="excluded" id="excluded" placeholder="Tomatoes, Cheese, Spicy Peppers">
                         </div>
                     </div>
                 </form>
-                <div id="detail-search">Detail Search</div>
+                <div id="detail-search" class='btn btn-dark'>Detailed Search</div>
             </div>
             <!-- FOOD DATING MODAL BTN -->
             <div class="intro_btns">
-                <button type="button" class="to-random btn btn-primary intro-btn" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button>
+                <button type="button" class="to-random btn btn-primary intro-btn" data-toggle="modal" data-target=".choose-modal">No! Help me find something to eat!</button>
             </div>
         </div>
         
@@ -215,8 +215,8 @@
                     <div class="search-item row">
                         <h5 class="col-12 searched-item-name"></h5>
                         <img class="col-12 searched-item-img"/>
-                        <div class="col-12">Diet Label: <i class="searched-item-dietLabels"></i></div>
-                        <div class="col-12">Health Label: <i class="searched-item-healthLabels"></i></div>
+                        <div class="col-12 searched-item-diet-label">Diet Label: <i class="searched-item-dietLabels"></i></div>
+                        <div class="col-12 searched-item-health-label">Health Label: <i class="searched-item-healthLabels"></i></div>
                     </div>
                     <button type="submit" class="btn btn-default run-search" id="dislike"><i class="far fa-thumbs-down"></i></button>
                     <!-- <button type="submit" class="btn btn-default run-search" id="like"><i class="far fa-thumbs-up"></i></button> -->
@@ -256,9 +256,9 @@
                             <a href="#" class='reviews'> 3 Reviews </a>
                             <!-- <a href="#" class='yelp-link' target="_blank"> More Details </a> -->
                         </div>
-                    </div>
-                    <div class="restaurant-location">
-                        <div id='map'></div>
+                        <div class="container restaurant-location col">
+                            <div id='map'></div>
+                        </div>
                     </div>
 
                     <div class="modal-footer">
