@@ -5,6 +5,9 @@
 #edamam-badge {
     text-align: left;
 }
+#searchItem {
+    margin-bottom: 10px;
+}
 .search-area {
     margin: 0 10%;
 }
@@ -18,17 +21,47 @@
     overflow: hidden;
 }
 
-.like {
+.searched-item-name {
+    padding: 15px;
+    text-align: center;
+}
+
+.searched-item-img {
+    margin-bottom: 15px;
+}
+
+.searched-item-diet-label {
+    margin: 0px 15px;
+}
+
+.searched-item-health-label {
+    margin: 0px 15px 15px 15px;
+}
+
+#like {
+    background-color: #84FCA1;
     position: absolute;
     right: 5%;
     height: 38px;
     top: 60%;
 }
-.dislike {
+
+#like:hover {
+    background-color: #64FE8A;
+    box-shadow: 1px 1px 2px black, 0 0 25px green, 0 0 5px green;
+}
+
+#dislike {
+    background-color: #FEA69D;
     position: absolute;
     left: 5%;
     height: 38px;
     top: 60%;
+}
+
+#dislike:hover {
+    background-color: #FA8E83;
+    box-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px red;
 }
 
 /* DETAIL MODAL */
@@ -36,16 +69,26 @@
     text-align: center;
     padding: 0;
 }
+
 #recipe-name {
-    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
 }
+
+.item-info {
+    border-right: 1px solid black;
+}
+
 .item-img {
-    width: 100%;
-    height: 100%;
+    width: 80%;
 }
 
 
 /* SEARCH RESULT PAGE */
+.liked-item {
+    padding: 25px;
+}
+
 .page-tab {
     position: fixed;
     right: 2%;
@@ -110,10 +153,11 @@
 /* h5 {
     display: inline;
 } */
-.restaurant-location {
+/* .restaurant-location {
     height: 200px;
-}
+} */
 #map {
+    border-left: 1px solid black;
     height: 100%;
 }
 
