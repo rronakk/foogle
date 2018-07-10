@@ -113,6 +113,9 @@ $(document).on("click", '.food-img', function (event){
         $(".phone").text(response.businesses[0].display_phone);
         $(".address").text(response.businesses[0].location.address1 + ", " + response.businesses[0].location.city + ", "
                            + response.businesses[0].location.state  + "-" +  response.businesses[0].location.zip_code);
+        var distanceInMi = (response.businesses[0].distance * 0.000621371).toFixed(2);
+        console.log(distanceInMi);
+        $(".distance").text(distanceInMi + " miles");
 
         for (var i = 0; i < response.businesses[0].transactions.length; i++){
             if (response.businesses[0].transactions[i] == "delivery"){
