@@ -5,17 +5,17 @@ $(document).ready(function () {
     //pageAction
     IntroAction();
     
-    // GIPHY API CALL FOR FOOD DATING FIRST BANNER PAGE
-    var giphyURL = Giphy.buildQueryURL("delicious");
-    $.ajax({
-        url: giphyURL,
-        method: "GET"
-    }).then( function(response) {
-        Giphy.updateGifImg(response)
-        $('#enjoyYourFoodDating').append(Giphy.$gif);
-    });
-    var $FoodDatingNote = $('<h1 id="datingNote">Enjoy your<br/>DELICIOUS date.<br>Ready to TASTE it?!<br>"LIKE" it!!<br><br>You will see them on your list!</h1>');
-    $('#enjoyYourFoodDating').append($FoodDatingNote);
+    // // GIPHY API CALL FOR FOOD DATING FIRST BANNER PAGE
+    // var giphyURL = Giphy.buildQueryURL("delicious");
+    // $.ajax({
+    //     url: giphyURL,
+    //     method: "GET"
+    // }).then( function(response) {
+    //     Giphy.updateGifImg(response)
+    //     $('#enjoyYourFoodDating').append(Giphy.$gif);
+    // });
+    // var $FoodDatingNote = $('<h1 id="datingNote">Enjoy your<br/>DELICIOUS date.<br>Ready to TASTE it?!<br>"LIKE" it!!<br><br>You will see them on your list!</h1>');
+    // $('#enjoyYourFoodDating').append($FoodDatingNote);
 });
 
 // DETAIL SEARCH TOGGLE ON/OFF

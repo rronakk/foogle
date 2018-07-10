@@ -1,127 +1,205 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- Link Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">  
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <!-- Link JQuery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- EDAMAM API -->
-        <script src="https://developer.edamam.com/attribution/badge.js"></script>
+    <!-- Link Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- Link JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-        <!-- Link CSS, Javascript -->
-        <link rel='stylesheet' href='./assets/css/style.css' type='text/css'>
-        <script defer src="assets/js/pageAction.js"></script>
-        <script defer src="assets/js/edamam.js"></script>
-        <script defer src="assets/js/giphy.js"></script>
-        <script type='text/javascript' src='assets/js/script.js'> </script>
+    <!-- EDAMAM API -->
+    <script src="https://developer.edamam.com/attribution/badge.js"></script>
 
-        <!-- Google Maps API call -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcOgHEqu_cMFWOiYiOHjE3fR7flQniwdQ&callback=initMap" async defer></script>
+    <!-- Link CSS, Javascript -->
+    <link rel='stylesheet' href='./assets/css/style.css' type='text/css'>
+    <script defer src="assets/js/pageAction.js"></script>
+    <script defer src="assets/js/edamam.js"></script>
+    <script defer src="assets/js/giphy.js"></script>
+    <script type='text/javascript' src='assets/js/script.js'> </script>
+    <script type='text/javascript' src='assets/js/test.js'> </script>
 
-    </head>
+    <!-- Google Maps API call -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcOgHEqu_cMFWOiYiOHjE3fR7flQniwdQ&callback=initMap" async
+        defer></script>
 
-    <body>
-        <!-- PAGE 1 INTRO -->
-        <div class="banner_intro intro_1">
-            <div id="edamam-badge" data-color="white"></div>
-            <h1 class="jumbotron make-ur-life-ezr"><b>Having hard time deciding your lunch?<br><br>Make your life easier.<br>We are the Ultimate Lunch Recommendation System.</b></h1>
-        </div>
-        <!-- PAGE 2 INTRO -->
-        <div class="banner_intro intro_2">
-            <div id="edamam-badge" data-color="white"></div>
-            <h1 class="jumbotron what-to-eat"><b>Do you know what you want to eat?</b></h1>
-            <!-- SEARCH FORM -->
-            <div class="search-area">
-                <form>
-                    <div class="simple-search row">
-                        <input type="text" class="form-control col" id="searchItem" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
-                        <button type="submit" class="btn btn-default col-1 run-search" data-toggle="modal" data-target=".search-modal">
+
+    <style>
+        .kbutton {
+            margin: -700px 0px 0px 400px;
+        }
+
+        .kbutton2 {
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- PAGE 1 INTRO -->
+    <div class="banner_intro intro_1">
+        <div id="edamam-badge" data-color="white"></div>
+        <h1 class="jumbotron make-ur-life-ezr">
+            <b>Having hard time deciding your lunch?
+                <br>
+                <br>Make your life easier.
+                <br>We are the Ultimate Lunch Recommendation System.</b>
+        </h1>
+    </div>
+    <!-- PAGE 2 INTRO -->
+    <div class="banner_intro intro_2" id="Page1">
+        <div id="edamam-badge" data-color="white"></div>
+        <h1 class="jumbotron what-to-eat">
+            <b>Do you know what you want to eat?</b>
+        </h1>
+        <!-- SEARCH FORM -->
+        <div class="search-area">
+            <form>
+                <div class="simple-search row">
+                    <input type="text" class="form-control col" id="searchItem" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
+                    <button type="submit" class="btn btn-default col-1 run-search" data-toggle="modal" data-target=".search-modal">
                         <!-- <button type="submit" class="btn btn-default col-1 run-search"> -->
-                            <i class="fa fa-search"></i>
-                        </button>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <div class="detail-search-form">
+                    <div class="input-label row">
+                        <label for="diet" class="col">Diet</label>
+                        <label for="allergy" class="col">Allergy</label>
+                        <label for="calories" class="col">Calories</label>
+                        <label for="excluded" class="col">Exclude It!</label>
                     </div>
-                    <div class="detail-search-form">
-                        <div class="input-label row">
-                            <label for="diet" class="col">Diet</label>
-                            <label for="allergy" class="col">Allergy</label>
-                            <label for="calories" class="col">Calories</label>
-                            <label for="excluded" class="col">Exclude It!</label>
+                    <div class="detail-input row">
+                        <div class="button-group col">
+                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Diet Option</button>
+                            <ul class="dropdown-menu">
+                                <li class="small" data-value="high-protein" tabIndex="-1">
+                                    <input type="checkbox" />&nbsp;high-protein</li>
+                                <li class="small" data-value="balanced" tabIndex="-1">
+                                    <input type="checkbox" />&nbsp;balanced</li>
+                                <li class="small" data-value="high-fiber" tabIndex="-1">
+                                    <input type="checkbox" />&nbsp;high-fiber</li>
+                                <li class="small" data-value="low-fat" tabIndex="-1">
+                                    <input type="checkbox" />&nbsp;low-fat</li>
+                                <li class="small" data-value="low-carb" tabIndex="-1">
+                                    <input type="checkbox" />&nbsp;low-carb</li>
+                                <li class="small" data-value="low-sodium" tabIndex="-1">
+                                    <input type="checkbox" />&nbsp;low-sodium</li>
+                            </ul>
                         </div>
-                        <div class="detail-input row">
-                            <div class="button-group col">
-                                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Diet Option</button>
-                                <ul class="dropdown-menu">
-                                    <li class="small" data-value="high-protein" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-protein</li>
-                                    <li class="small" data-value="balanced" tabIndex="-1"> <input type="checkbox"/>&nbsp;balanced</li>
-                                    <li class="small" data-value="high-fiber" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-fiber</li>
-                                    <li class="small" data-value="low-fat" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-fat</li>
-                                    <li class="small" data-value="low-carb" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-carb</li>
-                                    <li class="small" data-value="low-sodium" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-sodium</li>
-                                </ul>
-                            </div>
-                            <div class="button-group col">
-                                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Allergy</button>
-                                <ul class="dropdown-menu">
-                                    <li class="small" data-value="peanut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;peanut-free</li>
-                                    <li class="small" data-value="tree-nut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;tree-nut-free</li>
-                                    <li class="small" data-value="soy-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;soy-free</li>
-                                    <li class="small" data-value="fish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;fish-free</li>
-                                    <li class="small" data-value="shellfish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;shellfish-free</li>
-                                </ul>
-                            </div>
-                            <input type="text" class="form-control col" data-value="calories" id="calories" placeholder="1000-1500">
-                            <input type="text" class="form-control col" data-value="excluded" id="excluded" placeholder="vinegal, pretzel">
+                        <div class="button-group col">
+                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Allergy</button>
+                            <ul class="dropdown-menu">
+                                <li class="small" data-value="peanut-free" tabIndex="-1">
+                                    <input type="checkbox" />&nbsp;peanut-free</li>
+                                <li class="small" data-value="tree-nut-free" tabIndex="-1">
+                                    <input type="checkbox" />&nbsp;tree-nut-free</li>
+                                <li class="small" data-value="soy-free" tabIndex="-1">
+                                    <input type="checkbox" />&nbsp;soy-free</li>
+                                <li class="small" data-value="fish-free" tabIndex="-1">
+                                    <input type="checkbox" />&nbsp;fish-free</li>
+                                <li class="small" data-value="shellfish-free" tabIndex="-1">
+                                    <input type="checkbox" />&nbsp;shellfish-free</li>
+                            </ul>
                         </div>
+                        <input type="text" class="form-control col" data-value="calories" id="calories" placeholder="1000-1500">
+                        <input type="text" class="form-control col" data-value="excluded" id="excluded" placeholder="vinegal, pretzel">
                     </div>
-                </form>
-                <div id="detail-search">Detail Search</div>
-            </div>
-            <!-- FOOD DATING MODAL BTN -->
-            <div class="intro_btns">
-                <button type="button" class="to-random btn btn-primary intro-btn" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button>
-            </div>
+                </div>
+            </form>
+            <div id="detail-search">Detail Search</div>
         </div>
-        
+    </div>
+        <!-- THIS IS HTML CODE FOR RANDOM FOOD slide -->
 
+        <div id="Page1">
+            <!-- the id=page1 is used to navigate through pages: show and hide -->
+            <div class="col-md-6">
+                <!-- Button triggers random food modal -->
+                <button type="button" class="btn btn-success first_Dislike kbutton" id="firstImg" data-toggle="modal" data-target="#exampleModal">
+                    No, Help me find what I want
+                </button>
+            </div>
 
-        <!-- RANDOM MODAL -->
-        <div class="modal fade choose-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="carousel slide" id="food-item-control" data-ride="carousel" data-interval="false">
-                        <div class="carousel-inner" id="food-item-slide">
-
-                            <div class="food-item carousel-item active" id="enjoyYourFoodDating"></div>
-                            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <!-- modal header -->
+                        <div class="modal-header d-flex justify-content-center">
+                            <h5 class="font-italic" id="exampleModalLabel">"Like" the images to save your choices</h5>
                         </div>
-                        <a class="carousel-control-next" href="#food-item-control" role="button" data-slide="next">
-                            <button type="submit" class="btn btn-primary temp-btn" aria-hidden="true" id="like">Like</button>
-                            <button type="submit" class="btn btn-primary temp-btn" aria-hidden="true" id="dislike">Dislike</button>
-                        </a>
+                        <!-- modal body -->
+                        <div class="modal-body Page1">
+                            <div class="container">
+                                <div class="row">
+                                    <!-- this is where i append image -->
+                                    <div class="col-md-12 modalImg d-flex justify-content-center">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 col-sm-4">
+                                        <button type="button" class="btn btn-primary kbutton2" id="like">Like</button>
+                                    </div>
+                                    <div class="col-4 col-sm-4">
+                                        <button type="button" class="btn btn-success first_Dislike kbutton2" id="dislike">Dislike</button>
+                                    </div>
+                                    <div class="col-4 col-sm-4">
+                                        <a href="#" onclick="return show('Page2','Page1');">
+                                            <button type="button" class="close btn btn-warning" data-dismiss="modal" aria-label="Close">results
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- modal footer -->
+                        <div class="modal-footer imgName d-flex justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- end dating modal -->
+
+        <!-- RANDOM FOOD SLIDE ENDS HERE -->
 
         <!-- RESULT PAGE -->
-        <div class="result card">                
+        <div class="card" id="Page2" style="display:none">
             <!-- MAIN 1: SEARCH RESULT PAGE -->
             <div class="searched-result-page card-body">
                 <!-- <div class="random-date" data-toggle="modal" data-target=".choose-modal"><h5>OR, DO YOU WANT TO GET MATCHED WITH A RANDOM DATE?</h5></div> -->
                 <div class="searched-item-area row card-body"></div>
             </div>
-            
+
 
             <!-- MAIN 2: RANDOM RESULT PAGE -->
-            <div class="random-result-page card-body">
-                <div class="random-item-area card-body"></div>
+            <div class="card-body">
+                <a href="#" onclick="return show('Page1','Page2');">
+                    <button class="btn btn-warning kbutton2">Home-Page</button>
+                </a>
+                <HR>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="addImage card-body d-flex justify-content-center"></div>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- MAIN 3: FAVORITES RESULT PAGE -->
@@ -145,7 +223,6 @@
             <div class='more-btn-area'>
                 <button class='btn btn-success' id='more-result'> More Result </button>
                 <button type="button" class="to-random btn btn-primary" data-toggle="modal" data-target=".choose-modal">No! Help me to find what I want to eat!</button>
-
                 <button class='btn btn-success choose-modal' data-toggle="modal" data-target=".choose-modal"> More Random </button>
             </div>
             <div class='result-item'>
@@ -155,17 +232,14 @@
                     <h5 class='food-price'> $12 </h5> <br>
                     <h6 class='rating'> Food Rating : * * * * * </h6><br>
                     <a href="#" class='reviews'> 10 Reviews about this item </a>
-
                 </div>
                 <div class='food-info'>
-
                 </div>
                 <div class='restaurant-info'>
                     <h5> Example Restaurant 1 </h5><br>
                     <h6 class='distance'> 0.6 mi</h6>&nbsp&nbsp
                     <h6 class='delivery-option'> delivery: X</h6><br>
                     <h6 class='rating'> Yelp Rating : * * * * </h6><br>
-
                     <a href="#" class='yelp-reviews'> 10 Reviews from Yelp </a><br>
                     <img class='delivery btn-info' src='./assets/images/delivery.png'>
                     <img class='takeout btn-info' src='./assets/images/takeout.png'>    
@@ -200,7 +274,6 @@
                 <a href="#" class='reviews'> 26 Reviews </a>
             </div>
             <hr>
-
         </div> -->
 
 
@@ -211,13 +284,21 @@
                 <div class="modal-content">
                     <div class="search-item row">
                         <h5 class="col-12 searched-item-name"></h5>
-                        <img class="col-12 searched-item-img"/>
-                        <div class="col-12">Diet Label: <i class="searched-item-dietLabels"></i></div>
-                        <div class="col-12">Health Label: <i class="searched-item-healthLabels"></i></div>
+                        <img class="col-12 searched-item-img" />
+                        <div class="col-12">Diet Label:
+                            <i class="searched-item-dietLabels"></i>
+                        </div>
+                        <div class="col-12">Health Label:
+                            <i class="searched-item-healthLabels"></i>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-default run-search" id="dislike"><i class="far fa-thumbs-down"></i></button>
+                    <button type="submit" class="btn btn-default run-search" id="dislike">
+                        <i class="far fa-thumbs-down"></i>
+                    </button>
                     <!-- <button type="submit" class="btn btn-default run-search" id="like"><i class="far fa-thumbs-up"></i></button> -->
-                    <button type="submit" class="btn btn-default" id="like"><i class="far fa-thumbs-up"></i></button>
+                    <button type="submit" class="btn btn-default" id="like">
+                        <i class="far fa-thumbs-up"></i>
+                    </button>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
@@ -235,16 +316,20 @@
                     </div>
                     <div class="modal-body row">
                         <div class='container item-info col'>
-                            <img class="item-img"/>
+                            <img class="item-img" />
                         </div>
                         <div class='container restaurant-info col'>
                             <img class='result-item-pic' src='./assets/images/placeholder3.jpg'>
                             <div class="recipe-calories"></div>
                             <div class="recipe-labels"></div>
-                            <a href="#" class='yelp-link' target="_blank"><h4 id="res-info"></h4></a>
+                            <a href="#" class='yelp-link' target="_blank">
+                                <h4 id="res-info"></h4>
+                            </a>
                             <h6 class="res-category"></h6>
                             <!-- <h6 class='rating'> Yelp Rating : <span id="stars"></span> </h6> -->
-                            <i class="fas fa-phone"><span class="phone"></span></i>
+                            <i class="fas fa-phone">
+                                <span class="phone"></span>
+                            </i>
                             <div class="address"></div>
                             <!-- <h6 class='food-price'></h6>  -->
                             <!-- <h6 class='distance'> 0.6 mi </h6> -->
@@ -265,7 +350,16 @@
                 </div>
             </div>
         </div>
-    </body>
+
+        <script>
+                function show(shown, hidden) {
+                  document.getElementById(shown).style.display = 'block';
+                  document.getElementById(hidden).style.display = 'none';
+                  return false;
+                }
+              </script>
+</body>
+
 </html>
 
 
@@ -277,5 +371,3 @@
 <!-- <div class="carousel-item">
     <img class="food-item" alt="Second slide">
 </div> -->
-
-
