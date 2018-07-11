@@ -35,6 +35,7 @@ var Edamam = {
     $RandCtnr: "",
     $RandomFood: "",
     callback: null,
+    searchNum: 1,
     setCallback: function(callback) {
         this.callback = callback;
     },
@@ -43,52 +44,58 @@ var Edamam = {
         var queryParams = {};
         var randPickNum = Math.floor( Math.random() * this.options.length);
         queryParams.q = this.options[randPickNum];
-        queryParams.from = Math.floor(Math.random() * 5);
+        queryParams.from = Math.floor(Math.random() * 50);
         queryParams.to = queryParams.from + 1;
         queryURL += $.param(queryParams);
         return queryURL;
     },
     buildQueryURLSearch: function(keyword) {
-        var queryURL = this.URL + "app_id=" + this.app_id[1] + "&app_key=" + this.app_key[1] + "&";
+        var queryURL = this.URL + "app_id=" + this.app_id[0] + "&app_key=" + this.app_key[0] + "&";
         var queryParams = {};
         queryParams.q = keyword;
-
+        this.searchNum = 10;
         queryParams.from = Math.floor(Math.random() * 50);
-        queryParams.to = queryParams.from + 1;
+        queryParams.to = queryParams.from + this.searchNum;
         queryURL += $.param(queryParams);
         return queryURL;
-
-        // buildQueryURLSearch: function(keyword, diet, health, calories, excluded) {
-        //!!! for detail search
-        // queryParams.diet = diet || "";
-        // queryParams.health = health || "";
-        // queryParams.calories = calories || "";
-        // queryParams.excluded = excluded || "";
     },
-    
-    callAjax: function(keyword) {
+    callAjaxRand: function () {
+        $.ajax({
+            url: this.buildQueryURLRand(),
+            method: "GET"
+        }).then( function(response) {
+            Edamam.randItems = Edamam.getData(response);
+            console.log(Edamam.randItems);
+            Edamam.callback();
+        });
+    },
+    callAjaxKeyword: function(keyword) {
         $.ajax({
             url: this.buildQueryURLSearch(keyword),
             method: "GET"
         }).then( function(response) {
-            Edamam.getData(response);
-            // this.callback();     //!!! displaySearchedItems runs before callAjax.  Trying to run callback on Ajax.
+            Edamam.searchedItems = Edamam.getData(response);
             console.log(Edamam.searchedItems);
-            // console.log(Edamam.searchedItems[0]);
+            Edamam.callback();
         });
     },
-
-    // PUSHING THIS ITEM INFO TO edamam.searchedItems[]
-    getData: function (Data) {    
-        var newItem = {};
-        newItem.label = Data.hits[0].recipe.label;
-        newItem.image = Data.hits[0].recipe.image;
-        newItem.dietLabels = Data.hits[0].recipe.dietLabels;
-        newItem.calories = Data.hits[0].recipe.calories;
-        newItem.ingredients = Data.hits[0].recipe.ingredients;
-        this.searchedItems.unshift(newItem);
+    // PUSHING THIS ITEM INFO TO edamam.returnedItems[]
+    getData: function (Data) {
+        var returnedItems = []; 
+        for (var i = 0; i < this.searchNum; i++) {
+            var newItem = {};
+            newItem.label = Data.hits[i].recipe.label;
+            newItem.image = Data.hits[i].recipe.image;
+            newItem.dietLabels = Data.hits[i].recipe.dietLabels;
+            newItem.calories = Data.hits[i].recipe.calories;
+            newItem.ingredients = Data.hits[i].recipe.ingredients;
+            returnedItems.unshift(newItem);
+        }
+        return returnedItems;
     }
 };
+
+
 
 $(document).on("click", '.food-img', function (event){
     event.preventDefault();
@@ -170,5 +177,10 @@ function ipLookUp () {
 
 
 
-
-
+        // FOR DETAIL SEARCH ----- NOT IN USE
+        // buildQueryURLSearch: function(keyword, diet, health, calories, excluded) {
+        //!!! for detail search
+        // queryParams.diet = diet || "";
+        // queryParams.health = health || "";
+        // queryParams.calories = calories || "";
+        // queryParams.excluded = excluded || "";

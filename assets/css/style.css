@@ -56,14 +56,6 @@
     display: none;
 }
 
-.food-ctnr {
-    background-color: #C8C6C6;
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    margin: 2%;
-    max-width: 302px;
-}
 
 /* RESULT PAGE */
 .container {

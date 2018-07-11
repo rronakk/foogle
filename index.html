@@ -46,51 +46,19 @@
                 <form>
                     <div class="simple-search row">
                         <input type="text" class="form-control col" id="searchItem" placeholder="e.g> chiken, burger, sushi, Italian, etc... ">
-                        <button type="submit" class="btn btn-default col-1 run-search" data-toggle="modal" data-target=".search-modal">
+                        <button type="submit" class="btn btn-default col-1 run-search run-btn" data-toggle="modal" data-target=".search-modal">
                         <!-- <button type="submit" class="btn btn-default col-1 run-search"> -->
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
-                    <div class="detail-search-form">
-                        <div class="input-label row">
-                            <label for="diet" class="col">Diet</label>
-                            <label for="allergy" class="col">Allergy</label>
-                            <label for="calories" class="col">Calories</label>
-                            <label for="excluded" class="col">Exclude It!</label>
-                        </div>
-                        <div class="detail-input row">
-                            <div class="button-group col">
-                                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Diet Option</button>
-                                <ul class="dropdown-menu">
-                                    <li class="small" data-value="high-protein" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-protein</li>
-                                    <li class="small" data-value="balanced" tabIndex="-1"> <input type="checkbox"/>&nbsp;balanced</li>
-                                    <li class="small" data-value="high-fiber" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-fiber</li>
-                                    <li class="small" data-value="low-fat" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-fat</li>
-                                    <li class="small" data-value="low-carb" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-carb</li>
-                                    <li class="small" data-value="low-sodium" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-sodium</li>
-                                </ul>
-                            </div>
-                            <div class="button-group col">
-                                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Allergy</button>
-                                <ul class="dropdown-menu">
-                                    <li class="small" data-value="peanut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;peanut-free</li>
-                                    <li class="small" data-value="tree-nut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;tree-nut-free</li>
-                                    <li class="small" data-value="soy-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;soy-free</li>
-                                    <li class="small" data-value="fish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;fish-free</li>
-                                    <li class="small" data-value="shellfish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;shellfish-free</li>
-                                </ul>
-                            </div>
-                            <input type="text" class="form-control col" data-value="calories" id="calories" placeholder="1000-1500">
-                            <input type="text" class="form-control col" data-value="excluded" id="excluded" placeholder="vinegal, pretzel">
-                        </div>
-                    </div>
+
                 </form>
                 <div id="detail-search">Detail Search</div>
             </div>
 
             <!-- FOOD DATING MODAL BTN -->
             <div class="intro_btns">
-                <button type="button" class="run-random btn btn-primary rand-btn" data-toggle="modal" data-target=".rand-modal">No! Help me to find what I want to eat!</button>
+                <button type="button" class="btn btn-primary run-random run-btn" data-toggle="modal" data-target=".rand-modal">No! Help me to find what I want to eat!</button>
             </div>
         </div>
         
@@ -106,8 +74,8 @@
                         <div class="col-12">Diet Label: <i class="rand-item-dietLabels"></i></div>
                         <div class="col-12">Health Label: <i class="rand-item-healthLabels"></i></div>
                     </div>
-                    <button type="submit" class="btn btn-default run-random dislike" id="rand-dislike"><i class="far fa-thumbs-down"></i></button>
-                    <button type="submit" class="btn btn-default like" id="rand-like"><i class="far fa-thumbs-up"></i></button>
+                    <button type="submit" class="btn btn-default run-random run-btn dislike" id="rand-dislike"><i class="far fa-thumbs-down"></i></button>
+                    <button type="submit" class="btn btn-default run-random run-btn like" id="rand-like"><i class="far fa-thumbs-up"></i></button>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
@@ -120,15 +88,9 @@
         <div class="modal fade search-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="search-item row">
-                        <h5 class="col-12 searched-item-name"></h5>
-                        <img class="col-12 searched-item-img"/>
-                        <div class="col-12">Diet Label: <i class="searched-item-dietLabels"></i></div>
-                        <div class="col-12">Health Label: <i class="searched-item-healthLabels"></i></div>
-                    </div>
-                    <button type="submit" class="btn btn-default run-search dislike" id="dislike"><i class="far fa-thumbs-down"></i></button>
-                    <!-- <button type="submit" class="btn btn-default run-search" id="like"><i class="far fa-thumbs-up"></i></button> -->
-                    <button type="submit" class="btn btn-default like" id="like"><i class="far fa-thumbs-up"></i></button>
+                    <div class="searching-item-area"></div>
+                    <button type="submit" class="btn btn-default run-search run-btn dislike" id="search-dislike"><i class="far fa-thumbs-down"></i></button>
+                    <button type="submit" class="btn btn-default run-search run-btn like" id="search-like"><i class="far fa-thumbs-up"></i></button>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
@@ -179,7 +141,7 @@
 
         <!-- RESULT PAGE -->
         <div class="result card">                
-            <div class="card-body">
+            <div class="card-body searched-result-page">
                 <!-- <div class="random-date" data-toggle="modal" data-target=".choose-modal"><h5>OR, DO YOU WANT TO GET MATCHED WITH A RANDOM DATE?</h5></div> -->
                 <div class="result-item-area row card-body"></div>
             </div>
@@ -285,3 +247,38 @@
 
 </body>
 </html>
+
+
+<!-- <div class="detail-search-form">
+        <div class="input-label row">
+            <label for="diet" class="col">Diet</label>
+            <label for="allergy" class="col">Allergy</label>
+            <label for="calories" class="col">Calories</label>
+            <label for="excluded" class="col">Exclude It!</label>
+        </div>
+        <div class="detail-input row">
+            <div class="button-group col">
+                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Diet Option</button>
+                <ul class="dropdown-menu">
+                    <li class="small" data-value="high-protein" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-protein</li>
+                    <li class="small" data-value="balanced" tabIndex="-1"> <input type="checkbox"/>&nbsp;balanced</li>
+                    <li class="small" data-value="high-fiber" tabIndex="-1"> <input type="checkbox"/>&nbsp;high-fiber</li>
+                    <li class="small" data-value="low-fat" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-fat</li>
+                    <li class="small" data-value="low-carb" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-carb</li>
+                    <li class="small" data-value="low-sodium" tabIndex="-1"> <input type="checkbox"/>&nbsp;low-sodium</li>
+                </ul>
+            </div>
+            <div class="button-group col">
+                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Allergy</button>
+                <ul class="dropdown-menu">
+                    <li class="small" data-value="peanut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;peanut-free</li>
+                    <li class="small" data-value="tree-nut-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;tree-nut-free</li>
+                    <li class="small" data-value="soy-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;soy-free</li>
+                    <li class="small" data-value="fish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;fish-free</li>
+                    <li class="small" data-value="shellfish-free" tabIndex="-1"> <input type="checkbox"/>&nbsp;shellfish-free</li>
+                </ul>
+            </div>
+            <input type="text" class="form-control col" data-value="calories" id="calories" placeholder="1000-1500">
+            <input type="text" class="form-control col" data-value="excluded" id="excluded" placeholder="vinegal, pretzel">
+        </div>
+    </div> -->
