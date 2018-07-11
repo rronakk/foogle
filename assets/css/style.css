@@ -11,9 +11,15 @@
 .search-area {
     margin: 0 10%;
 }
+#searchItem {
+    margin-bottom: 30px;
+}
+#initial-search {
+    width: 275px;
+}
 .intro_btns {
+    margin-top: 15px;
     text-align: center;
-    margin-top: 5%;
 }
 
 /* SEARCH MODAL */
@@ -247,4 +253,38 @@
 
 .temp-btn {
     text-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 5px darkblue;
+}
+
+/* Media Queries */
+@media (min-width: 1200px) {
+    body{
+        background-color: lightcoral;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    body{
+        background-color: rgb(170, 247, 189)
+    }
+}
+
+@media (max-width: 767px) {
+
+    /* Intro Page */
+
+    /* Results Page */
+
+    body{
+        background-color: lightskyblue;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Intro Page */
+
+    /* ------------- */
+    body{
+        background-color: gray;
+    }
 }
