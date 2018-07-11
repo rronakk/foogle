@@ -157,7 +157,7 @@ $(document).on("click", '#like', function (event) {
     var $likedDiet = $('.searched-item-dietLabels').clone().removeClass();
     var $likedHealth = $('.searched-item-healthLabels').clone().removeClass();
 
-    var $likedItem = $('<div class="liked-item col-4 card">');
+    var $likedItem = $('<div class="liked-item col-xs-12 col-sm-8 col-md-6 col-lg-4 card">');
     $likedItem.append($likedName);
     $likedItem.append($likedImg);
     $likedItem.append($likedDiet);

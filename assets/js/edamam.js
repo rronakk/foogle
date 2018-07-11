@@ -103,6 +103,7 @@ $(document).on("click", '.food-img', function (event){
             "authorization": "Bearer aXBYOEZ2urYrK_dgFfaCQyg96ftnMSPopRdFnFxEMu7ndPT-WYFcQ4CFuBjlmpHmLxrPC8cpKlHrVN5mrySh8FnXsTI-VPIBrI9tVD6qN0qGtM0n_K1ZncYU0R89W3Yx",
         }
     }).then( function(response) {
+        console.log(response);
         // $(".result-item-pic").attr("src", response.businesses[0].image_url);
         console.log(response.businesses[0]);
         
