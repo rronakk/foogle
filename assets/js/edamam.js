@@ -163,12 +163,7 @@ function ipLookUp () {
                         status);
         }
     );
-}       function fail(data, status) {
-            console.log('Request failed.  Returned status of',
-                        status);
-        }
-    );
-  }
+}
 
 
 
