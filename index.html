@@ -39,12 +39,35 @@
 </head>
 
 <body>
-    <div class="g-home">
-        <img src="assets/images/festisite_google.png" />
-        <form id="search-area" name="google" action="#" method="POST">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="./assets/images/festisite_google.png" width="30" height="30" class="img-fluid">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active NAV" id="hometab">
+                    <a class="nav-link" href="#" onclick="return show('ghome','resultPage');">
+                        <i class="fa fa-home">Home</i>
+                    </a>
+                </li>
+                <li class="nav-item NAV" id="favtab">
+                    <a class="nav-link" href="#" onclick="return show('resultPage','ghome');">
+                        <i class="fa fa-star"></i>
+                        Favorites
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="g-home" id="ghome">
+        <img src="assets/images/festisite_google.png" class="img-fluid" />
+        <form id="search-area" name="google" action="#" method="POST" class="form">
             <br>
-            <input type="search" class="search" id="searchItem" for="fooglesearch" placeholder="Search Your Food: Chicken, Burger, Sushi, Ramen, etc... "
-                >
+            <input type="search" class="search" id="searchItem" for="fooglesearch" placeholder="Search Your Food: Chicken, Burger, Sushi, Ramen, etc... ">
             <br>
             <button type="submit" class="button run-search" name="submit" id='initial-search' data-toggle="modal" data-target=".search-modal"
                 value="Foogle Search">Foogle Search</button>
@@ -87,7 +110,7 @@
             <div class="modal-content">
                 <div class="search-item row">
                     <h5 class="col-12 searched-item-name"></h5>
-                    <img class="col-12 searched-item-img"/>
+                    <img class="col-12 searched-item-img" />
                     <div class="col-12 searched-item-diet-label">Diet Label:
                         <i class="searched-item-dietLabels"></i>
                     </div>
@@ -157,11 +180,19 @@
     </div>
 
     <!-- RESULT PAGE -->
-    <div class="result card">
+    <div class="result card" id="resultPage" name="resultPage">
         <div class="card-body searched-result-page">
             <div class="result-item-area row card-body"></div>
         </div>
     </div>
+
+    <script>
+        function show(shown, hidden) {
+            document.getElementById(shown).style.display = 'block';
+            document.getElementById(hidden).style.display = 'none';
+            return false;
+        }
+    </script>
 
 </body>
 

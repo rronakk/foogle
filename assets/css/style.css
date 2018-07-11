@@ -7,6 +7,10 @@
 	padding-top: 14%;
 }
 
+.NAV:hover {
+    background-color: #64FE8A;
+}
+
 div img {
 	width: 270px;
 	height: 95px;

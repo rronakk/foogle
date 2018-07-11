@@ -53,7 +53,7 @@ $(document).on('click', '#rand-like', function(event) {
 		.clone()
 		.removeClass();
 
-	var $likedItem = $('<div class="liked-item col-4 card">');
+	var $likedItem = $('<div class="liked-item col-xs-12 col-sm-8 col-md-6 col-lg-4 card">');
 	$likedItem.append($likedName);
 	$likedItem.append($likedImg);
 	$likedItem.append($likedDiet);
@@ -88,7 +88,7 @@ $(document).on('click', '#rand-like', function(event) {
 $(document).on('click', '.run-search', function(event) {
 	let x = $('#searchItem').val().length;
 	if (x === 0) {
-		alert('Input must be made!!!');
+		alert('Enter a food item!!!');
 	} else {
 		$('.search-item').addClass('animated rotateOutDownLeft');
 		//pageAction
