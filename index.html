@@ -32,25 +32,33 @@
 
     <body>
         <!-- PAGE 1 INTRO -->
-        <div class="banner_intro intro_1">
+        <!-- <div class="banner_intro intro_1">
             <div id="edamam-badge" data-color="white"></div>
             <h1 class="jumbotron make-ur-life-ezr"><b>Having a hard time deciding what to eat for lunch?<br><br>Make your life easier.<br>We are the Ultimate Lunch Recommendation System.</b></h1>
-        </div>
+        </div> -->
         <!-- PAGE 2 INTRO -->
-        <div class="banner_intro intro_2">
+        <!-- <div class="banner_intro intro_2">
             <div id="edamam-badge" data-color="white"></div>
-            <h1 class="jumbotron what-to-eat animated zoomInUp"><b>Do you know what you want to eat?</b></h1>
+            <h1 class="jumbotron what-to-eat animated zoomInUp"><b>Do you know what you want to eat?</b></h1> -->
 
             <!-- SEARCH FORM -->
-            <div class="search-area">
+            <div class="g-home">
+                <img src="assets/images/festisite_google.png"/>
+                <form id = "search-area" name="google" action="#" method="POST"><br>
+                    <input type="search" class="search" id="searchItem" placeholder="Search Your Food: Chicken, Burger, Sushi, Ramen, etc... "><br>
+                    <input type="submit" class="button run-search" name="submit" id='initial-search' data-toggle="modal" data-target=".search-modal" value="Foogle Search">
+                    <input type="submit" class="button run-random" name="lucky" data-toggle="modal" data-target=".rand-modal" value="I'm Feeling Lucky, Give me Suggestion">
+                </form>
+            </div>
+            <!-- <div class="search-area">
                 <form>
                     <div class="simple-search row">
                         <input type="text" class="form-control col-xs-12" id="searchItem" placeholder="e.g> Chicken, Burgers, Sushi, Italian, etc... ">
-                        <button type="submit" class="btn btn-default col-xs-2 run-search" id='initial-search' data-toggle="modal" data-target=".search-modal">
+                        <button type="submit" class="btn btn-default col-xs-2 run-search" id='initial-search' data-toggle="modal" data-target=".search-modal1"> -->
                         <!-- <button type="submit" class="btn btn-default col-1 run-search"> -->
-                        <i class="fa fa-search"> Search </i>
+                        <!-- <i class="fa fa-search"> Search </i> -->
                         <!-- </button> -->
-                    </div>
+                    <!-- </div> -->
                    <!--  <div class="detail-search-form">
                         <div class="input-label row">
                             <label for="diet" class="col">Diet</label>
@@ -84,15 +92,15 @@
                             <input type="text" class="form-control col" data-value="excluded" id="excluded" placeholder="Tomatoes, Cheese, Spicy Peppers">
                         </div>
                     </div> -->
-                </form>
+                <!-- </form> -->
                 <!-- <div id="detail-search" class='btn btn-dark'>Detailed Search</div> -->
-            </div>
+            <!-- </div> -->
 
             <!-- FOOD DATING MODAL BTN -->
-            <div class="intro_btns">
-                <button type="button" class="run-random btn btn-primary rand-btn" data-toggle="modal" data-target=".rand-modal">No! Help me find something to eat!</button>
-            </div>
-        </div>
+            <!-- <div class="intro_btns"> -->
+                <!-- <button type="button" class="run-random btn btn-primary rand-btn" data-toggle="modal" data-target=".rand-modal">No! Help me find something to eat!</button> -->
+            <!-- </div> -->
+        <!-- </div> -->
 
         <!-- RANDOM MODAL: this is duplicate of search modal -->
         <div class="modal fade rand-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

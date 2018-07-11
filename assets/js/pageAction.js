@@ -16,8 +16,9 @@ var IntroAction = function () {
 var RunSearchAction = function () {
     $('.banner_intro').fadeOut(1000);
     $('.result').show();
+    $(".g-home").hide();
     // $('.searched-result-page').prepend('<h1 class="col-12">Here is our recommendation on: ' + $('#searchItem').val().trim().toUpperCase() + '</h1>');
-    $('.searched-result-page').prepend($('.search-area'));
+    $('.searched-result-page').prepend($('#search-area'));
     $('.searched-result-page').fadeIn(2000);
     $('.page-navigation').fadeIn(2000);
     $('.page-tab').fadeIn(4000);
