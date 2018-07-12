@@ -80,6 +80,13 @@ $(document).on('click', '.run-btn', function(event) {
 			Edamam.callAjaxRand();
 		}
 	}
+  
+		/* $('.rand-item-caloriesLabel').text("Calories : " + Math.ceil(response.hits[0].recipe.calories));
+		$('.rand-item-proteinsLabel').text("Proteins : " + Math.ceil(response.hits[0].recipe.totalNutrients.PROCNT.quantity) + " " + response.hits[0].recipe.totalNutrients.PROCNT.unit);
+		$('.rand-item-carbsLabel').text("Carbohydrates : " + Math.ceil(response.hits[0].recipe.totalNutrients.CHOCDF.quantity) + " " + response.hits[0].recipe.totalNutrients.CHOCDF.unit);
+		$('.rand-item-fatsLabel').text("Fats : " + Math.ceil(response.hits[0].recipe.totalNutrients.FAT.quantity) + " " + response.hits[0].recipe.totalNutrients.FAT.unit);
+		$('.rand-item-choleLabel').text("Cholesterol : " + Math.ceil(response.hits[0].recipe.totalNutrients.CHOLE.quantity) + " " + response.hits[0].recipe.totalNutrients.CHOLE.unit); */
+	});
 });
 
 // AJAX CALL RESPONSE
@@ -96,26 +103,22 @@ var displayItems = function () {
         var itemImg = Edamam.searchedItems[0].image;
         var itemName = Edamam.searchedItems[0].label;
         var itemDiet = Edamam.searchedItems[0].dietLabels;
-		var itemHealth = Edamam.searchedItems[0].healthLabels;
-		var $itemImg = $('<img class="col-12 searched-item-img img-fluid rounded mx-auto d-block">');
-		var $itemName = $('<h5 class="col-12 searched-item-name">');
-		var $itemDietI = $('<i class="searched-item-dietLabels">');
-		var $itemHealthI = $('<i class="searched-item-healthLabels">');
+        var itemHealth = Edamam.searchedItems[0].healthLabels;
+        var $itemImg = $('<img class="col-12 searched-item-img img-fluid rounded mx-auto d-block">');
+        var $itemName = $('<h5 class="col-12 searched-item-name">');
+        var $itemDietI = $('<i class="searched-item-dietLabels">');
+        var $itemHealthI = $('<i class="searched-item-healthLabels">');
     } else if ($(CLICKEDBTN).hasClass('run-random')) {
         var itemImg = Edamam.randItems[0].image;
         var itemName = Edamam.randItems[0].label;
         var itemDiet = Edamam.randItems[0].dietLabels;
-		var itemHealth = Edamam.randItems[0].healthLabels;	
-		var $itemImg = $('<img class="col-12 rand-item-img img-fluid rounded mx-auto d-block">');
-		var $itemName = $('<h5 class="col-12 rand-item-name">');
-		var $itemDietI = $('<i class="rand-item-dietLabels">');
-		var $itemHealthI = $('<i class="rand-item-healthLabels">');
+        var itemHealth = Edamam.randItems[0].healthLabels;	
+        var $itemImg = $('<img class="col-12 rand-item-img img-fluid rounded mx-auto d-block">');
+        var $itemName = $('<h5 class="col-12 rand-item-name">');
+        var $itemDietI = $('<i class="rand-item-dietLabels">');
+        var $itemHealthI = $('<i class="rand-item-healthLabels">');
     }
 
-	// var $itemImg = $('<img class="col-12 searched-item-img img-fluid rounded mx-auto d-block">');
-	// var $itemName = $('<h5 class="col-12 searched-item-name">');
-    // var $itemDietI = $('<i class="searched-item-dietLabels">');
-	// var $itemHealthI = $('<i class="searched-item-healthLabels">');
 
 	// item img
     $itemImg.attr("data-target", "#modelId");
