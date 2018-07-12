@@ -10,8 +10,8 @@ window.onload = function() {
     if ("geolocation" in navigator) {
         // check if geolocation is supported/enabled on current browser
         navigator.geolocation.getCurrentPosition( function success(position) {
-            console.log('latitude', position.coords.latitude, 
-                       'longitude', position.coords.longitude);
+            // console.log('latitude', position.coords.latitude, 
+                    //    'longitude', position.coords.longitude);
             lat = position.coords.latitude;
             long = position.coords.longitude;
         }, function error(error_message) {
@@ -44,8 +44,9 @@ var Edamam = {
         var queryParams = {};
         var randPickNum = Math.floor( Math.random() * this.options.length);
         queryParams.q = this.options[randPickNum];
+        this.searchNum = 1; // 2
         queryParams.from = Math.floor(Math.random() * 50);
-        queryParams.to = queryParams.from + 1;
+        queryParams.to = queryParams.from + this.searchNum;
         queryURL += $.param(queryParams);
         return queryURL;
     },
@@ -53,19 +54,29 @@ var Edamam = {
         var queryURL = this.URL + "app_id=" + this.app_id[0] + "&app_key=" + this.app_key[0] + "&";
         var queryParams = {};
         queryParams.q = keyword;
-        this.searchNum = 10;
+        this.searchNum = 1; // 10
         queryParams.from = Math.floor(Math.random() * 50);
         queryParams.to = queryParams.from + this.searchNum;
         queryURL += $.param(queryParams);
         return queryURL;
+    },
+    suffleRandItems: function() {
+        for (var i = (this.randItems.length - 1) ; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = this.randItems[i];
+            this.randItems[i] = this.randItems[j];
+            this.randItems[j] = temp;
+        }
+        console.log(this.randItems);
+        return this.randItems;
     },
     callAjaxRand: function () {
         $.ajax({
             url: this.buildQueryURLRand(),
             method: "GET"
         }).then( function(response) {
-            Edamam.randItems = Edamam.getData(response);
-            console.log(Edamam.randItems);
+            Edamam.getRandomData(response);
+            // console.log(Edamam.randItems);
             Edamam.callback();
         });
     },
@@ -74,13 +85,13 @@ var Edamam = {
             url: this.buildQueryURLSearch(keyword),
             method: "GET"
         }).then( function(response) {
-            Edamam.searchedItems = Edamam.getData(response);
+            Edamam.searchedItems = Edamam.getSearchedData(response);
             console.log(Edamam.searchedItems);
             Edamam.callback();
         });
     },
     // PUSHING THIS ITEM INFO TO edamam.returnedItems[]
-    getData: function (Data) {
+    getSearchedData: function (Data) {
         var returnedItems = []; 
         for (var i = 0; i < this.searchNum; i++) {
             var newItem = {};
@@ -92,7 +103,19 @@ var Edamam = {
             returnedItems.unshift(newItem);
         }
         return returnedItems;
-    }
+    },
+    getRandomData: function (Data) {
+        for (var i = 0; i < this.searchNum; i++) {
+            var newItem = {};
+            newItem.label = Data.hits[i].recipe.label;
+            newItem.image = Data.hits[i].recipe.image;
+            newItem.dietLabels = Data.hits[i].recipe.dietLabels;
+            newItem.calories = Data.hits[i].recipe.calories;
+            newItem.ingredients = Data.hits[i].recipe.ingredients;
+            this.randItems.unshift(newItem);
+        }
+        return this.randItems;
+    }   
 };
 
 
