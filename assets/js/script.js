@@ -10,13 +10,13 @@ $(document).on('click', '.run-btn', function(event) {
 	CLICKEDBTN = this;
 
 	let x = $('#searchItem').val().length;
-	// if (CLICKEDBTN.hasClass('run-search') && x === 0) {	// commented out for now
-	// 	alert('Enter a food item!!!');
+	if ($(CLICKEDBTN).hasClass('run-search') && x === 0) {
+		alert('Enter a food item!!!');
 
-	// } else {
+	} else {
 		RunSearchAction();
 		// IF LIKED ON SEARCH
-		if ($(CLICKEDBTN).hasClass('like')) {
+		if ($(CLICKEDBTN).attr('id') === 'like') {
 			var $likedName, $likedImg, $likedDiet, $likedHealth;
 
 			// likedName
@@ -39,7 +39,32 @@ $(document).on('click', '.run-btn', function(event) {
 			$likedItem.append($likedDiet);
 			$likedItem.append($likedHealth);
 			$(".result-item-area").prepend($likedItem);
+
+		// IF LIKED ON RAND
+		} else if ($(CLICKEDBTN).attr('id') === 'rand-like') {
+			var $likedName, $likedImg, $likedDiet, $likedHealth;
+
+			// likedName
+			$likedName = $('.rand-item-name').clone().removeClass();
+			// likedImg
+			$likedImg = $('.rand-item-img').clone().removeClass();
+			$('.added-item').addClass('animated zoomOutRight');
+			$likedImg.addClass('food-img');
+			$likedImg.attr("data-target", "#modelId");
+			$likedImg.attr("data-toggle", "modal");
+			// likedDiet
+			var $likedDiet = $('.rand-item-dietLabels').clone().removeClass();
+			// likedHealth
+			var $likedHealth = $('.rand-item-healthLabel').clone().removeClass();
 	
+			// likedItem (container)
+			var $likedItem = $('<div class="liked-item col-4 card">');
+			$likedItem.append($likedName);
+			$likedItem.append($likedImg);
+			$likedItem.append($likedDiet);
+			$likedItem.append($likedHealth);
+			$(".result-item-area").prepend($likedItem);
+
 		// IF DISLIKED ON SEARCH
 		} else if ($(CLICKEDBTN).hasClass('dislike')) {
 			$('.added-item').addClass('animated rotateOutDownLeft');
@@ -54,7 +79,7 @@ $(document).on('click', '.run-btn', function(event) {
 		} else if ($(CLICKEDBTN).hasClass('run-random')) {
 			Edamam.callAjaxRand();
 		}
-	// }
+	}
 });
 
 // AJAX CALL RESPONSE
@@ -71,39 +96,59 @@ var displayItems = function () {
         var itemImg = Edamam.searchedItems[0].image;
         var itemName = Edamam.searchedItems[0].label;
         var itemDiet = Edamam.searchedItems[0].dietLabels;
+		var itemHealth = Edamam.searchedItems[0].healthLabels;
+		var $itemImg = $('<img class="col-12 searched-item-img img-fluid rounded mx-auto d-block">');
+		var $itemName = $('<h5 class="col-12 searched-item-name">');
+		var $itemDietI = $('<i class="searched-item-dietLabels">');
+		var $itemHealthI = $('<i class="searched-item-healthLabels">');
     } else if ($(CLICKEDBTN).hasClass('run-random')) {
         var itemImg = Edamam.randItems[0].image;
         var itemName = Edamam.randItems[0].label;
         var itemDiet = Edamam.randItems[0].dietLabels;
+		var itemHealth = Edamam.randItems[0].healthLabels;	
+		var $itemImg = $('<img class="col-12 rand-item-img img-fluid rounded mx-auto d-block">');
+		var $itemName = $('<h5 class="col-12 rand-item-name">');
+		var $itemDietI = $('<i class="rand-item-dietLabels">');
+		var $itemHealthI = $('<i class="rand-item-healthLabels">');
     }
 
-    // food item img
-    var $itemImg = $('<img>');
-    $itemImg.addClass("col-12 searched-item-img img-fluid rounded mx-auto d-block");
+	// var $itemImg = $('<img class="col-12 searched-item-img img-fluid rounded mx-auto d-block">');
+	// var $itemName = $('<h5 class="col-12 searched-item-name">');
+    // var $itemDietI = $('<i class="searched-item-dietLabels">');
+	// var $itemHealthI = $('<i class="searched-item-healthLabels">');
+
+	// item img
     $itemImg.attr("data-target", "#modelId");
     $itemImg.attr("data-toggle", "modal");
     if (itemImg) {
         $itemImg.attr('src', itemImg);
     } 
-    // food item name
-    var $itemName = $('<h5 class="col-12 searched-item-name">');
+    // item name
     if (itemName) {
         $itemImg.attr('name', itemName);
         $itemName.html(itemName.toUpperCase());
     }
-    // food item DietLabel
+    // item DietLabel
     var $itemDiet = $('<div class="col-12">');
-    var $itemDietI = $('<i class="searched-item-dietLabels">');
     $itemDiet.html($itemDietI);
     if (itemDiet) {
         $itemDietI.text(itemDiet);
-    }
+	}
+	
+	// item HealthLabel
+	var $itemHealth = $('<div class="col-12">');
+	$itemHealth.html($itemHealthI);
+	if (itemHealth) {
+		$itemHealthI.text(itemHealth);
+	}
+
     // container for food img, name, diet label 
     var $itemCtnr = $('<div class="added-item row">');
     // append to container
     $itemCtnr.append($itemName);
     $itemCtnr.append($itemImg);
     $itemCtnr.append($itemDiet);
+    $itemCtnr.append($itemHealth);
 
     // APPEND OBJECT TO MODAL BODY
     if ($(CLICKEDBTN).hasClass('run-search')) {

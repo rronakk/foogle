@@ -24,6 +24,22 @@ window.onload = function() {
         ipLookUp();
     }
 };
+
+function ipLookUp () {
+    $.ajax('http://ip-api.com/json')
+    .then(
+        function success(response) {
+            long = response.lon;
+            lat = response.lat;
+            
+    },
+        function fail(data, status) {
+            console.log('Request failed.  Returned status of',
+                        status);
+        }
+    );
+}
+
   
 
 var Edamam = {
@@ -78,7 +94,8 @@ var Edamam = {
         }).then( function(response) {
             // Edamam.getRandomData(response);
             Edamam.randItems = Edamam.getSearchedData(response);
-            console.log("rand: " + Edamam.randItems);
+            console.log("rand:")
+            console.log(Edamam.randItems);
             Edamam.callback();
         });
     },
@@ -88,7 +105,8 @@ var Edamam = {
             method: "GET"
         }).then( function(response) {
             Edamam.searchedItems = Edamam.getSearchedData(response);
-            console.log("searched: " + Edamam.searchedItems);
+            console.log("search:")
+            console.log(Edamam.searchedItems);
             Edamam.callback();
         });
     },
@@ -100,6 +118,7 @@ var Edamam = {
             newItem.label = Data.hits[i].recipe.label;
             newItem.image = Data.hits[i].recipe.image;
             newItem.dietLabels = Data.hits[i].recipe.dietLabels;
+            newItem.healthLabels = Data.hits[i].recipe.healthLabels;
             newItem.calories = Data.hits[i].recipe.calories;
             newItem.ingredients = Data.hits[i].recipe.ingredients;
             returnedItems.unshift(newItem);
@@ -183,20 +202,6 @@ $(document).on("click", '.food-img', function (event){
     });
 })
 
-function ipLookUp () {
-    $.ajax('http://ip-api.com/json')
-    .then(
-        function success(response) {
-            long = response.lon;
-            lat = response.lat;
-            
-    },
-        function fail(data, status) {
-            console.log('Request failed.  Returned status of',
-                        status);
-        }
-    );
-}
 
 
 
