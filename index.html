@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
     <!-- Google Maps API call -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcOgHEqu_cMFWOiYiOHjE3fR7flQniwdQ&callback=initMap" async
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcOgHEqu_cMFWOiYiOHjE3fR7flQniwdQ" async
         defer></script>
 
 </head>
@@ -41,7 +41,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img src="./assets/images/festisite_google.png" width="30" height="30" class="img-fluid">
+            <img src="./assets/images/festisite_google.png" width="80" height="0" class="img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -49,13 +49,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active NAV" id="hometab">
-                    <a class="nav-link" href="#" onclick="return show('ghome','resultPage');">
+                <li class="nav-item active NAV" id="homeTab">
+                    <a class="nav-link" href="#">
                         <i class="fa fa-home">Home</i>
                     </a>
                 </li>
-                <li class="nav-item NAV" id="favtab">
-                    <a class="nav-link" href="#" onclick="return show('resultPage','ghome');">
+                <li class="nav-item NAV" id="favTab">
+                    <a class="nav-link" href="#">
                         <i class="fa fa-star"></i>
                         Favorites
                     </a>
@@ -64,6 +64,11 @@
         </div>
     </nav>
     <div class="g-home" id="ghome">
+            <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
+                    <video autoplay muted loop id="myVideo">
+                            <source src="assets/images/background_video.mp4" type="video/mp4">
+                    </video>  
+            </div>
         <img src="assets/images/festisite_google.png" class="img-fluid" />
         <form id="search-area" name="google" action="#" method="POST" class="form">
             <br>
@@ -71,7 +76,7 @@
             <br>
             <button type="submit" class="button run-search" name="submit" id='initial-search' data-toggle="modal" data-target=".search-modal"
                 value="Foogle Search">Foogle Search</button>
-            <button type="submit" class="button run-random" name="lucky" data-toggle="modal" data-target=".rand-modal" value="I'm Feeling Lucky, Give me Suggestion">I'm Feeling Lucky, Give me Suggestion</button>
+            <button type="submit" class="button run-random" name="lucky" data-toggle="modal" data-target=".rand-modal" value="I'm Feeling Lucky, Suggest Me Something">I'm Feeling Lucky, Suggest Me Something</button>
         </form>
     </div>
 
@@ -83,9 +88,27 @@
                     <h5 class="col-12 rand-item-name"></h5>
                     <img class="col-12 rand-item-img" />
                 </div>
-                <div class="row">
-                    <h3 class="col-3"> Calories : </h3>
-                    <i class="rand-item-dietLabel col-9"></i>
+                <div class="container">
+                    <div class="row">
+                        <h5 class="col-6"> Calories : </h5>
+                        <i class="label rand-item-caloriesLabel col-6">  </i>
+                    </div>
+                    <div class="row">
+                        <h5 class="col-6"> Proteins : </h5>
+                        <i class="label rand-item-proteinsLabel col-6">  </i>
+                    </div>
+                    <div class="row">
+                        <h5 class="col-6"> Carbohydrates : </h5>
+                        <i class="label rand-item-carbsLabel col-6">  </i>
+                    </div>
+                    <div class="row">
+                        <h5 class="col-6"> Fats : </h5>
+                        <i class="label rand-item-fatsLabel col-6">  </i>
+                    </div>
+                    <div class="row">
+                        <h5 class="col-6"> Cholesterol : </h5>
+                        <i class="label rand-item-choleLabel col-6">  </i>
+                    </div>    
                 </div>
                 <button type="submit" class="btn btn-default run-random dislike" id="rand-dislike">
                     <i class="far fa-thumbs-down"></i>
@@ -113,23 +136,23 @@
                 <div class="container">
                     <div class="row">
                         <h5 class="col-6"> Calories : </h5>
-                        <i class="label rand-item-caloriesLabel col-6">  </i>
+                        <i class="label searched-item-caloriesLabel col-6">  </i>
                     </div>
                     <div class="row">
                         <h5 class="col-6"> Proteins : </h5>
-                        <i class="label rand-item-proteinsLabel col-6">  </i>
+                        <i class="label searched-item-proteinsLabel col-6">  </i>
                     </div>
                     <div class="row">
                         <h5 class="col-6"> Carbohydrates : </h5>
-                        <i class="label rand-item-carbsLabel col-6">  </i>
+                        <i class="label searched-item-carbsLabel col-6">  </i>
                     </div>
                     <div class="row">
                         <h5 class="col-6"> Fats : </h5>
-                        <i class="label rand-item-fatsLabel col-6">  </i>
+                        <i class="label searched-item-fatsLabel col-6">  </i>
                     </div>
                     <div class="row">
                         <h5 class="col-6"> Cholesterol : </h5>
-                        <i class="label rand-item-choleLabel col-6">  </i>
+                        <i class="label searched-item-choleLabel col-6">  </i>
                     </div>    
                 </div>
                 <button type="submit" class="btn btn-default run-search" id="dislike">

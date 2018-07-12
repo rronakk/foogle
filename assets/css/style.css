@@ -8,7 +8,10 @@
 }
 
 .NAV:hover {
-    background-color: #64FE8A;
+    background-color: gray;
+    border: 1px solid #bdbdbd;
+    border-radius: 30px;
+
 }
 
 div img {
@@ -58,36 +61,69 @@ div img {
 .make-ur-life-ezr {
     text-align: center;
 }
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    /* filter:grayscale(100%); */
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color:#696969;
+    opacity: 1; /* Firefox */
+}
+
+input[type="search"]{
+    background: #f3f3f3; 
+}
+
 #edamam-badge {
     text-align: left;
 }
+
 #searchItem {
     margin-bottom: 10px;
 }
+
 .searched-result-page{
     text-align: center;
 }
+
 .search-area {
     margin: 0 10%;
 }
+
 #searchItem {
     margin-bottom: 30px;
 }
+
 #initial-search {
     width: 275px;
 }
+
 .intro_btns {
     margin-top: 15px;
     text-align: center;
 }
 
+/* ALL MODALS */
+
+/* .modal {
+    border-radius: 5px;
+} */
+
 /* SEARCH MODAL */
+
 .search-item {
     overflow: hidden;
 }
 
 .searched-item-name {
-    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 5px;
     text-align: center;
 }
 
@@ -133,7 +169,42 @@ div img {
     box-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px red;
 }
 
+/* RANDOM MODAL */
+
+.rand-item-name {
+    padding-top: 15px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+#rand-dislike {
+    background-color: #FEA69D;
+    position: absolute;
+    left: 5%;
+    height: 38px;
+    top: 50%;
+}
+
+#rand-dislike:hover {
+    background-color: #FA8E83;
+    box-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px red;
+}
+
+#rand-like {
+    background-color: #84FCA1;
+    position: absolute;
+    right: 5%;
+    height: 38px;
+    top: 50%;
+}
+
+#rand-like:hover {
+    background-color: #64FE8A;
+    box-shadow: 1px 1px 2px black, 0 0 25px green, 0 0 5px green;
+}
+
 /* DETAIL MODAL */
+
 .item-name {
     text-align: center;
     padding: 0;
@@ -154,8 +225,8 @@ div img {
     padding: 15px 0px 15px 15px;
 }
 
-
 /* SEARCH RESULT PAGE */
+
 .liked-item {
     padding: 25px;
 }
@@ -166,6 +237,7 @@ div img {
     top: 10%;
     z-index: 100;
 }
+
 .detail-search-form {
     display: none;
 }
@@ -180,9 +252,11 @@ div img {
 }
 
 /* RESULT PAGE */
+
 .container {
     background-color: #C8C6C6;
 }
+
 .fav-btn {
     position: absolute;
     top:2%;
@@ -195,6 +269,7 @@ div img {
     font-size: 2em;
 
 }
+
 .result-item {
     clear: both;
     padding: 30px;
@@ -218,15 +293,8 @@ div img {
     padding: 5% 0;
 }
 
-
-
 /* Restaurant Name, Food Name, Price */
-/* h5 {
-    display: inline;
-} */
-/* .restaurant-location {
-    height: 200px;
-} */
+
 #map {
     border-left: 1px solid black;
     height: 100%;
@@ -237,17 +305,10 @@ div img {
 }
 
     /* Rating/Distance, Delivery, Takeout */
-/* .restaurant-info {
-    margin-top: 20px;
-} */
 
 .secondary-info {
     margin-top: 20px;
 }
-
-/* h6 {
-    display: inline;
-} */
 
 .delivery {
     background-color: #F75124;
@@ -276,28 +337,31 @@ div img {
     float: right;
 }
 
-
 /* INTRO PAGE */
+
 .banner_intro {
     /* text-align: center; */
     height: 100vh;
 }
+
 .banner_intro h1 {
     margin-top: 10%;
     text-align: center;
-
 }
+
 .food-item {
     height: 500;
 }
+
 .food-item img {
     width: 100%;
     height: 500px;
-
 }
+
 #enjoyYourFoodDating {
     height: 500px;
 }
+
 #datingNote {
     text-align: center;
     font-weight: bold;
@@ -309,10 +373,14 @@ div img {
     width: 100%;
     padding-top: 20%;
 }
+
 #resultNote {
     text-align: center;
 }
 
+.result{
+    border: 0;
+}
 
 .temp-btn {
     text-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 5px darkblue;
