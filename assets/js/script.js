@@ -43,7 +43,7 @@ $(document).on('click', '#rand-like', function(event) {
 		.clone()
 		.removeClass();
 	$likedImg.attr('name', $likedName.text());
-	$likedImg.addClass('food-img');
+	$likedImg.addClass('food-img img-fluid img-thumbnail mx-auto d-block');
 	$likedImg.attr('data-target', '#modelId');
 	$likedImg.attr('data-toggle', 'modal');
 	var $likedDiet = $('.rand-item-dietLabels')
@@ -146,7 +146,7 @@ $(document).on('click', '#like', function(event) {
 		.clone()
 		.removeClass();
 	$likedImg.attr('name', $likedName.text());
-	$likedImg.addClass('food-img');
+	$likedImg.addClass('food-img img-fluid img-thumbnail mx-auto d-block');
 	$likedImg.attr('data-target', '#modelId');
 	$likedImg.attr('data-toggle', 'modal');
 	var $likedCalories = $('.rand-item-caloriesLabel')
@@ -213,13 +213,13 @@ var displaySearchedItems = function() {
 	var itemImg = Edamam.searchedItems[0].image;
 	$itemImg.attr('data-target', '#modelId');
 	$itemImg.attr('data-toggle', 'modal');
-	$itemImg.addClass('food-img');
+	$itemImg.addClass('food-img img-fluid img-thumbnail mx-auto d-block');
 	if (itemImg) {
 		$itemImg.attr('src', itemImg);
 	}
 
 	// food item name
-	var $itemName = $('<h5>');
+	var $itemName = $('<h5 class="text-center">');
 	$itemName.addClass('food-name card-body');
 	var itemName = Edamam.searchedItems[0].label;
 	if (itemName) {

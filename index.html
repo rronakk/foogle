@@ -64,19 +64,19 @@
         </div>
     </nav>
     <div class="g-home" id="ghome">
-            <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
-                    <video autoplay muted loop id="myVideo">
-                            <source src="assets/images/background_video.mp4" type="video/mp4">
-                    </video>  
-            </div>
+        <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
+            <video autoplay muted loop id="myVideo">
+                <source src="assets/images/background_video.mp4" type="video/mp4">
+            </video>
+        </div>
         <img src="assets/images/festisite_google.png" class="img-fluid" />
         <form id="search-area" name="google" action="#" method="POST" class="form">
             <br>
             <input type="search" class="search" id="searchItem" for="fooglesearch" placeholder="Search Your Food: Chicken, Burger, Sushi, Ramen, etc... ">
             <br>
-            <button type="submit" class="button run-search" name="submit" id='initial-search' data-toggle="modal" data-target=".search-modal"
+            <button type="submit" class="btn button run-search" name="submit" id='initial-search' data-toggle="modal" data-target=".search-modal"
                 value="Foogle Search">Foogle Search</button>
-            <button type="submit" class="button run-random" name="lucky" data-toggle="modal" data-target=".rand-modal" value="I'm Feeling Lucky, Give me Suggestion">I'm Feeling Lucky, Give me Suggestion</button>
+            <button type="submit" class="btn button run-random" name="lucky" data-toggle="modal" data-target=".rand-modal" value="I'm Feeling Lucky, Give me Suggestion">I'm Feeling Lucky, Give me Suggestion</button>
         </form>
     </div>
 
@@ -118,24 +118,24 @@
                 <div class="container">
                     <div class="row">
                         <h5 class="col-6"> Calories : </h5>
-                        <i class="label rand-item-caloriesLabel col-6">  </i>
+                        <i class="label rand-item-caloriesLabel col-6"> </i>
                     </div>
                     <div class="row">
                         <h5 class="col-6"> Proteins : </h5>
-                        <i class="label rand-item-proteinsLabel col-6">  </i>
+                        <i class="label rand-item-proteinsLabel col-6"> </i>
                     </div>
                     <div class="row">
                         <h5 class="col-6"> Carbohydrates : </h5>
-                        <i class="label rand-item-carbsLabel col-6">  </i>
+                        <i class="label rand-item-carbsLabel col-6"> </i>
                     </div>
                     <div class="row">
                         <h5 class="col-6"> Fats : </h5>
-                        <i class="label rand-item-fatsLabel col-6">  </i>
+                        <i class="label rand-item-fatsLabel col-6"> </i>
                     </div>
                     <div class="row">
                         <h5 class="col-6"> Cholesterol : </h5>
-                        <i class="label rand-item-choleLabel col-6">  </i>
-                    </div>    
+                        <i class="label rand-item-choleLabel col-6"> </i>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-default run-search" id="dislike">
                     <i class="far fa-thumbs-down"></i>
@@ -156,10 +156,10 @@
     <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header item-name">
+                <div class="modal-header bg-primary item-name">
                     <h4 id="recipe-name"></h4>
                 </div>
-                <div class="modal-body row">
+                <div class="modal-body bg-primary row">
                     <!-- <div class='container item-info col'>
                             <img class="item-img"/>
                         </div> -->
@@ -190,7 +190,7 @@
                     </div>
                 </div>
 
-                <div class="modal-footer">
+                <div class="modal-footer bg-primary">
                     <button type="button " class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button submit" class="btn btn-info" id="save-btn">Save</button>
                 </div>
@@ -199,9 +199,15 @@
     </div>
 
     <!-- RESULT PAGE -->
-    <div class="result card" id="resultPage" name="resultPage">
-        <div class="card-body searched-result-page">
-            <div class="result-item-area row card-body"></div>
+    <div class="result card bg-danger" id="resultPage" name="resultPage">
+        <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
+            <video autoplay muted loop id="myVideo">
+                <source src="assets/images/background_video.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="card-body searched-result-page bg-danger">
+            <div class="result-item-area row card-body bg-danger">
+            </div>
         </div>
     </div>
 
@@ -220,6 +226,83 @@
 <!-- <div class="carousel-item">
     <img class="food-item" alt="Second slide">
 </div> -->
+
+
+<!-- begging of the footer -->
+<br>
+<br>
+<hr>
+<footer class="page-footer center-on-small-only footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <div style="text-align: center">
+                    <address>
+                        <a href="mailto:kb2232@nyu.edu">
+                            <button class="btn btn-secondary">
+                                <i class="fa fa-envelope fa-lg"></i>
+                            </button>
+                        </a>
+                    </address>
+                </div>
+            </div>
+            <!--first column-->
+            <div class="col-6 col-sm-6 align-self-center text-center">
+                <p>
+                    Foogle is the "google of food" - like tinder you can swipe left and right. See something you like, then
+                        click the like button and it will save to your favorites. Looking for the nearest location, click
+                        the food on the favarite page.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <!--end first column-->
+            <div class="col-xs-12 col-sm-12">
+                <div style="text-align: center">
+                    <!--Google +-->
+                    <a href="http://google.com/+">
+                        <button type="button" class="btn btn-gplus btn-danger">
+                            <i class="fa fa-google-plus left"></i>
+                            Google +
+                        </button>
+                    </a>
+                    <!--facebook-->
+                    <a href="http://facebook.com">
+                        <button type="button" class="btn btn-fb btn-primary">
+                            <i class="fa fa-facebook left"></i>
+                            Facebook
+                        </button>
+                    </a>
+                    <!--youtube-->
+                    <a href="http://youtube.com">
+                        <button type="button" class="btn btn-yt btn-danger">
+                            <i class="fa fa-youtube left"></i>
+                            Youtube
+                        </button>
+                    </a>
+                    <!--Linkedin-->
+                    <a href="http://linkedin.com">
+                        <button type="button" class="btn btn-li btn-primary">
+                            <i class="fa fa-linkedin left"></i>
+                            Linkedin
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--copyright-->
+    <div class="footer-copyright offset-1">
+        <div class="container-fluid">
+            © 2018 Copyright:
+            <a href="https://www.linkedin.com/in/kb2232cpp/">linkedIn.com</a>
+        </div>
+    </div>
+    <!--end copyright-->
+</footer>
+
+<!-- end of the footer -->
+
 
 </body>
 
