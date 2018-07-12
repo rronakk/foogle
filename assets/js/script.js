@@ -4,239 +4,111 @@ $(document).ready(function() {
 	IntroAction();
 });
 
-///// RANDOM MODAL
-// DISPLAY RANDOM ITEMS ON MODAL (RANDOM MODAL)
-$(document).on('click', '.run-random', function() {
-	$('.rand-item').addClass('animated rotateOutDownLeft');
-	RunSearchAction();
-	event.preventDefault();
-
-	$.ajax({
-		url: Edamam.buildQueryURLRand(),
-		method: 'GET',
-	}).then(function(response) {
-		console.log('randomURL: ' + Edamam.buildQueryURLRand());
-		console.log(response);
-		$('.rand-item').removeClass('rotateOutDownLeft');
-
-		if (response.hits[0].recipe.label.toLowerCase().includes('recipe')) {
-			$('.rand-item-name').html(response.hits[0].recipe.label.replace('recipe', ''));
-		} else {
-			$('.rand-item-name').html(response.hits[0].recipe.label);
-		}
-		$('.rand-item-img').attr('src', response.hits[0].recipe.image);
-		if (response.hits[0].recipe.dietLabels !== []) {
-			$('.rand-item-dietLabels').text(response.hits[0].recipe.dietLabels);
-		}
-		if (response.hits[0].recipe.dietLabels !== []) {
-			$('.rand-item-healthLabels').text(response.hits[0].recipe.healthLabels);
-		}
-	});
-});
-// CLICKING ON LIKE BTN (RANDOM MODAL)
-$(document).on('click', '#rand-like', function(event) {
-	$('.rand-item').addClass('animated zoomOutRight');
-	var $likedName = $('.rand-item-name')
-		.clone()
-		.removeClass();
-	var $likedImg = $('.rand-item-img')
-		.clone()
-		.removeClass();
-	$likedImg.attr('name', $likedName.text());
-	$likedImg.addClass('food-img');
-	$likedImg.attr('data-target', '#modelId');
-	$likedImg.attr('data-toggle', 'modal');
-	var $likedDiet = $('.rand-item-dietLabels')
-		.clone()
-		.removeClass();
-	var $likedHealth = $('.rand-item-healthLabels')
-		.clone()
-		.removeClass();
-
-	var $likedItem = $('<div class="liked-item col-xs-12 col-sm-8 col-md-6 col-lg-4 card">');
-	$likedItem.append($likedName);
-	$likedItem.append($likedImg);
-	$likedItem.append($likedDiet);
-	$likedItem.append($likedHealth);
-	$('.result-item-area').prepend($likedItem);
-	event.preventDefault();
-
-	$.ajax({
-		url: Edamam.buildQueryURLRand(),
-		method: 'GET',
-	}).then(function(response) {
-		console.log(response);
-		console.log('randomURL: ' + Edamam.buildQueryURLRand());
-
-		$('.rand-item').removeClass('zoomOutRight');
-		if (response.hits[0].recipe.label.toLowerCase().includes('recipe')) {
-			$('.rand-item-name').html(response.hits[0].recipe.label.replace('recipe', ''));
-		} else {
-			$('.rand-item-name').html(response.hits[0].recipe.label);
-		}
-		$('.rand-item-img').attr('src', response.hits[0].recipe.image);
-		if (response.hits[0].recipe.dietLabels !== '[]') {
-			$('.rand-item-dietLabels').text(response.hits[0].recipe.dietLabels);
-		}
-		if (response.hits[0].recipe.dietLabels !== '[]') {
-			$('.rand-item-healthLabels').text(response.hits[0].recipe.healthLabels);
-		}
-	});
-});
-
 // DISPLAY SEARCHED ITEMS ON MODAL
-$(document).on('click', '.run-search', function(event) {
+var CLICKEDBTN = null;
+$(document).on('click', '.run-btn', function(event) {
+	CLICKEDBTN = this;
+
 	let x = $('#searchItem').val().length;
-	if (x === 0) {
-		alert('Enter a food item!!!');
-	} else {
-		$('.search-item').addClass('animated rotateOutDownLeft');
-		//pageAction
+	// if (CLICKEDBTN.hasClass('run-search') && x === 0) {	// commented out for now
+	// 	alert('Enter a food item!!!');
+
+	// } else {
 		RunSearchAction();
+		// IF LIKED ON SEARCH
+		if ($(CLICKEDBTN).hasClass('like')) {
+			var $likedName, $likedImg, $likedDiet, $likedHealth;
 
+			// likedName
+			$likedName = $('.searched-item-name').clone().removeClass();
+			// likedImg
+			$likedImg = $('.searched-item-img').clone().removeClass();
+			$('.added-item').addClass('animated zoomOutRight');
+			$likedImg.addClass('food-img');
+			$likedImg.attr("data-target", "#modelId");
+			$likedImg.attr("data-toggle", "modal");
+			// likedDiet
+			var $likedDiet = $('.searched-item-dietLabels').clone().removeClass();
+			// likedHealth
+			var $likedHealth = $('.searched-item-healthLabel').clone().removeClass();
+	
+			// likedItem (container)
+			var $likedItem = $('<div class="liked-item col-4 card">');
+			$likedItem.append($likedName);
+			$likedItem.append($likedImg);
+			$likedItem.append($likedDiet);
+			$likedItem.append($likedHealth);
+			$(".result-item-area").prepend($likedItem);
+	
+		// IF DISLIKED ON SEARCH
+		} else if ($(CLICKEDBTN).hasClass('dislike')) {
+			$('.added-item').addClass('animated rotateOutDownLeft');
+		}	
+	
+		// RUN AJAX
 		event.preventDefault();
-		var search = $('#searchItem')
-			.val()
-			.trim();
-		console.log(Edamam.buildQueryURLSearch(search));
-
-		//!!! temp action for adding item to modal and to page
-		// ADDING TO SEARCH MODAL
-		$.ajax({
-			url: Edamam.buildQueryURLSearch(search),
-			method: 'GET',
-		}).then(function(response) {
-			console.log(response);
-			console.log('searchedURL: ' + Edamam.buildQueryURLSearch(search));
-			$('.search-item').removeClass('rotateOutDownLeft');
-
-			if (response.hits[0].recipe.label.toLowerCase().includes('recipe')) {
-				$('.searched-item-name').html(response.hits[0].recipe.label.replace('recipe', ''));
-			} else {
-				$('.searched-item-name').html(response.hits[0].recipe.label);
-			}
-			$('.searched-item-img').attr('src', response.hits[0].recipe.image);
-			if (response.hits[0].recipe.dietLabels !== []) {
-				$('.searched-item-dietLabels').text(response.hits[0].recipe.dietLabels);
-			}
-			if (response.hits[0].recipe.dietLabels !== []) {
-				$('.searched-item-healthLabels').text(response.hits[0].recipe.healthLabels);
-			}
-			addItemToBody();
-		});
-		// LIKING ITEMS //!!! cannot get the key id inside of AJAX... will go non-dry for now   search for "fa-thumbs-up" on html
-		var addItemToBody = function() {
-			if (
-				$(this)
-					.bind(this.document)
-					.attr('id') === 'like'
-			) {
-				$('.result-item-area').prepend($('.search-item').clone());
-			}
-		};
-	}
+		var search = $('#searchItem').val().trim();
+		Edamam.setCallback(displayItems);
+		if ($(CLICKEDBTN).hasClass('run-search')) {
+			Edamam.callAjaxKeyword(search);
+		} else if ($(CLICKEDBTN).hasClass('run-random')) {
+			Edamam.callAjaxRand();
+		}
+	// }
 });
 
-// ---------------------------------------------------- remove after make it dry with .run-search
-$(document).on('click', '#like', function(event) {
-	$('.search-item').addClass('animated zoomOutRight');
-	var $likedName = $('.searched-item-name')
-		.clone()
-		.removeClass();
-	var $likedImg = $('.searched-item-img')
-		.clone()
-		.removeClass();
-	$likedImg.attr('name', $likedName.text());
-	$likedImg.addClass('food-img');
-	$likedImg.attr('data-target', '#modelId');
-	$likedImg.attr('data-toggle', 'modal');
-	var $likedDiet = $('.searched-item-dietLabels')
-		.clone()
-		.removeClass();
-	var $likedHealth = $('.searched-item-healthLabels')
-		.clone()
-		.removeClass();
+// AJAX CALL RESPONSE
+var displayItems = function () {
+    if ($(CLICKEDBTN).hasClass('like')) {
+    // if (CLICKEDBTN.id === 'search-like') {
+        $('.added-item').removeClass('zoomOutRight');
+    } else if ($(CLICKEDBTN).hasClass('dislike')) {
+    // } else if (CLICKEDBTN.id === 'search-dislike') {
+        $('.added-item').removeClass('rotateOutDownLeft');
+    }
 
-	var $likedItem = $('<div class="liked-item col-xs-12 col-sm-8 col-md-6 col-lg-4 card">');
-	$likedItem.append($likedName);
-	$likedItem.append($likedImg);
-	$likedItem.append($likedDiet);
-	$likedItem.append($likedHealth);
-	$('.result-item-area').prepend($likedItem);
-	event.preventDefault();
-	var search = $('#searchItem')
-		.val()
-		.trim();
-	console.log(Edamam.buildQueryURLSearch(search));
+    if ($(CLICKEDBTN).hasClass('run-search')) {
+        var itemImg = Edamam.searchedItems[0].image;
+        var itemName = Edamam.searchedItems[0].label;
+        var itemDiet = Edamam.searchedItems[0].dietLabels;
+    } else if ($(CLICKEDBTN).hasClass('run-random')) {
+        var itemImg = Edamam.randItems[0].image;
+        var itemName = Edamam.randItems[0].label;
+        var itemDiet = Edamam.randItems[0].dietLabels;
+    }
 
-	$.ajax({
-		url: Edamam.buildQueryURLSearch(search),
-		method: 'GET',
-	}).then(function(response) {
-		console.log('searchedURL: ' + Edamam.buildQueryURLSearch(search));
-		console.log(response);
-		$('.search-item').removeClass('zoomOutRight');
-		if (response.hits[0].recipe.label.toLowerCase().includes('recipe')) {
-			$('.searched-item-name').html(response.hits[0].recipe.label.replace('recipe', ''));
-		} else {
-			$('.searched-item-name').html(response.hits[0].recipe.label);
-		}
-		$('.searched-item-img').attr('src', response.hits[0].recipe.image);
-		if (response.hits[0].recipe.dietLabels !== '[]') {
-			$('.searched-item-dietLabels').text(response.hits[0].recipe.dietLabels);
-		}
-		if (response.hits[0].recipe.dietLabels !== '[]') {
-			$('.searched-item-healthLabels').text(response.hits[0].recipe.healthLabels);
-		}
-	});
-});
-// ---------------------------------------------------- remove after make it dry with .run-search
+    // food item img
+    var $itemImg = $('<img>');
+    $itemImg.addClass("col-12 searched-item-img img-fluid rounded mx-auto d-block");
+    $itemImg.attr("data-target", "#modelId");
+    $itemImg.attr("data-toggle", "modal");
+    if (itemImg) {
+        $itemImg.attr('src', itemImg);
+    } 
+    // food item name
+    var $itemName = $('<h5 class="col-12 searched-item-name">');
+    if (itemName) {
+        $itemImg.attr('name', itemName);
+        $itemName.html(itemName.toUpperCase());
+    }
+    // food item DietLabel
+    var $itemDiet = $('<div class="col-12">');
+    var $itemDietI = $('<i class="searched-item-dietLabels">');
+    $itemDiet.html($itemDietI);
+    if (itemDiet) {
+        $itemDietI.text(itemDiet);
+    }
+    // container for food img, name, diet label 
+    var $itemCtnr = $('<div class="added-item row">');
+    // append to container
+    $itemCtnr.append($itemName);
+    $itemCtnr.append($itemImg);
+    $itemCtnr.append($itemDiet);
 
-var displaySearchedItems = function() {
-	// food item img
-	var $itemImg = $('<img>');
-	var itemImg = Edamam.searchedItems[0].image;
-	$itemImg.attr('data-target', '#modelId');
-	$itemImg.attr('data-toggle', 'modal');
-	$itemImg.addClass('food-img');
-	if (itemImg) {
-		$itemImg.attr('src', itemImg);
-	}
-
-	// food item name
-	var $itemName = $('<h5>');
-	$itemName.addClass('food-name card-body');
-	var itemName = Edamam.searchedItems[0].label;
-	if (itemName) {
-		$itemImg.attr('name', itemName);
-		$itemName.html(itemName.toUpperCase());
-	}
-
-	// ------------------------------------------------------------ UNCOMENT AND TEST FOR ADDING ITEM TO MODAL/ ALSO UNCOMMEND LINE 45 data-target=".search-modal"
-	// var test = "TEST";
-	// // container for food img and name
-	// var $itemContainer = $('<div>');
-	// $itemContainer.addClass("item-ctnr card");
-	// // append to container
-	// $itemContainer.append($itemImg);
-	// //!!! add btn to the container
-	// // append to modal
-	// $('#searched-item').append($itemContainer);
-	// $('#searched-item-info').append($itemName);
-	// $('#searched-item-info').append(test);
-	// ------------------------------------------------------------ UNCOMENT AND TEST FOR ADDING ITEM TO MODAL/ ALSO UNCOMMEND LINE 45 data-target=".search-modal"
-
-	// container for food img and name
-	var $foodCtnr = $('<div>');
-	$foodCtnr.addClass('food-ctnr card');
-	// append to container
-	$foodCtnr.append($itemImg);
-	$foodCtnr.append($itemName);
-	// append to body
-	$('.result-item-area').append($foodCtnr);
-};
-
-// DETAIL SEARCH TOGGLE ON/OFF
-$(document).on('click', '#detail-search', function() {
-	$('.detail-search-form').toggle();
-});
+    // APPEND OBJECT TO MODAL BODY
+    if ($(CLICKEDBTN).hasClass('run-search')) {
+        $('.search-modal-area').html($itemCtnr);
+    } else if ($(CLICKEDBTN).hasClass('run-random')) {
+        $('.rand-modal-area').html($itemCtnr);
+    }
+}

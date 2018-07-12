@@ -69,9 +69,9 @@
             <br>
             <input type="search" class="search" id="searchItem" for="fooglesearch" placeholder="Search Your Food: Chicken, Burger, Sushi, Ramen, etc... ">
             <br>
-            <button type="submit" class="button run-search" name="submit" id='initial-search' data-toggle="modal" data-target=".search-modal"
+            <button type="submit" class="button run-btn run-search" name="submit" id='initial-search' data-toggle="modal" data-target=".search-modal"
                 value="Foogle Search">Foogle Search</button>
-            <button type="submit" class="button run-random" name="lucky" data-toggle="modal" data-target=".rand-modal" value="I'm Feeling Lucky, Give me Suggestion">I'm Feeling Lucky, Give me Suggestion</button>
+            <button type="submit" class="button run-btn run-random" name="lucky" data-toggle="modal" data-target=".rand-modal" value="I'm Feeling Lucky, Give me Suggestion">I'm Feeling Lucky, Give me Suggestion</button>
         </form>
     </div>
 
@@ -79,20 +79,11 @@
     <div class="modal fade rand-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="rand-item row">
-                    <h5 class="col-12 rand-item-name"></h5>
-                    <img class="col-12 rand-item-img" />
-                    <div class="col-12">Diet Label:
-                        <i class="rand-item-dietLabels"></i>
-                    </div>
-                    <div class="col-12">Health Label:
-                        <i class="rand-item-healthLabels"></i>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-default run-random dislike" id="rand-dislike">
+                <div class="rand-item rand-modal-area"></div>
+                <button type="submit" class="btn btn-default run-random run-btn dislike" id="rand-dislike">
                     <i class="far fa-thumbs-down"></i>
                 </button>
-                <button type="submit" class="btn btn-default like" id="rand-like">
+                <button type="submit" class="btn btn-default run-random run-btn like" id="rand-like">
                     <i class="far fa-thumbs-up"></i>
                 </button>
 
@@ -108,21 +99,11 @@
     <div class="modal fade search-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="search-item row">
-                    <h5 class="col-12 searched-item-name"></h5>
-                    <img class="col-12 searched-item-img" />
-                    <div class="col-12 searched-item-diet-label">Diet Label:
-                        <i class="searched-item-dietLabels"></i>
-                    </div>
-                    <div class="col-12 searched-item-health-label">Health Label:
-                        <i class="searched-item-healthLabels"></i>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-default run-search" id="dislike">
+                <div class="search-item search-modal-area"></div>
+                <button type="submit" class="btn btn-default run-search run-btn dislike" id="dislike">
                     <i class="far fa-thumbs-down"></i>
                 </button>
-                <!-- <button type="submit" class="btn btn-default run-search" id="like"><i class="far fa-thumbs-up"></i></button> -->
-                <button type="submit" class="btn btn-default" id="like">
+                <button type="submit" class="btn btn-default run-search run-btn like" id="like">
                     <i class="far fa-thumbs-up"></i>
                 </button>
 
@@ -141,11 +122,7 @@
                     <h4 id="recipe-name"></h4>
                 </div>
                 <div class="modal-body row">
-                    <!-- <div class='container item-info col'>
-                            <img class="item-img"/>
-                        </div> -->
                     <div class='container restaurant-info col'>
-                        <!-- <img class='result-item-pic' src='./assets/images/placeholder3.jpg'> -->
                         <img class='item-img' src='#' />
                         <div class="recipe-calories"></div>
                         <div class="recipe-labels"></div>
@@ -153,18 +130,13 @@
                             <h4 id="res-info"></h4>
                         </a>
                         <h6 class="res-category"></h6>
-                        <!-- <h6 class='rating'> Yelp Rating : <span id="stars"></span> </h6> -->
                         <i class="fas fa-phone">
                             <span class="phone"></span>
                         </i>
                         <div class="address"></div>
-                        <!-- <h6 class='food-price'></h6>  -->
-                        <!-- <h6 class='distance'> 0.6 mi </h6> -->
                         <img class='delivery' src='./assets/images/delivery.png'>
                         <img class='takeout' src='./assets/images/takeout.png'>
-                        <!-- <a href="#" class='reviews'> 3 Reviews </a> -->
                         <h6 class='distance'> </h6>
-                        <!-- <a href="#" class='yelp-link' target="_blank"> More Details </a> -->
                     </div>
                     <div class="container restaurant-location col">
                         <div id='map'></div>
@@ -193,14 +165,6 @@
             return false;
         }
     </script>
-
-</body>
-
-</html>
-
-<!-- <div class="carousel-item">
-    <img class="food-item" alt="Second slide">
-</div> -->
 
 </body>
 
