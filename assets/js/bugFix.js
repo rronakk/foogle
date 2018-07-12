@@ -11,11 +11,12 @@ $(document).ready(function() {
   $('.searched-item-img').addClass("img-fluid rounded mx-auto d-block");
   $('.rand-item-img').addClass("img-fluid rounded mx-auto d-block");
 
-  $('#favtab').on('click',()=>{
-    if ($('.result-item-area').is(':empty')){
-      alert("You have not yet added your favorite foods!!");
-    }
-  });
+  // $('#favTab').on('click',()=>{
+  //   if ($('.result-item-area').is(':empty')){
+  //     alert("You have not yet added your favorite foods!!");
+  //     location.reload();
+  //   }
+  // });
 
 });
 

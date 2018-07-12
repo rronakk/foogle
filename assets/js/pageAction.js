@@ -31,8 +31,14 @@ $("#homeTab").on("click", function(){
 });
 
 $("#favTab").on("click", function(){
-    $('.searched-result-page').show();
-    $('.result').show();
-    $(".g-home").hide();
-    $('.searched-result-page').prepend($('#search-area'));
+    if ($('.result-item-area').is(':empty')){
+        alert("You have not yet added your favorite foods!!");
+        location.reload();
+      }
+    else{
+        $('.searched-result-page').show();
+        $('.result').show();
+        $(".g-home").hide();
+        $('.searched-result-page').prepend($('#search-area'));
+    }
 });
