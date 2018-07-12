@@ -8,7 +8,10 @@
 }
 
 .NAV:hover {
-    background-color: #64FE8A;
+    background-color: gray;
+    border: 1px solid #bdbdbd;
+    border-radius: 30px;
+
 }
 
 div img {
