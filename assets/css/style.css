@@ -126,12 +126,16 @@ input[type="search"]{
     margin: 0px 15px 15px 15px;
 }
 
+.label {
+    text-align: right;
+}
+
 #like {
     background-color: #84FCA1;
     position: absolute;
     right: 5%;
     height: 38px;
-    top: 60%;
+    top: 50%;
 }
 
 #like:hover {
@@ -144,7 +148,7 @@ input[type="search"]{
     position: absolute;
     left: 5%;
     height: 38px;
-    top: 60%;
+    top: 50%;
 }
 
 #dislike:hover {
