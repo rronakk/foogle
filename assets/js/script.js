@@ -4,200 +4,83 @@ $(document).ready(function() {
 	IntroAction();
 });
 
-///// RANDOM MODAL
-// DISPLAY RANDOM ITEMS ON MODAL (RANDOM MODAL)
-$(document).on('click', '.run-random', function() {
-	$('.rand-item').addClass('animated rotateOutDownLeft');
-	RunSearchAction();
-	event.preventDefault();
-
-	$.ajax({
-		url: Edamam.buildQueryURLRand(),
-		method: 'GET',
-	}).then(function(response) {
-		console.log('randomURL: ' + Edamam.buildQueryURLRand());
-		console.log(response);
-		$('.rand-item').removeClass('rotateOutDownLeft');
-
-		if (response.hits[0].recipe.label.toLowerCase().includes('recipe')) {
-			$('.rand-item-name').html(response.hits[0].recipe.label.replace('recipe', ''));
-		} else {
-			$('.rand-item-name').html(response.hits[0].recipe.label);
-		}
-		$('.rand-item-img').attr('src', response.hits[0].recipe.image);
-		if (response.hits[0].recipe.dietLabels !== []) {
-			$('.rand-item-dietLabels').text(response.hits[0].recipe.dietLabels);
-		}
-		if (response.hits[0].recipe.dietLabels !== []) {
-			$('.rand-item-healthLabels').text(response.hits[0].recipe.healthLabels);
-		}
-	});
-});
-// CLICKING ON LIKE BTN (RANDOM MODAL)
-$(document).on('click', '#rand-like', function(event) {
-	$('.rand-item').addClass('animated zoomOutRight');
-	var $likedName = $('.rand-item-name')
-		.clone()
-		.removeClass();
-	var $likedImg = $('.rand-item-img')
-		.clone()
-		.removeClass();
-	$likedImg.attr('name', $likedName.text());
-	$likedImg.addClass('food-img');
-	$likedImg.attr('data-target', '#modelId');
-	$likedImg.attr('data-toggle', 'modal');
-	var $likedDiet = $('.rand-item-dietLabels')
-		.clone()
-		.removeClass();
-	var $likedHealth = $('.rand-item-healthLabels')
-		.clone()
-		.removeClass();
-
-	var $likedItem = $('<div class="liked-item col-xs-12 col-sm-8 col-md-6 col-lg-4 card">');
-	$likedItem.append($likedName);
-	$likedItem.append($likedImg);
-	$likedItem.append($likedDiet);
-	$likedItem.append($likedHealth);
-	$('.result-item-area').prepend($likedItem);
-	event.preventDefault();
-
-	$.ajax({
-		url: Edamam.buildQueryURLRand(),
-		method: 'GET',
-	}).then(function(response) {
-		console.log(response);
-		console.log('randomURL: ' + Edamam.buildQueryURLRand());
-
-		$('.rand-item').removeClass('zoomOutRight');
-		if (response.hits[0].recipe.label.toLowerCase().includes('recipe')) {
-			$('.rand-item-name').html(response.hits[0].recipe.label.replace('recipe', ''));
-		} else {
-			$('.rand-item-name').html(response.hits[0].recipe.label);
-		}
-		$('.rand-item-img').attr('src', response.hits[0].recipe.image);
-		if (response.hits[0].recipe.dietLabels !== '[]') {
-			$('.rand-item-dietLabels').text(response.hits[0].recipe.dietLabels);
-		}
-		if (response.hits[0].recipe.dietLabels !== '[]') {
-			$('.rand-item-healthLabels').text(response.hits[0].recipe.healthLabels);
-		}
-	});
-});
-
 // DISPLAY SEARCHED ITEMS ON MODAL
-$(document).on('click', '.run-search', function(event) {
+var CLICKEDBTN = null;
+$(document).on('click', '.run-btn', function(event) {
+	CLICKEDBTN = this;
+
 	let x = $('#searchItem').val().length;
-	if (x === 0) {
+	if ($(CLICKEDBTN).hasClass('run-search') && x === 0) {
 		alert('Enter a food item!!!');
+
 	} else {
-		$('.search-item').addClass('animated rotateOutDownLeft');
-		//pageAction
 		RunSearchAction();
+		// IF LIKED ON SEARCH
+		if ($(CLICKEDBTN).attr('id') === 'like') {
+			var $likedName, $likedImg, $likedDiet, $likedHealth;
 
+			// likedName
+			$likedName = $('.searched-item-name').clone().removeClass();
+			// likedImg
+			$likedImg = $('.searched-item-img').clone().removeClass();
+			$('.added-item').addClass('animated zoomOutRight');
+			$likedImg.addClass('food-img');
+			$likedImg.attr("data-target", "#modelId");
+			$likedImg.attr("data-toggle", "modal");
+			// likedDiet
+			var $likedDiet = $('.searched-item-dietLabels').clone().removeClass();
+			// likedHealth
+			var $likedHealth = $('.searched-item-healthLabel').clone().removeClass();
+	
+			// likedItem (container)
+			var $likedItem = $('<div class="liked-item col-4 card">');
+			$likedItem.append($likedName);
+			$likedItem.append($likedImg);
+			$likedItem.append($likedDiet);
+			$likedItem.append($likedHealth);
+			$(".result-item-area").prepend($likedItem);
+
+		// IF LIKED ON RAND
+		} else if ($(CLICKEDBTN).attr('id') === 'rand-like') {
+			var $likedName, $likedImg, $likedDiet, $likedHealth;
+
+			// likedName
+			$likedName = $('.rand-item-name').clone().removeClass();
+			// likedImg
+			$likedImg = $('.rand-item-img').clone().removeClass();
+			$('.added-item').addClass('animated zoomOutRight');
+			$likedImg.addClass('food-img');
+			$likedImg.attr("data-target", "#modelId");
+			$likedImg.attr("data-toggle", "modal");
+			// likedDiet
+			var $likedDiet = $('.rand-item-dietLabels').clone().removeClass();
+			// likedHealth
+			var $likedHealth = $('.rand-item-healthLabel').clone().removeClass();
+	
+			// likedItem (container)
+			var $likedItem = $('<div class="liked-item col-4 card">');
+			$likedItem.append($likedName);
+			$likedItem.append($likedImg);
+			$likedItem.append($likedDiet);
+			$likedItem.append($likedHealth);
+			$(".result-item-area").prepend($likedItem);
+
+		// IF DISLIKED ON SEARCH
+		} else if ($(CLICKEDBTN).hasClass('dislike')) {
+			$('.added-item').addClass('animated rotateOutDownLeft');
+		}	
+	
+		// RUN AJAX
 		event.preventDefault();
-		var search = $('#searchItem')
-			.val()
-			.trim();
-		console.log(Edamam.buildQueryURLSearch(search));
-
-		//!!! temp action for adding item to modal and to page
-		// ADDING TO SEARCH MODAL
-		$.ajax({
-			url: Edamam.buildQueryURLSearch(search),
-			method: 'GET',
-		}).then(function(response) {
-			console.log(response);
-			console.log('searchedURL: ' + Edamam.buildQueryURLSearch(search));
-			$('.search-item').removeClass('rotateOutDownLeft');
-
-			if (response.hits[0].recipe.label.toLowerCase().includes('recipe')) {
-				$('.searched-item-name').html(response.hits[0].recipe.label.replace('recipe', ''));
-			} else {
-				$('.searched-item-name').html(response.hits[0].recipe.label);
-			}
-			$('.searched-item-img').attr('src', response.hits[0].recipe.image);
-			$('.rand-item-caloriesLabel').text(Math.ceil(response.hits[0].recipe.calories));
-			$('.rand-item-proteinsLabel').text(Math.ceil(response.hits[0].recipe.totalNutrients.PROCNT.quantity) + " " + response.hits[0].recipe.totalNutrients.PROCNT.unit);
-			$('.rand-item-carbsLabel').text(Math.ceil(response.hits[0].recipe.totalNutrients.CHOCDF.quantity) + " " + response.hits[0].recipe.totalNutrients.CHOCDF.unit);
-			$('.rand-item-fatsLabel').text(Math.ceil(response.hits[0].recipe.totalNutrients.FAT.quantity) + " " + response.hits[0].recipe.totalNutrients.FAT.unit);
-			$('.rand-item-choleLabel').text(Math.ceil(response.hits[0].recipe.totalNutrients.CHOLE.quantity) + " " + response.hits[0].recipe.totalNutrients.CHOLE.unit);
-			addItemToBody();
-		});
-		// LIKING ITEMS //!!! cannot get the key id inside of AJAX... will go non-dry for now   search for "fa-thumbs-up" on html
-		var addItemToBody = function() {
-			if (
-				$(this)
-					.bind(this.document)
-					.attr('id') === 'like'
-			) {
-				$('.result-item-area').prepend($('.search-item').clone());
-			}
-		};
-	}
-});
-
-// ---------------------------------------------------- remove after make it dry with .run-search
-$(document).on('click', '#like', function(event) {
-	$('.search-item').addClass('animated zoomOutRight');
-	var $likedName = $('.searched-item-name')
-		.clone()
-		.removeClass();
-	var $likedImg = $('.searched-item-img')
-		.clone()
-		.removeClass();
-	$likedImg.attr('name', $likedName.text());
-	$likedImg.addClass('food-img');
-	$likedImg.attr('data-target', '#modelId');
-	$likedImg.attr('data-toggle', 'modal');
-	var $likedCalories = $('.rand-item-caloriesLabel')
-		.clone()
-		.removeClass();
-	var $likedProteins = $('.rand-item-proteinsLabel')
-		.clone()
-		.removeClass();
-	var $likedCarbs = $('.rand-item-carbsLabel')
-		.clone()
-		.removeClass();
-	var $likedFats = $('.rand-item-fatsLabel')
-		.clone()
-		.removeClass();
-	var $likedChole = $('.rand-item-choleLabel')
-		.clone()
-		.removeClass();
-
-	var $likedItem = $('<div class="liked-item col-xs-12 col-sm-8 col-md-6 col-lg-4 card">');
-	$likedItem.append($likedName);
-	$likedItem.append($likedImg);
-	$likedCalories.prepend("Calories : ");
-	$likedItem.append($likedCalories);
-	$likedProteins.prepend("Proteins : ");
-	$likedItem.append($likedProteins);
-	$likedCarbs.prepend("Carbohydrates : ");
-	$likedItem.append($likedCarbs);
-	$likedFats.prepend("Fats : ");
-	$likedItem.append($likedFats);
-	$likedChole.prepend("Cholesterol : ");
-	$likedItem.append($likedChole);
-	$('.result-item-area').prepend($likedItem);
-	event.preventDefault();
-	var search = $('#searchItem')
-		.val()
-		.trim();
-	console.log(Edamam.buildQueryURLSearch(search));
-
-	$.ajax({
-		url: Edamam.buildQueryURLSearch(search),
-		method: 'GET',
-	}).then(function(response) {
-		console.log('searchedURL: ' + Edamam.buildQueryURLSearch(search));
-		console.log(response);
-		$('.search-item').removeClass('zoomOutRight');
-		if (response.hits[0].recipe.label.toLowerCase().includes('recipe')) {
-			$('.searched-item-name').html(response.hits[0].recipe.label.replace('recipe', ''));
-		} else {
-			$('.searched-item-name').html(response.hits[0].recipe.label);
+		var search = $('#searchItem').val().trim();
+		Edamam.setCallback(displayItems);
+		if ($(CLICKEDBTN).hasClass('run-search')) {
+			Edamam.callAjaxKeyword(search);
+		} else if ($(CLICKEDBTN).hasClass('run-random')) {
+			Edamam.callAjaxRand();
 		}
-		$('.searched-item-img').attr('src', response.hits[0].recipe.image);
+	}
+  
 		/* $('.rand-item-caloriesLabel').text("Calories : " + Math.ceil(response.hits[0].recipe.calories));
 		$('.rand-item-proteinsLabel').text("Proteins : " + Math.ceil(response.hits[0].recipe.totalNutrients.PROCNT.quantity) + " " + response.hits[0].recipe.totalNutrients.PROCNT.unit);
 		$('.rand-item-carbsLabel').text("Carbohydrates : " + Math.ceil(response.hits[0].recipe.totalNutrients.CHOCDF.quantity) + " " + response.hits[0].recipe.totalNutrients.CHOCDF.unit);
@@ -205,53 +88,75 @@ $(document).on('click', '#like', function(event) {
 		$('.rand-item-choleLabel').text("Cholesterol : " + Math.ceil(response.hits[0].recipe.totalNutrients.CHOLE.quantity) + " " + response.hits[0].recipe.totalNutrients.CHOLE.unit); */
 	});
 });
-// ---------------------------------------------------- remove after make it dry with .run-search
 
-var displaySearchedItems = function() {
-	// food item img
-	var $itemImg = $('<img>');
-	var itemImg = Edamam.searchedItems[0].image;
-	$itemImg.attr('data-target', '#modelId');
-	$itemImg.attr('data-toggle', 'modal');
-	$itemImg.addClass('food-img');
-	if (itemImg) {
-		$itemImg.attr('src', itemImg);
+// AJAX CALL RESPONSE
+var displayItems = function () {
+    if ($(CLICKEDBTN).hasClass('like')) {
+    // if (CLICKEDBTN.id === 'search-like') {
+        $('.added-item').removeClass('zoomOutRight');
+    } else if ($(CLICKEDBTN).hasClass('dislike')) {
+    // } else if (CLICKEDBTN.id === 'search-dislike') {
+        $('.added-item').removeClass('rotateOutDownLeft');
+    }
+
+    if ($(CLICKEDBTN).hasClass('run-search')) {
+        var itemImg = Edamam.searchedItems[0].image;
+        var itemName = Edamam.searchedItems[0].label;
+        var itemDiet = Edamam.searchedItems[0].dietLabels;
+        var itemHealth = Edamam.searchedItems[0].healthLabels;
+        var $itemImg = $('<img class="col-12 searched-item-img img-fluid rounded mx-auto d-block">');
+        var $itemName = $('<h5 class="col-12 searched-item-name">');
+        var $itemDietI = $('<i class="searched-item-dietLabels">');
+        var $itemHealthI = $('<i class="searched-item-healthLabels">');
+    } else if ($(CLICKEDBTN).hasClass('run-random')) {
+        var itemImg = Edamam.randItems[0].image;
+        var itemName = Edamam.randItems[0].label;
+        var itemDiet = Edamam.randItems[0].dietLabels;
+        var itemHealth = Edamam.randItems[0].healthLabels;	
+        var $itemImg = $('<img class="col-12 rand-item-img img-fluid rounded mx-auto d-block">');
+        var $itemName = $('<h5 class="col-12 rand-item-name">');
+        var $itemDietI = $('<i class="rand-item-dietLabels">');
+        var $itemHealthI = $('<i class="rand-item-healthLabels">');
+    }
+
+
+	// item img
+    $itemImg.attr("data-target", "#modelId");
+    $itemImg.attr("data-toggle", "modal");
+    if (itemImg) {
+        $itemImg.attr('src', itemImg);
+    } 
+    // item name
+    if (itemName) {
+        $itemImg.attr('name', itemName);
+        $itemName.html(itemName.toUpperCase());
+    }
+    // item DietLabel
+    var $itemDiet = $('<div class="col-12">');
+    $itemDiet.html($itemDietI);
+    if (itemDiet) {
+        $itemDietI.text(itemDiet);
+	}
+	
+	// item HealthLabel
+	var $itemHealth = $('<div class="col-12">');
+	$itemHealth.html($itemHealthI);
+	if (itemHealth) {
+		$itemHealthI.text(itemHealth);
 	}
 
-	// food item name
-	var $itemName = $('<h5>');
-	$itemName.addClass('food-name card-body');
-	var itemName = Edamam.searchedItems[0].label;
-	if (itemName) {
-		$itemImg.attr('name', itemName);
-		$itemName.html(itemName.toUpperCase());
-	}
+    // container for food img, name, diet label 
+    var $itemCtnr = $('<div class="added-item row">');
+    // append to container
+    $itemCtnr.append($itemName);
+    $itemCtnr.append($itemImg);
+    $itemCtnr.append($itemDiet);
+    $itemCtnr.append($itemHealth);
 
-	// ------------------------------------------------------------ UNCOMENT AND TEST FOR ADDING ITEM TO MODAL/ ALSO UNCOMMEND LINE 45 data-target=".search-modal"
-	// var test = "TEST";
-	// // container for food img and name
-	// var $itemContainer = $('<div>');
-	// $itemContainer.addClass("item-ctnr card");
-	// // append to container
-	// $itemContainer.append($itemImg);
-	// //!!! add btn to the container
-	// // append to modal
-	// $('#searched-item').append($itemContainer);
-	// $('#searched-item-info').append($itemName);
-	// $('#searched-item-info').append(test);
-	// ------------------------------------------------------------ UNCOMENT AND TEST FOR ADDING ITEM TO MODAL/ ALSO UNCOMMEND LINE 45 data-target=".search-modal"
-
-	// container for food img and name
-	var $foodCtnr = $('<div>');
-	$foodCtnr.addClass('food-ctnr card');
-	// append to container
-	$foodCtnr.append($itemImg);
-	$foodCtnr.append($itemName);
-	// append to body
-	$('.result-item-area').append($foodCtnr);
-};
-
-// DETAIL SEARCH TOGGLE ON/OFF
-$(document).on('click', '#detail-search', function() {
-	$('.detail-search-form').toggle();
-});
+    // APPEND OBJECT TO MODAL BODY
+    if ($(CLICKEDBTN).hasClass('run-search')) {
+        $('.search-modal-area').html($itemCtnr);
+    } else if ($(CLICKEDBTN).hasClass('run-random')) {
+        $('.rand-modal-area').html($itemCtnr);
+    }
+}
