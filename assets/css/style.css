@@ -8,7 +8,10 @@
 }
 
 .NAV:hover {
-    background-color: #64FE8A;
+    background-color: gray;
+    border: 1px solid #bdbdbd;
+    border-radius: 30px;
+
 }
 
 div img {
@@ -58,6 +61,26 @@ div img {
 .make-ur-life-ezr {
     text-align: center;
 }
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    /* filter:grayscale(100%); */
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color:#696969;
+    opacity: 1; /* Firefox */
+}
+
+input[type="search"]{
+    background: #f3f3f3;
+  
+}
+
 #edamam-badge {
     text-align: left;
 }
@@ -307,6 +330,9 @@ div img {
 }
 #resultNote {
     text-align: center;
+}
+.result{
+    border: 0;
 }
 
 
