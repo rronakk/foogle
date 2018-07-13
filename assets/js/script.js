@@ -53,7 +53,7 @@ $(document).on('click', '#rand-like', function(event) {
 		.clone()
 		.removeClass();
 
-	var $likedItem = $('<div class="liked-item col-md-4 card  favsFood">');
+	var $likedItem = $('<div class="liked-item col-md-4 card favsFood">');
 	$likedItem.append($likedName);
 	$likedItem.append($likedImg);
 	$likedItem.append($likedDiet);
@@ -165,7 +165,7 @@ $(document).on('click', '#like', function(event) {
 		.clone()
 		.removeClass();
 
-	var $likedItem = $('<div class="liked-item col-xs-12 col-sm-8 col-md-6 col-lg-4 card">');
+	var $likedItem = $('<div class="liked-item col-lg-4 card favsFood">');
 	$likedItem.append($likedName);
 	$likedItem.append($likedImg);
 	$likedCalories.prepend("Calories : ");
