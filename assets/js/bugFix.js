@@ -11,14 +11,20 @@ $(document).ready(function() {
   $('.searched-item-img').addClass("img-fluid rounded mx-auto d-block");
   $('.rand-item-img').addClass("img-fluid rounded mx-auto d-block");
   
-  //this is for the favrite icon if it is empty
-  $('#favTab').on('click',()=>{
-    if($('#searchItem').val().length === 0)
-    {
-      $('.clk').click();
-    }
-  })
 
+  var searchButton = document.getElementsByClassName('run-search')[0];
+  var searchInput = document.getElementById('searchItem');
+  searchInput.addEventListener("keyup",function(){
+    if(searchInput.value.length === 0){
+        searchButton.disabled = true;
+    }
+    else {  
+
+      searchButton.disabled = false;
+
+      }
+    });
+  
 
 });
 

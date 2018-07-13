@@ -11,10 +11,15 @@ var IntroAction = function () {
     $('.page-navigation').hide()
     $('.page-tab').hide();
     $('.michael-eg').hide();
+    $("#favTab").hide();
+
+    
 }
 
 var RunSearchAction = function () {
     $('.result').show();
+    $("#favTab").show();
+
     $(".g-home").hide();
     // $('.searched-result-page').prepend('<h1 class="col-12">Here is our recommendation on: ' + $('#searchItem').val().trim().toUpperCase() + '</h1>');
     $('.searched-result-page').prepend($('#search-area'));
