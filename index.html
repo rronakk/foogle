@@ -80,36 +80,11 @@
             <input type="search" class="search" id="searchItem" for="fooglesearch" placeholder="Search Your Food: Chicken, Burger, Sushi, Ramen, etc... ">
             <br>
             <button type="submit" class="btn btn-primary bttn run-search" name="submit" data-toggle="modal" data-target=".search-modal"
-                value="Foogle Search">Foogle Search</button>
+                value="Foogle Search" disabled>Foogle Search</button>
             <button type="submit" class="btn btn-primary bttn run-random" name="lucky" data-toggle="modal" data-target=".rand-modal"
                 value="Give me Suggestion">Give me Suggestion</button>
         </form>
     </div>
-
-
-    <!-- This LENGTHY modal is for the error message...so annoying -->
-    <!-- Button to Open the Modal -->
-    <button type="button" class="btn btn-primary clk" data-toggle="modal" data-target="#myModal" style="display: none;">
-        Open modal
-    </button>
-
-    <!-- The Modal -->
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <h5 class="text-white">You favorite page is currently empty</h5>
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-     <!-- end of LENGTHY modal  -->
 
     <!-- RANDOM MODAL: this is duplicate of search modal -->
     <div class="modal fade rand-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
