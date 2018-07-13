@@ -36,6 +36,9 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcOgHEqu_cMFWOiYiOHjE3fR7flQniwdQ" async
         defer></script>
 
+    <!-- Fonts for Modals -->
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Pacifico" rel="stylesheet">
+
 </head>
 
 <body>
@@ -85,41 +88,40 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="rand-item row">
-                    <h5 class="col-12 rand-item-name"></h5>
                     <img class="col-12 rand-item-img" />
+                    <h3 class="col-12 rand-item-name"></h3>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <h5 class="col-6"> Calories : </h5>
-                        <i class="label rand-item-caloriesLabel col-6">  </i>
-                    </div>
-                    <div class="row">
-                        <h5 class="col-6"> Proteins : </h5>
-                        <i class="label rand-item-proteinsLabel col-6">  </i>
-                    </div>
-                    <div class="row">
-                        <h5 class="col-6"> Carbohydrates : </h5>
-                        <i class="label rand-item-carbsLabel col-6">  </i>
-                    </div>
-                    <div class="row">
-                        <h5 class="col-6"> Fats : </h5>
-                        <i class="label rand-item-fatsLabel col-6">  </i>
-                    </div>
-                    <div class="row">
-                        <h5 class="col-6"> Cholesterol : </h5>
-                        <i class="label rand-item-choleLabel col-6">  </i>
-                    </div>    
+                <div class="row">
+                    <h5 class="col-4 nutrition"> Calories : </h5>
+                    <i class="label rand-item-caloriesLabel col-8">  </i>
                 </div>
+                <div class="row">
+                    <h5 class="col-4 nutrition"> Proteins : </h5>
+                    <i class="label rand-item-proteinsLabel col-8">  </i>
+                </div>
+                <div class="row">
+                    <h5 class="col-4 nutrition"> Carbs : </h5>
+                    <i class="label rand-item-carbsLabel col-8">  </i>
+                </div>
+                <div class="row">
+                    <h5 class="col-4 nutrition"> Fats : </h5>
+                    <i class="label rand-item-fatsLabel col-8">  </i>
+                </div>
+                <div class="row">
+                    <h5 class="col-4 nutrition"> Cholesterol : </h5>
+                    <i class="label rand-item-choleLabel col-8">  </i>
+                </div>
+                <button type="button" class="btn btn-light close-modal" data-dismiss="modal"> 
+                    <i class="fa fa-angle-down"></i> 
+                </button>
                 <button type="submit" class="btn btn-default run-random dislike" id="rand-dislike">
                     <i class="far fa-thumbs-down"></i>
                 </button>
                 <button type="submit" class="btn btn-default like" id="rand-like">
                     <i class="far fa-thumbs-up"></i>
                 </button>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
-                </div>
+                <br>
+                <br>
             </div>
         </div>
     </div>
@@ -130,31 +132,32 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="search-item row">
-                    <h5 class="col-12 searched-item-name"></h5>
                     <img class="col-12 searched-item-img" />
+                    <h3 class="col-12 searched-item-name"></h3>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <h5 class="col-6"> Calories : </h5>
-                        <i class="label searched-item-caloriesLabel col-6">  </i>
-                    </div>
-                    <div class="row">
-                        <h5 class="col-6"> Proteins : </h5>
-                        <i class="label searched-item-proteinsLabel col-6">  </i>
-                    </div>
-                    <div class="row">
-                        <h5 class="col-6"> Carbohydrates : </h5>
-                        <i class="label searched-item-carbsLabel col-6">  </i>
-                    </div>
-                    <div class="row">
-                        <h5 class="col-6"> Fats : </h5>
-                        <i class="label searched-item-fatsLabel col-6">  </i>
-                    </div>
-                    <div class="row">
-                        <h5 class="col-6"> Cholesterol : </h5>
-                        <i class="label searched-item-choleLabel col-6">  </i>
-                    </div>    
+                <div class="row">
+                    <h5 class="col-4 nutrition"> Calories : </h5>
+                    <i class="label searched-item-caloriesLabel col-8">  </i>
                 </div>
+                <div class="row">
+                    <h5 class="col-4 nutrition"> Proteins : </h5>
+                    <i class="label searched-item-proteinsLabel col-8">  </i>
+                </div>
+                <div class="row">
+                    <h5 class="col-4 nutrition"> Carbs : </h5>
+                    <i class="label searched-item-carbsLabel col-8">  </i>
+                </div>
+                <div class="row">
+                    <h5 class="col-4 nutrition"> Fats : </h5>
+                    <i class="label searched-item-fatsLabel col-8">  </i>
+                </div>
+                <div class="row">
+                    <h5 class="col-4 nutrition"> Cholesterol : </h5>
+                    <i class="label searched-item-choleLabel col-8">  </i>
+                </div>
+                <button type="button" class="btn btn-light close-modal" data-dismiss="modal"> 
+                    <i class="fa fa-angle-down"></i> 
+                </button>
                 <button type="submit" class="btn btn-default run-search" id="dislike">
                     <i class="far fa-thumbs-down"></i>
                 </button>
@@ -162,10 +165,8 @@
                 <button type="submit" class="btn btn-default" id="like">
                     <i class="far fa-thumbs-up"></i>
                 </button>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">I FOUND MY LUNCH !!!</button>
-                </div>
+                <br>
+                <br>
             </div>
         </div>
     </div>

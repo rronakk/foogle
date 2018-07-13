@@ -111,9 +111,9 @@ input[type="search"]{
 
 /* ALL MODALS */
 
-/* .modal {
+.modal {
     border-radius: 5px;
-} */
+}
 
 /* SEARCH MODAL */
 
@@ -121,34 +121,35 @@ input[type="search"]{
     overflow: hidden;
 }
 
+.food-img {
+    width: 300px;
+}
+
 .searched-item-name {
-    padding-top: 15px;
+    font-family: 'Pacifico';
+    margin-left: 15px;
+    padding-top: 5px;
     padding-bottom: 5px;
-    text-align: center;
+    text-align: left;
 }
 
-.searched-item-img {
-    margin-bottom: 15px;
-}
-
-.searched-item-diet-label {
-    margin: 0px 15px;
-}
-
-.searched-item-health-label {
-    margin: 0px 15px 15px 15px;
+.nutrition {
+    font-family: 'Maven Pro';
+    padding-left: 35px;
 }
 
 .label {
-    text-align: right;
+    font-family: 'Maven Pro';
 }
 
 #like {
     background-color: #84FCA1;
+    border: .5px solid black;
+    border-radius: 50%;
     position: absolute;
     right: 5%;
+    bottom: 3%;
     height: 38px;
-    top: 50%;
 }
 
 #like:hover {
@@ -158,10 +159,12 @@ input[type="search"]{
 
 #dislike {
     background-color: #FEA69D;
+    border: .5px solid black;
+    border-radius: 50%;
     position: absolute;
     left: 5%;
+    bottom: 3%;
     height: 38px;
-    top: 50%;
 }
 
 #dislike:hover {
@@ -169,38 +172,59 @@ input[type="search"]{
     box-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px red;
 }
 
+.close-modal {
+    border-radius: 50%;
+    border: .5px solid black;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    height: 40px;
+    width: 40px;
+}
+
+.close-modal:hover {
+    background-color: #d3d3d3;
+    box-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black;
+}
+
 /* RANDOM MODAL */
 
 .rand-item-name {
-    padding-top: 15px;
+    font-family: 'Pacifico';
+    margin-left: 15px;
+    padding-top: 5px;
     padding-bottom: 5px;
-    text-align: center;
-}
-
-#rand-dislike {
-    background-color: #FEA69D;
-    position: absolute;
-    left: 5%;
-    height: 38px;
-    top: 50%;
-}
-
-#rand-dislike:hover {
-    background-color: #FA8E83;
-    box-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px red;
+    text-align: left;
 }
 
 #rand-like {
     background-color: #84FCA1;
+    border: .5px solid black;
+    border-radius: 50%;
     position: absolute;
     right: 5%;
+    bottom: 3%;
     height: 38px;
-    top: 50%;
 }
 
 #rand-like:hover {
     background-color: #64FE8A;
     box-shadow: 1px 1px 2px black, 0 0 25px green, 0 0 5px green;
+}
+
+#rand-dislike {
+    background-color: #FEA69D;
+    border: .5px solid black;
+    border-radius: 50%;
+    position: absolute;
+    left: 5%;
+    bottom: 3%;
+    height: 38px;
+}
+
+#rand-dislike:hover {
+    background-color: #FA8E83;
+    box-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px red;
 }
 
 /* DETAIL MODAL */
@@ -331,7 +355,6 @@ input[type="search"]{
     clear: both;
     display: inline-block;
     margin: 0 auto;
-    box-shadow: 2px 2px black;
 }
 .more-btn-area {
     float: right;

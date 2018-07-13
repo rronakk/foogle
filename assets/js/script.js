@@ -46,19 +46,19 @@ $(document).on('click', '#rand-like', function(event) {
 	$likedImg.addClass('food-img');
 	$likedImg.attr('data-target', '#modelId');
 	$likedImg.attr('data-toggle', 'modal');
-	var $likedCalories = $('.searched-item-caloriesLabel')
+	var $likedCalories = $('.rand-item-caloriesLabel')
 		.clone()
 		.removeClass();
-	var $likedProteins = $('.searched-item-proteinsLabel')
+	var $likedProteins = $('.rand-item-proteinsLabel')
 		.clone()
 		.removeClass();
-	var $likedCarbs = $('.searched-item-carbsLabel')
+	var $likedCarbs = $('.rand-item-carbsLabel')
 		.clone()
 		.removeClass();
-	var $likedFats = $('.searched-item-fatsLabel')
+	var $likedFats = $('.rand-item-fatsLabel')
 		.clone()
 		.removeClass();
-	var $likedChole = $('.searched-item-choleLabel')
+	var $likedChole = $('.rand-item-choleLabel')
 		.clone()
 		.removeClass();
 
@@ -92,6 +92,11 @@ $(document).on('click', '#rand-like', function(event) {
 			$('.rand-item-name').html(response.hits[0].recipe.label);
 		}
 		$('.rand-item-img').attr('src', response.hits[0].recipe.image);
+		$('.rand-item-caloriesLabel').text(Math.ceil(response.hits[0].recipe.calories));
+		$('.rand-item-proteinsLabel').text(Math.ceil(response.hits[0].recipe.totalNutrients.PROCNT.quantity) + " " + response.hits[0].recipe.totalNutrients.PROCNT.unit);
+		$('.rand-item-carbsLabel').text(Math.ceil(response.hits[0].recipe.totalNutrients.CHOCDF.quantity) + " " + response.hits[0].recipe.totalNutrients.CHOCDF.unit);
+		$('.rand-item-fatsLabel').text(Math.ceil(response.hits[0].recipe.totalNutrients.FAT.quantity) + " " + response.hits[0].recipe.totalNutrients.FAT.unit);
+		$('.rand-item-choleLabel').text(Math.ceil(response.hits[0].recipe.totalNutrients.CHOLE.quantity) + " " + response.hits[0].recipe.totalNutrients.CHOLE.unit);
 	});
 });
 
