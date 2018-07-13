@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Link Bootstrap -->
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
@@ -74,11 +75,37 @@
             <br>
             <input type="search" class="search" id="searchItem" for="fooglesearch" placeholder="Search Your Food: Chicken, Burger, Sushi, Ramen, etc... ">
             <br>
-            <button type="submit" class="btn button run-search" name="submit" id='initial-search' data-toggle="modal" data-target=".search-modal"
+            <button type="submit" class="btn btn-primary bttn run-search" name="submit" data-toggle="modal" data-target=".search-modal"
                 value="Foogle Search">Foogle Search</button>
-            <button type="submit" class="btn button run-random" name="lucky" data-toggle="modal" data-target=".rand-modal" value="I'm Feeling Lucky, Give me Suggestion">I'm Feeling Lucky, Give me Suggestion</button>
+            <button type="submit" class="btn btn-primary bttn run-random" name="lucky" data-toggle="modal" data-target=".rand-modal"
+                value="Give me Suggestion">Give me Suggestion</button>
         </form>
     </div>
+
+
+    <!-- This LENGTHY modal is for the error message...so annoying -->
+    <!-- Button to Open the Modal -->
+    <button type="button" class="btn btn-primary clk" data-toggle="modal" data-target="#myModal" style="display: none;">
+        Open modal
+    </button>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    You have not yet selected item
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+     <!-- end of LENGTHY modal  -->
 
     <!-- RANDOM MODAL: this is duplicate of search modal -->
     <div class="modal fade rand-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -217,93 +244,90 @@
             document.getElementById(hidden).style.display = 'none';
             return false;
         }
+
+        $(document).ready(function () {
+            $("#myModal").modal();
+        });
     </script>
+
+
+    <!-- begging of the footer -->
+    <br>
+    <br>
+    <hr>
+    <footer class="page-footer center-on-small-only footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <div style="text-align: center">
+                        <address>
+                            <a href="mailto:kb2232@nyu.edu">
+                                <button class="btn btn-secondary">
+                                    <i class="fa fa-envelope fa-lg"></i>
+                                </button>
+                            </a>
+                        </address>
+                    </div>
+                </div>
+                <!--first column-->
+                <div class="col-6 col-sm-6 align-self-center text-center">
+                    <p>
+                        Foogle is the "google of food" - like tinder you can swipe left and right. See something you like, then click the like button
+                        and it will save to your favorites. Looking for the nearest location, click the food on the favarite
+                        page.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <!--end first column-->
+                <div class="col-xs-12 col-sm-12">
+                    <div style="text-align: center">
+                        <!--Google +-->
+                        <a href="http://google.com/+">
+                            <button type="button" class="btn btn-gplus btn-danger">
+                                <i class="fa fa-google-plus left"></i>
+                                Google +
+                            </button>
+                        </a>
+                        <!--facebook-->
+                        <a href="http://facebook.com">
+                            <button type="button" class="btn btn-fb btn-primary">
+                                <i class="fa fa-facebook left"></i>
+                                Facebook
+                            </button>
+                        </a>
+                        <!--youtube-->
+                        <a href="http://youtube.com">
+                            <button type="button" class="btn btn-yt btn-danger">
+                                <i class="fa fa-youtube left"></i>
+                                Youtube
+                            </button>
+                        </a>
+                        <!--Linkedin-->
+                        <a href="http://linkedin.com">
+                            <button type="button" class="btn btn-li btn-primary">
+                                <i class="fa fa-linkedin left"></i>
+                                Linkedin
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--copyright-->
+        <div class="footer-copyright offset-1">
+            <div class="container-fluid">
+                © 2018 Copyright:
+                <a href="https://www.linkedin.com/in/kb2232cpp/">linkedIn.com</a>
+            </div>
+        </div>
+        <!--end copyright-->
+    </footer>
+
+    <!-- end of the footer -->
 
 </body>
 
 </html>
-
-<!-- <div class="carousel-item">
-    <img class="food-item" alt="Second slide">
-</div> -->
-
-
-<!-- begging of the footer -->
-<br>
-<br>
-<hr>
-<footer class="page-footer center-on-small-only footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-6 col-sm-6">
-                <div style="text-align: center">
-                    <address>
-                        <a href="mailto:kb2232@nyu.edu">
-                            <button class="btn btn-secondary">
-                                <i class="fa fa-envelope fa-lg"></i>
-                            </button>
-                        </a>
-                    </address>
-                </div>
-            </div>
-            <!--first column-->
-            <div class="col-6 col-sm-6 align-self-center text-center">
-                <p>
-                    Foogle is the "google of food" - like tinder you can swipe left and right. See something you like, then
-                        click the like button and it will save to your favorites. Looking for the nearest location, click
-                        the food on the favarite page.
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <!--end first column-->
-            <div class="col-xs-12 col-sm-12">
-                <div style="text-align: center">
-                    <!--Google +-->
-                    <a href="http://google.com/+">
-                        <button type="button" class="btn btn-gplus btn-danger">
-                            <i class="fa fa-google-plus left"></i>
-                            Google +
-                        </button>
-                    </a>
-                    <!--facebook-->
-                    <a href="http://facebook.com">
-                        <button type="button" class="btn btn-fb btn-primary">
-                            <i class="fa fa-facebook left"></i>
-                            Facebook
-                        </button>
-                    </a>
-                    <!--youtube-->
-                    <a href="http://youtube.com">
-                        <button type="button" class="btn btn-yt btn-danger">
-                            <i class="fa fa-youtube left"></i>
-                            Youtube
-                        </button>
-                    </a>
-                    <!--Linkedin-->
-                    <a href="http://linkedin.com">
-                        <button type="button" class="btn btn-li btn-primary">
-                            <i class="fa fa-linkedin left"></i>
-                            Linkedin
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--copyright-->
-    <div class="footer-copyright offset-1">
-        <div class="container-fluid">
-            © 2018 Copyright:
-            <a href="https://www.linkedin.com/in/kb2232cpp/">linkedIn.com</a>
-        </div>
-    </div>
-    <!--end copyright-->
-</footer>
-
-<!-- end of the footer -->
-
-
-</body>
 
 </html>

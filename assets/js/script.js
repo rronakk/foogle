@@ -88,7 +88,7 @@ $(document).on('click', '#rand-like', function(event) {
 $(document).on('click', '.run-search', function(event) {
 	let x = $('#searchItem').val().length;
 	if (x === 0) {
-		alert('Enter a food item!!!');
+		alert("Enter a search term");
 	} else {
 		$('.search-item').addClass('animated rotateOutDownLeft');
 		//pageAction

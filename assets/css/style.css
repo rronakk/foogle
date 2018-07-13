@@ -14,6 +14,11 @@
 
 }
 
+.buttn {
+    width: 70%;
+    background-color: yellow;
+}
+
 .modal-body
 {
     background-color: #FFFFFF;
@@ -126,11 +131,11 @@ input[type="search"]{
 .search-area {
     margin: 0 10%;
 }
+.bttn {
+    width: 250px;
+}
 #searchItem {
     margin-bottom: 30px;
-}
-#initial-search {
-    width: 275px;
 }
 .intro_btns {
     margin-top: 15px;
@@ -328,6 +333,7 @@ input[type="search"]{
     margin: 0 auto;
     box-shadow: 2px 2px black;
 }
+
 .more-btn-area {
     float: right;
 }
