@@ -11,7 +11,6 @@
     background-color: gray;
     border: 1px solid #bdbdbd;
     border-radius: 30px;
-
 }
 
 .buttn {
@@ -21,7 +20,7 @@
 
 .modal-body
 {
-    background-color: #FFFFFF;
+    width: 100%;
 }
 
 .modal-content
@@ -42,8 +41,7 @@
     -moz-border-radius-bottomright: 6px;
 }
 
-.modal-header
-{
+.modal-header {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     -webkit-border-top-left-radius: 6px;
@@ -72,7 +70,7 @@ div img {
 	background-repeat:no-repeat;
 	background-position:548px 4px;
 	background-size:14px 19px;
-	}
+}
 
 .button {
 	border: 1px solid #d3d3d3;
@@ -96,6 +94,7 @@ div img {
 .search:hover {
 	border:1px solid #aaaaaa;
 }
+
 .make-ur-life-ezr {
     text-align: center;
 }
@@ -116,18 +115,20 @@ div img {
 
 input[type="search"]{
     background: #f3f3f3;
-  
 }
 
 #edamam-badge {
     text-align: left;
 }
+
 #searchItem {
     margin-bottom: 10px;
 }
+
 .searched-result-page{
     text-align: center;
 }
+
 .search-area {
     margin: 0 10%;
 }
@@ -137,56 +138,76 @@ input[type="search"]{
 #searchItem {
     margin-bottom: 30px;
 }
+
+#searchItem {
+    margin-bottom: 30px;
+}
+
 .intro_btns {
     margin-top: 15px;
     text-align: center;
 }
 
+/* ALL MODALS */
+
+.modal {
+    border-radius: 5px;
+}
+
 /* SEARCH MODAL */
+
+.search-modal-content {
+    background-color: #d3d3d3;
+}
+
 .search-item {
     overflow: hidden;
 }
 
+.food-img {
+    width: 300px;
+}
+
 .searched-item-name {
-    padding: 15px;
-    text-align: center;
+    font-family: 'Pacifico';
+    margin-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
 }
 
-.searched-item-img {
-    margin-bottom: 15px;
-}
-
-.searched-item-diet-label {
-    margin: 0px 15px;
-}
-
-.searched-item-health-label {
-    margin: 0px 15px 15px 15px;
+.nutrition {
+    font-family: 'Maven Pro';
+    padding-left: 35px;
 }
 
 .label {
-    text-align: right;
+    font-family: 'Maven Pro';
 }
 
-#like {
+.like {
     background-color: #84FCA1;
+    border: .5px solid black;
+    border-radius: 50%;
     position: absolute;
     right: 5%;
+    bottom: 2%;
     height: 38px;
-    top: 50%;
 }
 
-#like:hover {
+.like:hover {
     background-color: #64FE8A;
     box-shadow: 1px 1px 2px black, 0 0 25px green, 0 0 5px green;
 }
 
 #dislike {
     background-color: #FEA69D;
+    border: .5px solid black;
+    border-radius: 50%;
     position: absolute;
     left: 5%;
+    bottom: 2%;
     height: 38px;
-    top: 50%;
 }
 
 #dislike:hover {
@@ -194,14 +215,107 @@ input[type="search"]{
     box-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px red;
 }
 
+.close-modal {
+    border-radius: 50%;
+    border: .5px solid black;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    height: 40px;
+    width: 40px;
+}
+
+.close-modal:hover {
+    background-color: #d3d3d3;
+    box-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black;
+}
+
+/* RANDOM MODAL */
+
+.rand-modal-content {
+    background-color: #d3d3d3;
+}
+
+.rand-item-name {
+    font-family: 'Pacifico';
+    margin-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+}
+
+#rand-like {
+    background-color: #84FCA1;
+    border: .5px solid black;
+    border-radius: 50%;
+    position: absolute;
+    right: 5%;
+    bottom: 2%;
+    height: 38px;
+}
+
+#rand-like:hover {
+    background-color: #64FE8A;
+    box-shadow: 1px 1px 2px black, 0 0 25px green, 0 0 5px green;
+}
+
+#rand-dislike {
+    background-color: #FEA69D;
+    border: .5px solid black;
+    border-radius: 50%;
+    position: absolute;
+    left: 5%;
+    bottom: 2%;
+    height: 38px;
+}
+
+#rand-dislike:hover {
+    background-color: #FA8E83;
+    box-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px red;
+}
+
 /* DETAIL MODAL */
+
+.save-to-favs {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.save-to-favs:hover {
+    background-color: darkcyan;
+    box-shadow: 1px 1px 2px black, 0 0 25px darkcyan, 0 0 5px darkcyan;
+}
+
+.close-detailed-modal {
+    position: absolute;
+    top: 5%;
+    right: 12%;
+
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.close-detailed-modal:hover {
+    background-color: #d3d3d3;
+    box-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black;
+}
+
+.detailed-modal-content {
+    background-color: #d3d3d3;
+}
+
 .item-name {
     text-align: center;
     padding: 0;
 }
 
 #recipe-name {
-    margin: 0 auto;
     padding: 20px;
 }
 
@@ -212,11 +326,14 @@ input[type="search"]{
 .item-img {
     display: block;
     margin: 0 auto;
+    margin-bottom: 40px;
     padding: 15px 0px 15px 15px;
+    width: 80%;
+    height: 50%;
 }
 
-
 /* SEARCH RESULT PAGE */
+
 .liked-item {
     padding: 25px;
 }
@@ -227,6 +344,7 @@ input[type="search"]{
     top: 10%;
     z-index: 100;
 }
+
 .detail-search-form {
     display: none;
 }
@@ -241,9 +359,7 @@ input[type="search"]{
 }
 
 /* RESULT PAGE */
-.container {
-    background-color: #C8C6C6;
-}
+
 .fav-btn {
     position: absolute;
     top:2%;
@@ -256,6 +372,7 @@ input[type="search"]{
     font-size: 2em;
 
 }
+
 .result-item {
     clear: both;
     padding: 30px;
@@ -279,18 +396,12 @@ input[type="search"]{
     padding: 5% 0;
 }
 
-
-
 /* Restaurant Name, Food Name, Price */
-/* h5 {
-    display: inline;
-} */
-/* .restaurant-location {
-    height: 200px;
-} */
+
 #map {
     border-left: 1px solid black;
-    height: 100%;
+    height: 90%;
+    margin-left: 10px;
 }
 
 .food-price {
@@ -298,17 +409,10 @@ input[type="search"]{
 }
 
     /* Rating/Distance, Delivery, Takeout */
-/* .restaurant-info {
-    margin-top: 20px;
-} */
 
 .secondary-info {
     margin-top: 20px;
 }
-
-/* h6 {
-    display: inline;
-} */
 
 .delivery {
     background-color: #F75124;
@@ -316,6 +420,7 @@ input[type="search"]{
     border-radius: 3px;
     float: right;
     margin-left: 20px;
+    height: 50px;
     width: 50px;
 }
 
@@ -324,6 +429,7 @@ input[type="search"]{
     border: 1px solid black;
     border-radius: 3px;
     float: right;
+    height: 50px;
     width: 50px;
 }
 
@@ -331,35 +437,37 @@ input[type="search"]{
     clear: both;
     display: inline-block;
     margin: 0 auto;
-    box-shadow: 2px 2px black;
 }
 
 .more-btn-area {
     float: right;
 }
 
-
 /* INTRO PAGE */
+
 .banner_intro {
     /* text-align: center; */
     height: 100vh;
 }
+
 .banner_intro h1 {
     margin-top: 10%;
     text-align: center;
-
 }
+
 .food-item {
     height: 500;
 }
+
 .food-item img {
     width: 100%;
     height: 500px;
-
 }
+
 #enjoyYourFoodDating {
     height: 500px;
 }
+
 #datingNote {
     text-align: center;
     font-weight: bold;
@@ -371,13 +479,14 @@ input[type="search"]{
     width: 100%;
     padding-top: 20%;
 }
+
 #resultNote {
     text-align: center;
 }
+
 .result{
     border: 0;
 }
-
 
 .temp-btn {
     text-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 5px darkblue;
@@ -389,11 +498,43 @@ input[type="search"]{
         background-color: lightcoral;
     }
 } */
+body{
+    background-image: url(../images/low_contrast_linen.png);
+
+}
+
+.card {
+    background-color: transparent;
+}
+
+.favsFood {
+    background-color: black;
+    color: gray; 
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: black;
+
+  }
+  
+  .footer-social-list {
+    margin-top: 20px;
+    color: gray;
+  }
+  .ft-icon{
+      text-align: right;
+  }
+  .fa{
+    margin: 10px;
+  }
+  
 
 @media (min-width: 768px) and (max-width: 1199px) {
-    body{
-        background-color: rgb(170, 247, 189)
-    }
+   
 }
 
 @media (max-width: 767px) {
@@ -402,9 +543,7 @@ input[type="search"]{
 
     /* Results Page */
 
-    body{
-        background-color: lightskyblue;
-    }
+  
 }
 
 @media (max-width: 480px) {
@@ -412,7 +551,4 @@ input[type="search"]{
     /* Intro Page */
 
     /* ------------- */
-    body{
-        background-color: gray;
-    }
 }

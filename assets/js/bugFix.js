@@ -1,13 +1,12 @@
 $(document).ready(function() {
-	$("form").validate({
-    rules : {
-      fooglesearch: {
-        required: false
-      }
-    }
+	// $("form").validate({
+  //   rules : {
+  //     fooglesearch: {
+  //       required: false
+  //     }
+  //   }
     
-  });
-
+  // });
   //add class to the image
   $('.searched-item-img').addClass("img-fluid rounded mx-auto d-block");
   $('.rand-item-img').addClass("img-fluid rounded mx-auto d-block");
