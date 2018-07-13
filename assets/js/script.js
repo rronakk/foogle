@@ -43,7 +43,7 @@ $(document).on('click', '#rand-like', function(event) {
 		.clone()
 		.removeClass();
 	$likedImg.attr('name', $likedName.text());
-	$likedImg.addClass('food-img');
+	$likedImg.addClass('food-img img-fluid img-thumbnail mx-auto d-block');
 	$likedImg.attr('data-target', '#modelId');
 	$likedImg.attr('data-toggle', 'modal');
 	var $likedCalories = $('.rand-item-caloriesLabel')
@@ -62,7 +62,7 @@ $(document).on('click', '#rand-like', function(event) {
 		.clone()
 		.removeClass();
 
-	var $likedItem = $('<div class="liked-item col-xs-12 col-sm-8 col-md-6 col-lg-4 card">');
+	var $likedItem = $('<div class="liked-item col-md-4 card favsFood">');
 	$likedItem.append($likedName);
 	$likedItem.append($likedImg);
 	$likedCalories.prepend("Calories : ");
@@ -162,7 +162,7 @@ $(document).on('click', '#like', function(event) {
 		.clone()
 		.removeClass();
 	$likedImg.attr('name', $likedName.text());
-	$likedImg.addClass('food-img');
+	$likedImg.addClass('food-img img-fluid img-thumbnail mx-auto d-block');
 	$likedImg.attr('data-target', '#modelId');
 	$likedImg.attr('data-toggle', 'modal');
 	var $likedCalories = $('.searched-item-caloriesLabel')
@@ -181,7 +181,7 @@ $(document).on('click', '#like', function(event) {
 		.clone()
 		.removeClass();
 
-	var $likedItem = $('<div class="liked-item col-xs-12 col-sm-8 col-md-6 col-lg-4 card">');
+	var $likedItem = $('<div class="liked-item col-lg-4 card favsFood">');
 	$likedItem.append($likedName);
 	$likedItem.append($likedImg);
 	$likedCalories.prepend("Calories : ");
@@ -229,13 +229,13 @@ var displaySearchedItems = function() {
 	var itemImg = Edamam.searchedItems[0].image;
 	$itemImg.attr('data-target', '#modelId');
 	$itemImg.attr('data-toggle', 'modal');
-	$itemImg.addClass('food-img');
+	$itemImg.addClass('food-img img-fluid img-thumbnail mx-auto d-block');
 	if (itemImg) {
 		$itemImg.attr('src', itemImg);
 	}
 
 	// food item name
-	var $itemName = $('<h5>');
+	var $itemName = $('<h5 class="text-center">');
 	$itemName.addClass('food-name card-body');
 	var itemName = Edamam.searchedItems[0].label;
 	if (itemName) {
