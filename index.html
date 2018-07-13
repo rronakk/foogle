@@ -128,7 +128,6 @@
         </div>
     </div>
 
-
     <!-- SEARCH MODAL -->
     <div class="modal fade search-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -176,11 +175,11 @@
     <!-- model for restaurant information -->
     <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-primary item-name">
+            <div class="modal-content detailed-modal-content">
+                <div class="modal-header item-name">
                     <h4 id="recipe-name"></h4>
                 </div>
-                <div class="modal-body bg-primary row">
+                <div class="modal-body row">
                     <!-- <div class='container item-info col'>
                             <img class="item-img"/>
                         </div> -->
@@ -203,18 +202,21 @@
                         <img class='delivery' src='./assets/images/delivery.png'>
                         <img class='takeout' src='./assets/images/takeout.png'>
                         <!-- <a href="#" class='reviews'> 3 Reviews </a> -->
-                        <h6 class='distance'> </h6>
+                        <i class="fa fa-map-marker">
+                            <span class='distance'> </span>
+                        </i>
                         <!-- <a href="#" class='yelp-link' target="_blank"> More Details </a> -->
                     </div>
                     <div class="container restaurant-location col">
                         <div id='map'></div>
                     </div>
                 </div>
-
-                <div class="modal-footer bg-primary">
-                    <button type="button " class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button submit" class="btn btn-info" id="save-btn">Save</button>
-                </div>
+                <button type="button" class="btn btn-light close-detailed-modal" data-dismiss="modal">
+                    <i class="fas fa-angle-down"></i> 
+                </button>
+                <button type="button submit" class="btn btn-info save-to-favs" id="save-btn">
+                    <i class="fa fa-star"></i>
+                </button>
             </div>
         </div>
     </div>

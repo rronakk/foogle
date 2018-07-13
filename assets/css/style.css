@@ -15,7 +15,6 @@
 
 .modal-body
 {
-    background-color: #FFFFFF;
     width: 100%;
 }
 
@@ -270,13 +269,46 @@ input[type="search"]{
 
 /* DETAIL MODAL */
 
+.save-to-favs {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.save-to-favs:hover {
+    background-color: darkcyan;
+    box-shadow: 1px 1px 2px black, 0 0 25px darkcyan, 0 0 5px darkcyan;
+}
+
+.close-detailed-modal {
+    position: absolute;
+    top: 5%;
+    right: 12%;
+
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.close-detailed-modal:hover {
+    background-color: #d3d3d3;
+    box-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black;
+}
+
+.detailed-modal-content {
+    background-color: #d3d3d3;
+}
+
 .item-name {
     text-align: center;
     padding: 0;
 }
 
 #recipe-name {
-    margin: 0 auto;
     padding: 20px;
 }
 
@@ -287,7 +319,10 @@ input[type="search"]{
 .item-img {
     display: block;
     margin: 0 auto;
+    margin-bottom: 40px;
     padding: 15px 0px 15px 15px;
+    width: 80%;
+    height: 50%;
 }
 
 /* SEARCH RESULT PAGE */
@@ -358,7 +393,8 @@ input[type="search"]{
 
 #map {
     border-left: 1px solid black;
-    height: 100%;
+    height: 90%;
+    margin-left: 10px;
 }
 
 .food-price {
@@ -377,6 +413,7 @@ input[type="search"]{
     border-radius: 3px;
     float: right;
     margin-left: 20px;
+    height: 50px;
     width: 50px;
 }
 
@@ -385,6 +422,7 @@ input[type="search"]{
     border: 1px solid black;
     border-radius: 3px;
     float: right;
+    height: 50px;
     width: 50px;
 }
 
