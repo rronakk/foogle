@@ -13,6 +13,11 @@
     border-radius: 30px;
 }
 
+.buttn {
+    width: 70%;
+    background-color: yellow;
+}
+
 .modal-body
 {
     width: 100%;
@@ -127,13 +132,15 @@ input[type="search"]{
 .search-area {
     margin: 0 10%;
 }
-
+.bttn {
+    width: 250px;
+}
 #searchItem {
     margin-bottom: 30px;
 }
 
-#initial-search {
-    width: 275px;
+#searchItem {
+    margin-bottom: 30px;
 }
 
 .intro_btns {
